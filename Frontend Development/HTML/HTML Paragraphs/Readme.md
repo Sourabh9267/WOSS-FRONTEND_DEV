@@ -1,0 +1,1 @@
+Paragraph Elements has a property which is to ignore the extra whitespaces.
