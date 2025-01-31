@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 11</title>
+
+    <style>
+
+        
+* {
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+
+        nav {
+            border-top: #716e6e 1px solid;
+            position: sticky;
+            top: 0px;
+            z-index: 5;
+            background:#1F1F1F;
+            height: 10vh;
+            width: 100%;
+        }
+
+        .navbar {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            background-color: transparent;
+            backdrop-filter: blur(6px);
+
+        }
+
+
+
+        .navbar .logo-container {
+            padding: 1vh;
+            display: flex;
+            align-items: center;
+            width: 40%;
+            gap: 0.4vw;
+
+
+
+            img {
+                height: 8vh;
+            }
+
+        }
+
+        .navbar .links {
+            display: flex;
+            align-items: center;
+            width: 60%;
+            justify-content: space-around;
+
+        }
+
+        .links a {
+            z-index: 1;
+            content: "2";
+            position: relative;
+            font-size: 1vw;
+            text-transform: uppercase;
+            transition: all ease 0.3s;
+            color: white;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            color: pink;
+
+        }
+
+        .links a::before {
+            transition: all ease-in-out 0.5s;
+            content: "";
+            top: 3vh;
+            width: 0%;
+            z-index: -1;
+            position: absolute;
+            background-color: pink;
+
+
+        }
+
+        .links a:hover::before {
+            content: "";
+            width: 100%;
+
+            top: 3vh;
+
+            height: 0.3vh;
+            z-index: -1;
+            position: absolute;
+
+            background-color: pink;
+        }
+
+        .navbar .menu {
+            display: none;
+        }
+
+
+        .page{
+            display: flex;
+            height: 100%;
+            width: 100%;
+            background-color: #716e6e;
+
+        }
+
+        .left{
+            padding: 5vh;
+            width: 50%;
+            background-color: #1F1F1F;
+
+            h2{
+                font-size: 3vw;
+                text-transform: uppercase;
+                text-decoration: underline 2px solid red;
+                text-underline-offset: 2vh;
+                margin-bottom: 5vh;
+            }
+
+            p{
+                color: grey;
+                line-height: 16pt;
+
+                
+
+            }
+        
+        }
+        .hrtag{
+                margin-top: 3vh;
+                    width: 100%;
+                  background-color: rgb(51, 51, 51);
+                  height: 1px;
+                  border: none;
+                  border-radius: 25px;
+                }
+        .right{
+            padding: 2vh;
+            width: 50%;
+        
+        }
+        .bg-prop{
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-attachment: fixed;
+        }
+        #d1{
+      
+           
+            background-image: url("https://plus.unsplash.com/premium_photo-1673266203719-85fa77b31ec8?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+        
+        #d2{
+        
+            background-image: url("https://plus.unsplash.com/premium_photo-1714051661301-860c930a2c85?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+
+        #d3{
+       
+           
+            background-image: url("https://images.unsplash.com/photo-1667860356390-c8ebc775891f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        }
+    </style>
+
+</head>
+<body>
+    
+
+    <nav>
+            
+        <ul class="navbar">
+            
+            <li class="logo-container">
+                
+                <img src="https://img.icons8.com/?size=100&id=4Xem_S1LR0kT&format=png&color=FA5252" alt="" id="#logo">
+                <h1> MaestErosk </h1>
+                
+            </li>
+            
+
+
+        <li class="links">
+
+            <a href="#">
+
+                Customer Login
+
+            </a>
+            <a href="#">
+
+                Careers
+
+            </a>
+            <a href="#">
+
+                MiMenu
+
+            </a>
+            <a href="#">
+
+                Documents
+
+            </a>
+            <a href="#">
+
+                Legacy Contact
+
+            </a>
+
+
+        </li>
+
+        <li class="menu">
+
+            <img src="https://img.icons8.com/?size=100&id=59832&format=png&color=FFFFFF" alt="">
+
+        </li>
+
+    </ul>
+
+
+
+</nav>
+
+
+    <div class="page">
+
+
+        <div class="left">
+
+            <h2>
+               Brooklyn NYC
+            </h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates vero eius aliquid in fugiat, dolorem facilis quae eum quod placeat ab suscipit, fuga ipsam similique veniam. Quod eos ratione deleniti quas alias sint! Aspernatur dicta dolores voluptate. Iste consequuntur ipsa culpa ullam accusamus modi facere harum esse, doloribus eveniet expedita quibusdam autem. Aperiam neque nemo autem pariatur adipisci deserunt, animi at odit molestias minus suscipit, cumque non alias est dignissimos magnam quia officiis sit? Numquam ipsam corrupti, animi sed unde repellat explicabo omnis nam reiciendis distinctio quibusdam excepturi rerum accusamus pariatur. Odit asperiores omnis rerum assumenda sit numquam officia tenetur pariatur excepturi, aliquam quaerat maxime laudantium, non voluptatem aut hic. Harum excepturi quos deleniti id, nulla commodi quaerat nostrum corrupti fuga perferendis maxime, nihil nemo doloribus fugit sequi magnam repellat sint ea necessitatibus consectetur. Porro, laborum obcaecati aliquid dolore error animi voluptatibus. Possimus minus quaerat eaque ratione numquam mollitia saepe, asperiores labore animi eum impedit adipisci facilis ducimus provident itaque odit porro a, aut maxime laboriosam? Quidem, sunt minima impedit nostrum ut ratione harum! Rerum ipsa nulla excepturi animi quos qui debitis sunt perferendis quasi porro vitae quo, repellat, totam eveniet ab eius autem repellendus voluptatum quidem quam dicta. Et amet voluptas explicabo magnam minima labore laboriosam nihil ipsa commodi. Perspiciatis veniam ut error dolor vero pariatur dicta aut tenetur recusandae vitae, quaerat voluptate facilis consequatur consequuntur culpa vel magni corporis debitis rem, iste eveniet similique molest
+                iae neque autem? Deserunt porro excepturi atque ullam quod dolores ipsum totam! Porro, nulla.
+            
+                ri atque ullam quod dolores ipsum totam! Porro, nulla.freuihfgurehwtgurhgurefhreufhreugferhgruggrgere efewfewfewfewfef e fewfefewfewbfefeww fef ewf ewfw efw f wefwe fwe freuihfgurehwtgurhgurefhreufhreugferhgruggrgere efewfewfewfewfef e fewfefewfewbfefeww fef ewf ewfw efw f wefwe fwe 
+
+                <hr class="hrtag">
+                
+            </p>
+
+        </div>
+
+        <div class="right bg-prop" id="d1">
+
+         
+
+        </div>
+
+    </div>
+    <div class="page">
+
+
+        <div class="left">
+
+            <h2>
+                The SKYLINE NYC , USA
+            </h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates vero eius aliquid in fugiat, dolorem facilis quae eum quod placeat ab suscipit, fuga ipsam similique veniam. Quod eos ratione deleniti quas alias sint! Aspernatur dicta dolores voluptate. Iste consequuntur ipsa culpa ullam accusamus modi facere harum esse, doloribus eveniet expedita quibusdam autem. Aperiam neque nemo autem pariatur adipisci deserunt, animi at odit molestias minus suscipit, cumque non alias est dignissimos magnam quia officiis sit? Numquam ipsam corrupti, animi sed unde repellat explicabo omnis nam reiciendis distinctio quibusdam excepturi rerum accusamus pariatur. Odit asperiores omnis rerum assumenda sit numquam officia tenetur pariatur excepturi, aliquam quaerat maxime laudantium, non voluptatem aut hic. Harum excepturi quos deleniti id, nulla commodi quaerat nostrum corrupti fuga perferendis maxime, nihil nemo doloribus fugit sequi magnam repellat sint ea necessitatibus consectetur. Porro, laborum obcaecati aliquid dolore error animi voluptatibus. Possimus minus quaerat eaque ratione numquam mollitia saepe, asperiores labore animi eum impedit adipisci facilis ducimus provident itaque odit porro a, aut maxime laboriosam? Quidem, sunt minima impedit nostrum ut ratione harum! Rerum ipsa nulla excepturi animi quos qui debitis sunt perferendis quasi porro vitae quo, repellat, totam eveniet ab eius autem repellendus voluptatum quidem quam dicta. Et amet voluptas explicabo magnam minima labore laboriosam nihil ipsa commodi. Perspiciatis veniam ut error dolor vero pariatur dicta aut tenetur recusandae vitae, quaerat voluptate facilis consequatur consequuntur culpa vel magni corporis debitis rem, iste eveniet similique molestiae neque autem? Deserunt porro excepturi atque ullam quod dolores ipsum totam! Porro, nulla.
+                ri atque ullam quod dolores ipsum totam! Porro, nulla.freuihfgurehwtgurhgurefhreufhreugferhgruggrgere efewfewfewfewfef e fewfefewfewbfefeww fef ewf ewfw efw f wefwe fwe freuihfgurehwtgurhgurefhreufhreugferhgruggrgere efewfewfewfewfef e fewfefewfewbfefeww fef ewf ewfw efw f wefwe fwe 
+
+                <hr class="hrtag">
+
+
+            </p>
+
+        </div>
+
+        <div class="right bg-prop" id="d2">
+
+           
+
+        </div>
+
+    </div>
+    <div class="page">
+
+
+        <div class="left">
+
+            <h2>
+                Central Park NYC
+            </h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates vero eius aliquid in fugiat, dolorem facilis quae eum quod placeat ab suscipit, fuga ipsam similique veniam. Quod eos ratione deleniti quas alias sint! Aspernatur dicta dolores voluptate. Iste consequuntur ipsa culpa ullam accusamus modi facere harum esse, doloribus eveniet expedita quibusdam autem. Aperiam neque nemo autem pariatur adipisci deserunt, animi at odit molestias minus suscipit, cumque non alias est dignissimos magnam quia officiis sit? Numquam ipsam corrupti, animi sed unde repellat explicabo omnis nam reiciendis distinctio quibusdam excepturi rerum accusamus pariatur. Odit asperiores omnis rerum assumenda sit numquam officia tenetur pariatur excepturi, aliquam quaerat maxime laudantium, non voluptatem aut hic. Harum excepturi quos deleniti id, nulla commodi quaerat nostrum corrupti fuga perferendis maxime, nihil nemo doloribus fugit sequi magnam repellat sint ea necessitatibus consectetur. Porro, laborum obcaecati aliquid dolore error animi voluptatibus. Possimus minus quaerat eaque ratione numquam mollitia saepe, asperiores labore animi eum impedit adipisci facilis ducimus provident itaque odit porro a, aut maxime laboriosam? Quidem, sunt minima impedit nostrum ut ratione harum! Rerum ipsa nulla excepturi animi quos qui debitis sunt perferendis quasi porro vitae quo, repellat, totam eveniet ab eius autem repellendus voluptatum quidem quam dicta. Et amet voluptas explicabo magnam minima labore laboriosam nihil ipsa commodi. Perspiciatis veniam ut error dolor vero pariatur dicta aut tenetur recusandae vitae, quaerat voluptate facilis consequatur consequuntur culpa vel magni corporis debitis rem, iste eveniet similique molestiae neque autem? Deserunt porro excepturi atque ullam quod dolores ipsum totam! Porro, nulla.ta aut tenetur recusandae vitae, quaerat voluptate facilis consequatur consequuntur culpa vel magni corporis debitis rem, iste eveniet similique molestiae neque autem? Deserunt porro excepturi atque ullam quod dolores ipsum totam! Porro, nulla.freuihfgurehwtgurhgurefhreufhreugferhgruggrgere efewfewfewfewfef e fewfefewfewbfefeww fef ewf ewfw efw f wefwe fwe freuihfgurehwtgurhgurefhreufhreugferhgruggrgere efewfewfewfewfef e fewfefewfewbfefeww fef ewf ewfw efw f wefwe fwe 
+
+                <hr class="hrtag">
+
+            </p>
+
+        </div>
+
+        <div class="right bg-prop" id="d3">
+
+          
+
+        </div>
+
+    </div>
+
+</body>
+</html>
