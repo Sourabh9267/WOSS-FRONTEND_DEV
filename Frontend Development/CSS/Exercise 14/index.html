@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14 : Transparent box with text</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        html{
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+        }
+
+        #main{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+            background-image: url("https://images.unsplash.com/photo-1657670527290-c2a19efe4982?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        
+            backdrop-filter: brightness(-50%);
+        }
+
+        #main::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Adjust the alpha (0.5) for more or less darkness */
+        }
+
+        .box{
+            height: 60%;
+            width: 40%;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.085);
+           border: 1px solid rgba(255, 255, 255, 0.225);
+            backdrop-filter: blur(4px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4vh;
+            color: white;
+            font-family: sans-serif;
+            padding: 10vh;
+            p{
+               
+                width: 100%;
+                font-size: 1vw;
+            }
+
+            h4{
+                font-size: 2vw;
+                text-decoration: underline 2px solid red;
+                text-underline-offset: 2vh;
+            }
+        }
+
+       
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div id="main">
+
+        
+        <div class="box">
+
+            <h4>A Transparent Box</h4>
+            <p>A Transparent box in css with customizeable glassmorphism blur effect.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptatibus illum tempora dolor maiores similique voluptatem labore porro accusamus fugiat repudiandae ad eveniet, nostrum exercitationem? Blanditiis, iusto, accusamus debitis accusantium veritatis ut quis dolores possimus perspiciatis omnis inventore, suscipit sequi voluptatibus praesentium non eum ea? Aut nisi inventore voluptas, explicabo doloribus ex praesentium numquam pariatur officia voluptatem provident, consectetur exercitationem rem, quam accusamus? Placeat consectetur veniam suscipit dicta nulla aut facilis officia iusto repellendus neque quas enim nemo recusandae adipisci obcaecati, perferendis odit sit possimus. Dignissimos voluptatem rerum animi ea eius ad quod itaque totam deleniti iusto sunt vero impedit quasi eos, ut praesentium quia id iste quisquam nesciunt! Assumenda quisquam asperiores accusantium incidunt sit inventore adipisci molestiae. Odit, vero. Fugiat sit accusamus quam impedit qui, neque culpa accusantium. Iste praesentium adipisci dolor suscipit hic laboriosam perspiciatis delectus natus tempora voluptate quia eveniet veniam obcaecati, recusandae harum et! Enim, eaque numquam? Assumenda ipsa quasi nulla similique ullam! Quis cupiditate error, aperiam assumenda incidunt expedita, qui dolorem minus, accusamus illum necessitatibus porro fuga a voluptatem nemo repudiandae accusantium? Ipsum dolore fugit sint ipsa rerum quia iusto, saepe nemo tempore obcaecati, laborum voluptatem. Error blanditiis modi esse officiis facilis? Voluptas repellat nulla eveniet illum ex laboriosam rem molestias ipsam, unde corporis dicta esse a recusandae, eum magni inventore sequi earum modi voluptatem, mollitia dolore. Atque pariatur esse dolores beatae optio. Molestiae voluptatibus, minus qui enim quo ipsum doloremque doloribus nam id veniam! Qui mollitia nemo saepe cumque ad minus praesentium eaque nostrum.</p>
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+</html>
