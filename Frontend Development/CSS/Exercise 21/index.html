@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exercise 18: On hover dropdown</title>
+
+    <style>
+     
+       
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+
+            --col1_light: #FFFFFF;
+            --col1_dark: #F2F7FF;
+
+            --col2_light: #4770FF;
+            --col2_dark: #071E53;
+
+            --col3_grey: #9CA5BA;
+            --col3_normal: #071E53;
+
+        }
+
+        * {
+
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-color: var(--col1_light);
+        }
+
+        .mainbtn {
+            font-size: 1vw;
+            padding: 2vh 2vw;
+            background-color: var(--col2_light);
+            border: none;
+            color: var(--col1_light);
+            font-weight: bold;
+            transition: all ease 0.5s;
+            border: 1px solid transparent;
+        }
+
+        .mainbtn:hover {
+
+            background-color: var(--col2_dark);
+
+        }
+
+        .secobtn {
+            font-size: 1vw;
+            padding: 2vh 2vw;
+            background-color: transparent;
+            border: none;
+            color: var(--col2_light);
+            font-weight: bold;
+            transition: all ease 0.5s;
+            border: 1px solid var(--col2_light)
+        }
+
+        .secobtn:hover {
+            color: var(--col1_light);
+            background-color: var(--col2_dark);
+            border: 1px solid transparent;
+        }
+
+        #main {
+            height: 100%;
+            width: 100%;
+        }
+
+        nav {
+            height: 10%;
+            width: auto;
+            background-color: var(--col1_dark);
+            padding: 1vw;
+            display: flex;
+            justify-content: space-between;
+
+
+
+            #logo {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                height: 100%;
+                width: 30%;
+
+                img {
+                    height: 70%;
+                }
+            }
+
+
+            ul {
+                font-family: 'poppins';
+                font-weight: bold;
+                font-size: 1vw;
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                list-style: none;
+
+
+            }
+
+
+            .links li {
+
+                a {
+                    transition: all ease 0.2s;
+                    text-decoration: none;
+                    color: var(--col3_normal);
+                }
+
+                select {
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                }
+
+
+            }
+
+            .links a:hover {
+                color: var(--col2_light);
+            }
+
+
+        }
+            .iconalign
+            {
+                display: flex;
+                align-items: center;
+                gap: 1vw;
+                img{
+                    transition: all ease 0.3s;
+                    height: 15px;
+                }
+            }
+
+        .dropdown-list{
+            display: none;
+            position: fixed;
+            margin-top: 1vh;
+            transform: translateX(-15%);
+           opacity: 0;
+           transition: all ease 0.5s;
+        }
+
+       
+        #dropdown-btn:hover .dropdown-list{
+            opacity: 1;
+            font-family: 'poppins';
+            padding: 4vh;
+            border-radius: 25px;
+            gap: 5vh;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: start;
+            height: auto;
+            width: auto;
+            background-color: var(--col1_light);
+        }
+
+        #dropdown-btn:hover .iconalign>img{
+            transform: rotate(180deg);
+        }
+
+        /*
+            # Web Page Banner 
+        */
+
+        #web-banner {
+            display: flex;
+            height: auto;
+            width: 100%;
+            background-color: var(--col1_dark);
+            align-items: center;
+            justify-content: center;
+            
+
+            h1 {
+                margin-top: 30vh;
+                margin-bottom: 30vh;
+                font-size: 3vw;
+                font-family: 'poppins';
+                font-weight: 600;
+                color: var(--col2_dark);
+            }
+
+           
+
+        }
+
+
+    </style>
+
+
+
+
+
+</head>
+
+<body>
+
+    <div id="main">
+
+
+        <nav>
+
+
+            <div id="logo">
+
+
+                <img src="https://www.websoptimization.com/images/Logo.svg" alt="">
+
+
+            </div>
+
+            <ul class="links">
+
+
+                <li id="dropdown-btn">    
+                    <a href="#" class="iconalign">Services <img src="https://img.icons8.com/?size=100&id=60662&format=png&color=000000" alt="">
+
+                    </a> 
+                    
+                    <ul class="dropdown-list">
+
+                        <li>Web Development</li>
+                        <li>App Development</li>
+                        <li>Custom Software Development</li>
+                        <li>Hybrid App Development</li>
+                        <li>IoT Expertise</li>
+
+
+                    </ul>
+
+                </li>
+                <li><a href="#">Our Work</a></li>
+                <li id="dropdown-btn">    
+                    <a href="#" class="iconalign">Company <img src="https://img.icons8.com/?size=100&id=60662&format=png&color=000000" alt="">
+
+                    </a> 
+                    
+                    <ul class="dropdown-list">
+
+                        <li>About Us</li>
+                        <li>Testimonials</li>
+                        <li>Careers</li>
+                        <li>Contact Us</li>
+
+                    </ul>
+
+                </li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#"><button class="mainbtn">Contact Us</button></a></li>
+
+
+            </ul>
+
+
+        </nav>
+
+
+        <div id="web-banner">
+
+               <h1 align="center"> NAVBAR using list with Poppins font</h1>
+
+          
+
+       
+
+
+               
+
+            
+        </div>
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>
