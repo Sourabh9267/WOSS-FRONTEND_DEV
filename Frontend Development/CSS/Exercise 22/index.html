@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 22: Horizontal & Vertical Navigation Bar </title>
+<style>
+
+    :root{
+        --lightblue:#18233F;
+        --darkblue:#101A33;
+        --white:#FEFEFE;
+        --main:#6089F5;
+    }   
+
+
+    *{
+        font-family: 'poppins';
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;        
+    }
+
+    html,body{
+        height: 100%;
+        width: 100%;
+        background-color:beige;
+    }
+
+    #main{
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    #left{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        height: 100%;
+        background-color: var(--white);
+    }
+
+    #logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20%;
+        width: 100%;
+        background-color: var(--lightblue);
+    }
+
+    #logo img{
+        height: 100px;
+        width: 200px;
+    }
+
+    #nav{
+        padding: 5vh;
+        height: 80%;
+        width: 100%;
+        background-color: var(--darkblue);
+    }
+
+    #nav ul{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4vh;
+    }
+
+    .links a{
+        display: flex;
+    
+        gap: 1vw;
+        text-decoration: none;
+        color: var(--main);
+        font-size: 1.3vw;
+        border-bottom: 2px solid transparent;
+        transition: all ease 0.5s;
+        padding-bottom: 1vh;
+    }
+
+    .links a img{
+        height: 25px;
+    }  
+
+    .links a:hover{
+        border-bottom: 2px solid var(--main);
+
+    }
+
+    #right{
+        height: 100%;
+        width: 100%;
+        background-color: var(--white);
+    }
+    
+    #nav2>nav{
+        height: 20%;
+        width: 100%;
+        
+    }
+
+
+    #nav2ul{
+        background-color: var(--darkblue);
+        height: 100%;
+        width: 100%;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 5vh;
+    }
+
+    #nav2 nav ul{
+        gap: 30px;
+    }
+
+    #nav2 nav ul li a {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        color: white;
+    }
+
+    #content{
+        overflow: scroll;
+        height: 80%;
+        width: 100%;
+        img{
+            height: 105%;
+            width: 100%;
+        }
+    }
+
+
+
+</style>
+
+</head>
+<body>
+    
+    <div id="main">
+
+        <div id="left">
+
+            <div id="logo">
+
+                <img src="https://www.websoptimization.com/images/Logo.svg" alt="">
+            </div>
+
+            <div id="nav">
+
+                <nav >uuu
+    
+                    <ul>
+
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Buy </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Sell </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Add </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Remove </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Update </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> View </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Manage </a> </li>
+
+
+                    </ul>
+    
+    
+                </nav>
+
+            </div>
+
+
+        </div>
+
+        <div id="right">
+
+
+            <div id="nav2">
+
+
+                <nav >
+    
+                    <ul id="nav2ul">
+
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Home </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> About </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Company </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Services </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Products </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Profile </a> </li>
+                        <li class="links"><a href="#"> <img src="https://img.icons8.com/?size=100&id=6690&format=png&color=ffffff" alt=""> Logout </a> </li>
+
+
+                    </ul>
+    
+    
+                </nav>
+
+            </div>
+
+            <div id="content">
+
+                <img src="https://www.pakainfo.com/wp-content/uploads/2021/07/dashboard-cards.png" alt="">
+                <img src="https://www.pakainfo.com/wp-content/uploads/2021/07/dashboard-cards.png" alt="">
+                <img src="https://www.pakainfo.com/wp-content/uploads/2021/07/dashboard-cards.png" alt="">
+                <img src="https://www.pakainfo.com/wp-content/uploads/2021/07/dashboard-cards.png" alt="">
+
+            </div>
+
+        </div>
+        
+    </div>
+  
+
+
+
+</body>
+</html>
