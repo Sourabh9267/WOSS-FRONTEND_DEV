@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 32: Floating menu to right</title>
+
+    <style>
+
+
+        *{
+            color: white;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100dvh;
+            width: 100dvw;
+        }
+        #page1{
+            height: 100%;
+            width: 100%;
+            background-color: rgb(1, 1, 36);
+            display: flex;
+            align-items: center;
+            gap: 2dvw;
+        }
+
+        #menu{
+            display: flex;
+            flex-direction: column;
+            gap: 4dvh;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 20%;
+            background-color: rgb(20, 23, 59);
+        }
+
+        #menu ul{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            
+            width: 100%;
+        }
+
+        #menu ul li{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+           padding:2dvh ;
+            border-bottom: 2px solid rgba(82, 206, 255, 0.408);
+            transition: all ease 0.4s;
+            
+        }
+
+        #menu ul li:hover{
+            color: darkblue;
+            background-color: aquamarine;
+        }
+
+        @media screen and (max-width:480px)
+        {
+            #page1{
+                gap: 2dvh;
+                flex-direction: column;
+            }
+
+            #menu{
+                height: 50%;
+                width: 100%;
+            }
+
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+   
+
+
+    <div id="page1">
+
+
+        <div id="menu">
+            <h1>Menu</h1>
+            <ul>
+
+                <li>Open</li>
+                <li>Close</li>
+                <li>Add</li>
+                <li>Remove</li>
+                <li>Quit</li>
+
+            </ul>
+
+
+        </div>
+
+        <h1>Hello World</h1>
+
+
+    </div>
+
+
+
+</body>
+</html>
