@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 36: Grid Layout</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100dvh;
+            width: 100dvw;
+
+        }
+
+        #grid-container{
+            background-color: #2196F3;
+            height: 100%;
+            width: 100%;
+            display: grid;
+            padding: 2dvh;
+            gap: 1dvh;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(3,1fr);
+        }
+
+        .item{
+            background-color: #D3EAFD;
+            border: 2px solid red;
+        }
+
+        #header{
+            grid-column:1/5;
+            grid-row: 1/1;
+        }
+        
+        #menu{
+            grid-row: 2/4;
+            grid-column: 1/1;
+       
+        }
+
+        #main{
+            grid-row: 2/2;
+            grid-column:2/3;
+        }
+        
+        #right{
+            grid-row: 2/2;
+            grid-column:3/4;
+        }
+        
+        #footer
+        {
+            grid-row:3/5;
+            grid-column: 2/5;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+    <div id="grid-container">
+
+        <header class="item" id="header">
+
+            Header
+
+        </header>
+
+        <div id="menu" class="item"> Menu</div>
+
+        <main id="main" class="item">Main</main>
+
+        <div id="right" class="item">Right</div>
+
+        <footer id="footer" class="item">Footer</footer>
+
+    </div>
+</body>
+</html>
