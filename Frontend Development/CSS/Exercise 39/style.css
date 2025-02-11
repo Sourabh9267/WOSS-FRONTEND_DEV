@@ -74,7 +74,8 @@ html,body{
 }
 
 .heading{
-    height: 20%;
+    margin-top: 20px;
+    margin-bottom: 40px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -164,7 +165,7 @@ html,body{
 
 /*About and service Section*/
 .about-service{
-    height: 100vh;
+   
     width: 100%;
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -175,7 +176,7 @@ html,body{
 }
 
 .left-part{
-    height: 80%;
+    
     width: 50%;
     display: flex;
     align-items: center;
@@ -198,7 +199,7 @@ html,body{
 
 .right-part{
     padding: 20px;
-    height: 80%;
+    
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -209,12 +210,14 @@ html,body{
 }
 
 .right-part h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: 'neueM';
     font-size: 2vw;
 }
 
 .right-part p{
-    overflow: hidden;
+  
     font-size: 14px;
     color: var(--tgreen);
 }
@@ -225,17 +228,20 @@ html,body{
 .product{
     display: flex;
     flex-direction: column;
- 
+    
     background-color: var(--dgreen);
     width: 100%;
 
     border-bottom: 1px solid var(--m    green);
 }
+.product .heading{
+    margin-top: 3vh;
+}
 
 .p-gallery{
     padding: 10px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -248,8 +254,8 @@ html,body{
 
 .p-card{
     position: relative;
-    height: 60vh;
-    min-width: 180px;
+    height: 50vh;
+    min-width: 250px;
     width: 16%;
     border-radius: 25px;
     overflow: hidden;
@@ -288,6 +294,10 @@ html,body{
     font-size: 12px;
 }
 
+.p-content .button-wrapper button{
+    margin-bottom: 2vh;
+}
+
 .p-card:hover .p-content{
     transform: translateY(-100%);
 }
@@ -295,9 +305,7 @@ html,body{
 /*Footer*/
 
 .footer-wrapper{
-
-    
-    height: 70vh;
+   
     width: 100%;
     background-color: var(--dgreen);
     /* background: linear-gradient(to top,black,var(--dgreen)); */
@@ -310,12 +318,13 @@ html,body{
   align-items: center;
   height: 80%;
     width: 100%;
+    row-gap: 20px;
 }
 
 .footer-logo-socials-wrapper{
     display: flex;
 
-    height: 100%;
+  
     width: 25%;
     flex-direction: column;
     justify-content: center;
@@ -324,14 +333,15 @@ html,body{
 
 .mono-footer{
     
-    height: 100%;
-    width: 100%;
+    height: 10vh;
+    width: 10vw;
 
 
 }
 .mono-footer img{
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 
@@ -383,6 +393,16 @@ html,body{
     list-style: none;
     display: flex;
     justify-content: space-around;
+}
+
+.socials ul li a i{
+    font-size: 20px;
+    color: var(--mgreen);
+    transition: all ease 0.5s;
+}
+
+.socials ul li a i:hover{
+    color: white;
 }
 
 .contact-form{
@@ -443,9 +463,14 @@ html,body{
 font-size: 14px;
 font-weight: normal;
 color: var(--tgreen);
+margin: 20px 0px;
 }
 
+form .button-wrapper button{
+    margin-top: 0;
+    margin-bottom: 10px;
 
+}
 
 /*Button Hover Effects*/
 
@@ -509,7 +534,8 @@ button:hover {
     }
 
     .p-card{
-        height: 50vh;
+        height: 40vh;
+        min-width: 300px;
     }
 
     
@@ -550,7 +576,7 @@ button:hover {
 
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:567px) {
     
     .button-wrapper button,a{
         font-size: 14px;
@@ -635,6 +661,10 @@ button:hover {
     }
    .p-content p{
       font-size: 12px;
+    }
+
+    .p-content .button-wrapper button{
+        margin-bottom: 2vh;
     }
 
     .footer-wrapper{
