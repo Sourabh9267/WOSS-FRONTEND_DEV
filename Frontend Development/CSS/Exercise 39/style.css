@@ -54,7 +54,7 @@ html,body{
 
 .button-wrapper button{
     position: relative;
-    margin-top: 2dvh;
+    margin-top: 2vh;
     height: 50px;
     width: 150px;
     padding: 10px;
@@ -64,6 +64,27 @@ html,body{
     color: var(--lgreen);
     background-color: #030F0F;
     transition: all ease 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-wrapper a{
+    position: relative;
+    margin-top: 2vh;
+    height: 50px;
+    width: 150px;
+    padding: 10px;
+    border-radius: 25px;
+    outline: none;
+    border: 1px solid var(--mgreen);
+    color: var(--lgreen);
+    background-color: #030F0F;
+    transition: all ease 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .heading{
@@ -135,14 +156,15 @@ html,body{
 
 .banner-wrapper{
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     background: linear-gradient(to top,var(--dgreen) 10%,transparent 80%), url(https://images.unsplash.com/photo-1496162963310-1180604b1e53?q=80&w=1781&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-size: 100%;
+
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10dvh;
+    gap: 10vh;
 }
 
 .banner-wrapper h1{
@@ -156,7 +178,7 @@ html,body{
 
 /*About and service Section*/
 .about-service{
-    height: 100dvh;
+    height: 100vh;
     width: 100%;
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -226,8 +248,8 @@ html,body{
 
 .p-gallery{
     padding: 10px;
-    margin-top: 10dvh;
-    margin-bottom: 10dvh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -240,7 +262,7 @@ html,body{
 
 .p-card{
     position: relative;
-    height: 60dvh;
+    height: 60vh;
     min-width: 180px;
     width: 16%;
     border-radius: 25px;
@@ -276,7 +298,7 @@ html,body{
 
 .p-content p{
     color: var(--xlgreen);
-    padding: 2dvh;
+    padding: 2vh;
     font-size: 12px;
 }
 
@@ -330,7 +352,7 @@ html,body{
 .faq-links{
  
     height: 100%;
-    gap: 2dvh;
+    gap: 2vh;
     width: 25%;
     display: flex;
     align-items: center;
@@ -345,7 +367,7 @@ html,body{
 }
 .footer-links{
     
-    gap: 2dvh;
+    gap: 2vh;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -370,7 +392,7 @@ html,body{
 }
 
 .socials ul{
-    margin-top: 2dvh;
+    margin-top: 2vh;
     width: 50%;
     list-style: none;
     display: flex;
@@ -390,7 +412,7 @@ html,body{
 }
 
 .contact-form h5{
-    margin-top: 4dvh;
+    margin-top: 4vh;
     font-size: 18px;
    
 }
@@ -399,7 +421,7 @@ html,body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2dvh;
+    gap: 2vh;
 }
 
 .contact-form form input{
@@ -448,6 +470,11 @@ button:hover {
     
 }
 
+.button-wrapper a:hover{
+    border: 1px solid var(--dgreen); 
+    background-color: var(--lgreen);
+    color: var(--dgreen);
+}
 
 /*Nav Bar effects*/
 
@@ -495,6 +522,24 @@ button:hover {
         font-size: 10px;
     }
 
+    .p-card{
+        height: 50vh;
+    }
+
+    
+    .p-content{
+        width: 100%;
+        padding: 10px;
+    }
+
+   .p-content h4{
+    text-underline-offset: 6px;
+      font-size: 14px;
+    }
+   .p-content p{
+      font-size: 10px;
+    }
+
     .p-gallery{
         row-gap: 50px;
     }
@@ -521,6 +566,10 @@ button:hover {
 
 @media screen and (max-width:480px) {
     
+    .button-wrapper button,a{
+        font-size: 14px;
+    }
+
     #logo h1{
         font-size: 12px;
     }
@@ -542,7 +591,7 @@ button:hover {
     .banner-wrapper{
         background-repeat: no-repeat;
         background-size: cover;
-        height: 100dvh;
+        height: 100vh;
     }
 
     .about-service{
@@ -564,7 +613,8 @@ button:hover {
 
     .right-part h3{
         font-size: 16px;
-        margin-bottom: 2dvh;
+        margin-bottom: 2vh;
+
     }
     .right-part p{
         font-size: 12px;
@@ -572,7 +622,7 @@ button:hover {
 
     .product{
         padding-top: 60px;
-        height: 100%;
+        height: fit-content;
     }
 
 
@@ -582,7 +632,7 @@ button:hover {
     }
 
     .p-card{
-        height: 40dvh;
+        height: 40vh;
         width: 80%;
         
     }
@@ -595,6 +645,7 @@ button:hover {
 
    .p-content h4{
       font-size: 14px;
+      text-underline-offset: 6px;
     }
    .p-content p{
       font-size: 10px;
