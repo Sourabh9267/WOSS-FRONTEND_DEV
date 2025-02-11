@@ -28,6 +28,7 @@ html,body{
     background-color: grey;
 }
 
+
 /*Image Wrapper*/
 .img-wrapper{
     height: 50px;
@@ -125,6 +126,10 @@ html,body{
     color: var(--lgreen);
 }
 
+/*Menu Icon*/
+.menuicn{
+    display: none;
+}
 
 /* Banner Part */
 
@@ -472,4 +477,181 @@ button:hover {
 /* Footer Effects */
 .footer-links li a:hover{
     color: white;
+}
+
+
+/*Responsive Code*/
+
+@media screen and (max-width:767px) {
+    
+    .links a{
+        font-size: 12px;
+    }
+
+    .faq-links h5{
+        font-size: 12px;
+    }
+    .footer-links a{
+        font-size: 10px;
+    }
+
+    .p-gallery{
+        row-gap: 50px;
+    }
+
+    .socials{
+        font-size: 12px;
+    }
+
+    .contact-form h5
+    {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .contact-form form input,textarea{
+        font-size: 10px;
+    }
+    
+    .footer-down-part h6{
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+    
+    #logo h1{
+        font-size: 12px;
+    }
+
+    .links{
+        display: none;
+    }
+
+    .links-wrapper{
+        justify-content: end;
+    }
+
+    .menuicn{
+        
+        display: inline;
+    }
+
+
+    .banner-wrapper{
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100dvh;
+    }
+
+    .about-service{
+        flex-direction: column;
+    }
+
+    .left-part{
+        height: 40%;
+        width: 100%;
+    }
+
+    .right-part{
+        height: 40%;
+        width: 100%;
+    }
+    .heading h2{
+        font-size: 30px;
+    }
+
+    .right-part h3{
+        font-size: 16px;
+        margin-bottom: 2dvh;
+    }
+    .right-part p{
+        font-size: 12px;
+    }
+
+    .product{
+        padding-top: 60px;
+        height: 100%;
+    }
+
+
+    .p-gallery{
+        padding: 0;
+        width: 100%;
+    }
+
+    .p-card{
+        height: 40dvh;
+        width: 80%;
+        
+    }
+
+    
+    .p-content{
+        width: 100%;
+        padding: 10px;
+    }
+
+   .p-content h4{
+      font-size: 14px;
+    }
+   .p-content p{
+      font-size: 10px;
+    }
+
+    .footer-wrapper{
+        height: auto;
+    }
+
+    .footer-up-part{
+        height: auto;
+    }
+
+    .footer-up-part{
+        flex-wrap: wrap-reverse;
+    }
+
+    .footer-logo-socials-wrapper{
+        width: 33%;
+    }
+    .faq-links{
+       
+        width: 33%;
+    }
+
+    .contact-form{
+        width: 100%;
+    }
+
+    .contact-form form{
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .contact-form input{
+        width: 100%;
+    }
+
+    .contact-form textarea{
+        width: 100%;
+    }
+    
+    .contact-form h5{
+        margin-top: 20px;
+    }
+    .contact-form form .button-wrapper button{
+        margin-bottom: 20px;
+    }
+
+    .footer-down-part{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .footer-down-part h6{
+        margin-top: 10px;
+        font-size: 10px;
+    }
 }
