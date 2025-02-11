@@ -665,7 +665,15 @@ button:hover {
 
     .footer-logo-socials-wrapper{
         width: 33%;
+    }   
+
+    .socials ul{
+        width: 80%;
+        justify-content: space-around;
+        display: flex;
+        row-gap: 15px;
     }
+
     .faq-links{
        
         width: 33%;
