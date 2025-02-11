@@ -231,8 +231,7 @@ html,body{
     
     background-color: var(--dgreen);
     width: 100%;
-
-    border-bottom: 1px solid var(--m    green);
+   
 }
 .product .heading{
     margin-top: 3vh;
