@@ -65,7 +65,7 @@ html,body{
     outline: none;
     border: 1px solid var(--mgreen);
     color: var(--lgreen);
-    background-color: #030F0F;
+    background-color: var(--dgreen);
     transition: all ease 0.5s;
     display: flex;
     align-items: center;
@@ -296,10 +296,10 @@ html,body{
 
 .footer-wrapper{
 
-
+    
     height: 70vh;
     width: 100%;
-    background-color: black;
+    background-color: var(--dgreen);
     /* background: linear-gradient(to top,black,var(--dgreen)); */
     display: flex;
     flex-direction: column;
@@ -638,10 +638,12 @@ button:hover {
     }
 
     .footer-wrapper{
+        
         height: auto;
     }
 
     .footer-up-part{
+       
         height: auto;
     }
 
