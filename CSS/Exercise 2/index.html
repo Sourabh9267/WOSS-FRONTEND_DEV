@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Hover</title>
+
+    <style>
+
+
+        *{
+         
+            margin: 0;
+            padding: 0;
+        }
+        
+        html{
+            height: 100vh;
+            width: 100vw;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        #navbar{
+            list-style: none;
+            display: flex;
+            background-color: #1a1a1a;
+            height: 15vh;
+            width: 100%;
+        }
+
+        #navbar img{
+            height: 75px;
+            width: 75px;
+            filter: invert();
+        }
+
+        a{
+            color: wheat;
+            text-decoration: none;
+            
+        }
+        a:visited{
+            color: wheat;
+            text-decoration: none;
+            
+        }
+
+        #logo_container{
+            display: flex;
+            align-items: center;
+            width: 30%;
+        }
+
+        #menu{
+
+            width: 70%;
+            height: 100%;
+            
+        }
+        #menu ul{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            
+
+        }
+
+        #menu > :nth-child(1)  {
+
+            display: none;
+
+        }
+
+        #menu > ul > li > img{
+            height: 30px;
+            width: 20px;
+        }
+
+        select{
+            width: 100%;
+            background: transparent;
+            outline: none;
+            border: none;
+            color: wheat;
+        }
+        select:active{
+            width: 100%;
+        }
+
+        @media (max-width: 360px ) {
+            
+            #menu > :nth-child(1){
+                display: flex;
+                justify-content: end;
+                
+            }
+            
+            #menu > :nth-child(1) > li{
+                margin-right: 5vw;
+            }
+            #menu > :nth-child(2){
+                display: none;
+
+            }
+        }
+
+        #navbar:hover{
+            background-color: #343434;
+            transition: all ease 0.3s;
+        }
+
+        #navbar img:hover, 
+        #navbar li:hover, 
+        #navbar a:hover 
+        {
+            transition: all 0.5s ease;
+            transform: scale(1.10);
+            color: white;
+        }
+
+        
+
+    </style>
+
+
+</head>
+<body>
+
+    <div id="navbar">
+
+        <div id="logo_container">
+
+            <img src="https://img.icons8.com/?size=100&id=25987&format=png&color=000000"> <a href="index.html">XYZ Brand</a>  </img>
+
+        </div>
+
+        <div id="menu">
+
+            <ul type="none">
+
+                <li>  <img src="https://img.icons8.com/?size=100&id=S5biqohaDgd1&format=png&color=000000" alt=""> </li>
+
+            </ul>
+
+            <ul type="none">
+                
+                
+                <li><a href="#home.html"> Home </a></li>
+                <li><a href="#about.html"> About</a></li>
+          
+
+                    <li>
+                        <select name="dropdown2" id="">
+                            <option value="select" selected disabled> Services </option>
+                            <option value="Hindi"><a href="#hindi"> Web Dev 
+                            </a> </option>
+                            <option value="english"><a href="#english"> App Dev </a> </option>
+                            <option value="gujarati"><a href="#gujarati"> ML </a> </option>
+                        </select>
+    
+    
+                    </li>
+
+           
+                <li><a href="#career.html">Careers</a></li>
+                <li><a href="#contact.html">Contact Us</a></li>
+                <li>
+                    <select name="dropdown" id="">
+                        <option value="select" selected disabled> Choose Language </option>
+                        <option value="Hindi"><a href="#hindi"> Hindi </a> </option>
+                        <option value="english"><a href="#english"> English </a> </option>
+                        <option value="gujarati"><a href="#gujarati"> Gujarati </a> </option>
+                    </select>
+
+
+                </li>
+
+                
+            </ul>
+            
+            
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>

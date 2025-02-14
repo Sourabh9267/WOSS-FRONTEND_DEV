@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exercise 18: On hover dropdown</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+        :root {
+
+            --col1_light: #FFFFFF;
+            --col1_dark: #F2F7FF;
+
+            --col2_light: #4770FF;
+            --col2_dark: #071E53;
+
+            --col3_grey: #9CA5BA;
+            --col3_normal: #071E53;
+
+        }
+
+        * {
+
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-color: var(--col1_light);
+        }
+
+        .mainbtn {
+            font-size: 1vw;
+            padding: 2vh 2vw;
+            background-color: var(--col2_light);
+            border: none;
+            color: var(--col1_light);
+            font-weight: bold;
+            transition: all ease 0.5s;
+            border: 1px solid transparent;
+        }
+
+        .mainbtn:hover {
+
+            background-color: var(--col2_dark);
+
+        }
+
+        .secobtn {
+            font-size: 1vw;
+            padding: 2vh 2vw;
+            background-color: transparent;
+            border: none;
+            color: var(--col2_light);
+            font-weight: bold;
+            transition: all ease 0.5s;
+            border: 1px solid var(--col2_light)
+        }
+
+        .secobtn:hover {
+            color: var(--col1_light);
+            background-color: var(--col2_dark);
+            border: 1px solid transparent;
+        }
+
+        #main {
+            height: 100%;
+            width: 100%;
+        }
+
+        nav {
+            height: 10%;
+            width: auto;
+            background-color: var(--col1_dark);
+            padding: 1vw;
+            display: flex;
+            justify-content: space-between;
+
+
+
+            #logo {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                height: 100%;
+                width: 30%;
+
+                img {
+                    height: 70%;
+                }
+            }
+
+
+            ul {
+                font-family: 'inter';
+                font-weight: bold;
+                font-size: 1vw;
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                list-style: none;
+
+
+            }
+
+
+            .links li {
+
+                a {
+                    transition: all ease 0.2s;
+                    text-decoration: none;
+                    color: var(--col3_normal);
+                }
+
+                select {
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                }
+
+
+            }
+
+            .links a:hover {
+                color: var(--col2_light);
+            }
+
+
+        }
+            .iconalign
+            {
+                display: flex;
+                align-items: center;
+                gap: 1vw;
+                img{
+                    transition: all ease 0.3s;
+                    height: 15px;
+                }
+            }
+
+        .dropdown-list{
+            display: none;
+            position: fixed;
+            margin-top: 1vh;
+            transform: translateX(-15%);
+           opacity: 0;
+           transition: all ease 0.5s;
+        }
+
+        
+        .dropdown-list li{
+            width: 100%;
+            padding-bottom: 2vh;
+            border-bottom: 2px solid rgb(209, 209, 209);
+        }
+
+       
+        #dropdown-btn:hover .dropdown-list{
+            opacity: 1;
+            font-family: 'inter';
+            padding: 4vh;
+            border-radius: 25px;
+            gap: 5vh;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: start;
+            height: auto;
+            width: auto;
+            background-color: var(--col1_light);
+        }
+
+        #dropdown-btn:hover .iconalign>img{
+            transform: rotate(180deg);
+        }
+
+        /*
+            # Web Page Banner 
+        */
+
+        #web-banner {
+            display: flex;
+            height: auto;
+            width: 100%;
+            background-color: var(--col1_dark);
+
+            #left {
+                padding: 4vh 10vw;
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                height: auto;
+
+                gap: 0.5vh;
+
+                p {
+
+                    margin-top: 3vh;
+                    margin-bottom: 3vh;
+                    font-family: 'open sans';
+                    font-weight: 400;
+                    color: var(--col2_dark);
+                }
+
+            }
+
+            #right {
+
+                width: 40%;
+                height: auto;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    width: 70%;
+                    height: 80%;
+                }
+            }
+
+            h1 {
+                font-size: 3vw;
+                font-family: 'inter';
+                font-weight: 600;
+                color: var(--col2_dark);
+            }
+
+            span {
+                font-weight: 800;
+                color: var(--col2_light);
+            }
+
+        }
+
+
+
+        /*
+        
+            Page 1
+        */
+        #page1 {
+
+            background: var(--col1_light);
+
+            h2 {
+                margin-top: 15vh;
+                text-align: center;
+                font-size: 3vw;
+                font-family: 'inter';
+                font-weight: 800;
+                color: var(--col2_dark);
+            }
+
+
+
+        }
+    </style>
+
+
+
+
+
+</head>
+
+<body>
+
+    <div id="main">
+
+
+        <nav>
+
+
+            <div id="logo">
+
+
+                <img src="https://www.websoptimization.com/images/Logo.svg" alt="">
+
+
+            </div>
+
+            <ul class="links">
+
+
+                <li id="dropdown-btn">    
+                    <a href="#" class="iconalign">Services <img src="https://img.icons8.com/?size=100&id=60662&format=png&color=000000" alt="">
+
+                    </a> 
+                    
+                    <ul class="dropdown-list">
+
+                        <li>Web Development</li>
+                        <li>App Development</li>
+                        <li>Custom Software Development</li>
+                        <li>Hybrid App Development</li>
+                        <li>IoT Expertise</li>
+
+
+                    </ul>
+
+                </li>
+                <li><a href="#">Our Work</a></li>
+                <li id="dropdown-btn">    
+                    <a href="#" class="iconalign">Company <img src="https://img.icons8.com/?size=100&id=60662&format=png&color=000000" alt="">
+
+                    </a> 
+                    
+                    <ul class="dropdown-list">
+
+                        <li>About Us</li>
+                        <li>Testimonials</li>
+                        <li>Careers</li>
+                        <li>Contact Us</li>
+
+                    </ul>
+
+                </li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#"><button class="mainbtn">Contact Us</button></a></li>
+
+
+            </ul>
+
+
+        </nav>
+
+
+        <div id="web-banner">
+
+            <div id="left">
+                <h1>We Help You</h1>
+                <h1><span>Design</span></h1>
+                <h1>Your Dream Bussiness Idea</h1>
+
+                <p>Explore the best way to build and launch a successful Mobile, Web app, or SaaS product with our
+                    proven development methodologies.</p>
+
+                <div class="btns">
+                    <button class="mainbtn">Check Out Our Services</button>
+                    <button class="secobtn">Book a Call</button>
+                </div>
+
+            </div>
+
+            <div id="right">
+
+
+                <img src="assets/svg/mainsvg.svg" alt="">
+
+            </div>
+        </div>
+
+
+        <div id="page1">
+
+
+            <h2>Successful Solutions We Delivered</h2>
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

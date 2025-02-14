@@ -1,0 +1,14 @@
+body{
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: greenyellow;
+}
+
+p{
+    color: beige;
+}

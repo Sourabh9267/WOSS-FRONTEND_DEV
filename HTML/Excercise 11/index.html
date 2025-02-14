@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excercise 11</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            box-sizing: border-box;
+        }
+
+        body{
+
+            height: 100vh;
+            width: 100vw;
+            background-color: #dadada;
+        }
+
+        #main-div{
+            padding: 2vh;
+            background-color: black;
+            color: white;
+            
+        }
+
+        .h2{
+            font-weight: 300;
+            margin-top: 2vh;
+            margin-bottom: 10vh;
+        }
+
+         .p{
+            margin-bottom: 1vh;
+        }
+
+        .h2-2{
+            margin-top: 1vh;
+            margin-bottom: 3vh;
+            font-weight: 300;
+        
+        }
+
+         .p-2{
+            text-wrap: wrap;
+            margin-top: 3vh;
+            margin-bottom: 2vh;
+        }
+
+        #containerdiv{  
+            padding: 2vh;
+            display: flex;
+            flex-direction: row;
+            background-color: #dadada;
+            flex-wrap: wrap;
+        }
+        .box{
+            
+            width: 33%;
+        }
+        .box p{
+            width: 98%;
+        }
+        @media (max-width:600px){
+            
+            .box p{
+                width: 100%;
+            }
+            #containerdiv{
+                gap: 1vh;
+                flex-direction: column;
+            }
+                    .box{
+                      width: 100%;
+                    }
+
+        }
+
+        
+    </style>
+
+
+</head>
+<body>
+    
+    <div id="main-div">
+
+        <h2 class="h2">loreum ipsum </h2>
+        <p class="p">Resize the page to see the responsiveness!</p>
+
+    </div>
+
+    <div id="containerdiv">
+        
+        
+        <div class="box">
+
+            <h2 class="h2-2">loreum</h2>
+            <p class="p-2">London is the capital city of london.</p>
+            <p class="p-2">London is the capital city of london. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum veniam maiores voluptate iusto sequi dolore vero pariatur ipsam repudiandae adipisci!</p>
+
+        </div>
+        <div class="box">
+
+            <h2 class="h2-2">loreum</h2>
+            <p class="p-2">London is the capital city of london.</p>
+            <p class="p-2">London is the capital city of london. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum veniam maiores voluptate iusto sequi dolore vero pariatur ipsam repudiandae adipisci!</p>
+
+        </div>
+        <div class="box">
+
+            <h2 class="h2-2">loreum</h2>
+            <p class="p-2">London is the capital city of london.</p>
+            <p class="p-2">London is the capital city of london. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum veniam maiores voluptate iusto sequi dolore vero pariatur ipsam repudiandae adipisci!</p>
+
+        </div>
+    
+    </div>
+
+</body>
+</html>
