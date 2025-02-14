@@ -1,0 +1,1 @@
+# This one shows usage of image tag with absoulute path (url)

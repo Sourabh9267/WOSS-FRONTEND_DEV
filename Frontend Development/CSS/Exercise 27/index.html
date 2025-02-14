@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equal Height Flexbox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            background-color: black;
+        }
+
+        .container {
+            display: flex;
+            height: 100%; 
+            width: 100%;
+            background-color: grey;
+            flex-wrap: wrap;
+            
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            color: white;
+        }
+
+        #b1{
+            background-color: aqua;
+        }
+
+        #b2{
+            background-color: gold;
+        }
+
+        #b3{
+            background-color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="b1">Box 1</div>
+        <div class="box" id="b2">Box 2</div>
+        <div class="box" id="b3">Box 3</div>
+    </div>
+</body>
+</html>

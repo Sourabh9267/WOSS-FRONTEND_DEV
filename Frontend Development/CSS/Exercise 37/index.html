@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 37 : Layout</title>
+
+
+    <style>
+        :root {
+            --lgrey: #dedede;
+            --grey: #333333;
+
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+           
+            height: 100vh;
+            width: 100vw;
+            background-color: #1dc6e0;
+        }
+        
+        #main-wrapper{
+           height: 100%;
+          
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .header-wrapper{
+            height: 30vh;
+            width: 100%;
+            background-color: var(--lgrey);
+            display: flex;
+            flex-direction: column;
+            gap: 5dvh;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .main {
+            height: 60%;
+            width: 100%;
+            background-color:white;
+            display: flex;
+            flex-direction: row;
+
+        }
+
+       
+
+        .header-wrapper nav, nav ul{
+            width: 100%;
+            display: flex;
+            list-style: none;
+            gap: 4dvw;
+            padding: 0.5dvw;
+            background-color: #333333;
+        }
+
+        .header-wrapper nav ul li a{
+            text-decoration: none;
+            color: white;
+            
+        }
+
+        .item1 , .item3
+        {
+            width: 20%;
+        }
+
+        .item2{
+            height: auto;
+            width: 60%;
+        }
+
+        .format{
+            display: flex;
+            flex-direction: column;
+            gap: 2dvh;
+            padding: 4dvh 4dvh;
+        }
+
+        .format p{
+            height: 50%;
+            text-overflow: ellipsis;
+            line-clamp: 10;
+        }
+        
+
+        
+
+        .footer-wrapper{
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--lgrey);
+        }
+
+
+        @media screen and (max-width:768px) {
+
+            .main-wrapper{
+                display: flex;
+                flex-direction: column  ;
+            }
+
+            .main{
+                width: 100%;
+                height: fit-content;
+                flex-direction: column;
+            }
+            
+            .format {
+                width: 100%;
+            }
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <header class="header-wrapper">
+            
+            <h1>Header</h1>
+            <p>Resize the window to see the responsiveness....!</p>
+            
+            <nav>
+                
+                <ul>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                </ul>
+                
+                
+            </nav>
+            
+            
+        </header>
+        
+        <div class="main">
+            
+            
+            <div class="item1 format">
+                <h1>Side 1</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, eligendi repudiandae optio iure placeat quisquam. Voluptate animi nihil,ore eligendi odio.</p>
+                
+            </div>
+            
+            <div class="item2 format">
+                
+                <h1>Main Content</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut consequatur commodi recusandae ad, adipisci eos magnam dignissimos maxime consequuntur voluptatibus dolores alias vitae deleniti doloremque et accusantium possimus ratione? Sit except repellat. Eveniet beatae recusandae quibusdam sapiente veritatis magnam ex saepe, distinctio fugiat maxime vero aspernatur. Repellendus doloribus minima totam quasi quam asperiores sunt eius, repudiandae cum iure corrupti? Ab, porro! Repellendus saepe unde molestiae maxime dolore, quam praesentium assumenda, nemo exercitationem iste 
+                   
+                    except repellat. Eveniet beatae recusandae quibusdam sapiente veritatis magnam ex saepe, distinctio fugiat maxime vero 
+                    iores quos perspiciatis doloremque omnis harum atque consectetur ab! Earum, veritatis iure! Fugiat ab labore laboriosam sunt nisi.</p>
+                </div>
+                
+                <div class="item3 format">
+                    <h1>Side 1</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, eligendi repudiandae optio iure placeat quisquam. Voluptate animi nihil,ore eligendi odio.</p>
+                    
+                </div>
+                
+                
+                
+            </div>
+            
+        <footer class="footer-wrapper">
+                
+                <h1>Footer</h1>
+                
+        </footer>
+            
+            
+        </div>
+            
+</body>
+
+</html>

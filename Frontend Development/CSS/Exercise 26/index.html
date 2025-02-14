@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 26: Flexbox layout</title>
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            height: 100dvh;
+            width: 100dvw;
+            background-color: beige;
+        }
+        #main{
+            height: 100%;
+            width: 100%;
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #div1{
+            height: 60%;
+            width: 100%;
+            display: flex;
+        }
+
+        header{
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            height: 20%;
+            width: 100%;
+            background-color: orange;
+        }
+        #aside1{
+            
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            height: 100%;
+            width: 20%;
+            background-color: bisque;
+        }
+        main{
+            
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            height: 100%;
+            width: 60%;
+            padding: 2dvh;
+            background-color: skyblue;
+        }
+        p{
+            height: 100%;
+            width: 100%;
+        }
+
+        #aside2{
+            
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            height: 100%;
+            width: 20%;
+            background-color: pink;
+        }
+        footer{
+            
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            height: 20%;
+            width: 100%;
+            background-color: greenyellow;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+    
+
+    <div id="main">
+
+        <header><h3>HEADER</h3> </header>
+        <div id="div1">
+            <aside id="aside1"><h3>ASIDE1</h3> </aside>
+            <main><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam quam officiis ut excepturi assumenda fuga nam! Incidunt facilis quis aut nemo fugit voluptates in sed ea magnam corrupti temporibus, quidem eaque. Quos beatae vel, cupiditate pariatur eum molestias laboriosam dolorum vero consequuntur. Alias ipsa consectetur voluptas. Aperiam ipsam ipsum quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, sapiente assumenda rerum incidunt iure necessitatibus deserunt explicabo ut alias vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, quis ullam natus, incidunt placeat possimus sequi iure mollitia error dolores id recusandae minima voluptatem optio laborum dolore. Quis, ad adipisci. Aspernatur rem id neque dolores eius sed incidunt, est magni. Nobis repellendus maxime accusamus necessitatibus sed dolores odio voluptate, ab esse, debitis iste laboriosam iure quibusdam nostrum itaque, ex maiores eligendi fugiat libero iusto reprehenderit! Inventore laborum fugit odio voluptate! Nostrum sequi dignissimos numquam? Saepe consectetur beatae sit quos dignissimos quia in quo officia dicta sint. Odit illum ipsum praesentium ullam eius accusamus, laborum veniam consequatur magnam sequi temporibus ratione dignissimos expedita dolore minus nostrum! Quod possimus ipsam, maxime minus accusamus eos et nihil porro, voluptas id veniam quibusdam. Reprehenderit, modi adipisci? Nam magni a temporibus iste porro repellendus assumenda laudantium est aliquam veniam cupiditate vero recusandae quasi quo tempora esse facere cum earum illo, distinctio modi ullam. Quae et, eum quisquam non quidem enim perspiciatis optio harum hic tenetur quaerat molestias, architecto mollitia consectetur voluptatibus nulla. Vero, excepturi necessitatibus quo optio illo porro! Nisi labore placeat itaque sint molestiae optio maiores quos unde debitis nostrum voluptatem velit perspiciatis pariatur officia enim, dicta ipsam ut molestias rerum eos assumenda! Dolor? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus deleniti similique mollitia doloribus ex iste ipsum tempora? Repellendus recusandae dignissimos  </p></main>
+            <aside id="aside2"><h3>ASIDE2</h3> </aside>
+
+        </div>
+        <footer><h3>FOOTER</h3> </footer>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+</body>
+</html>
