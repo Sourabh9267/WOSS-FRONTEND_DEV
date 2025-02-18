@@ -1,0 +1,16 @@
+.gallery_css{
+  
+  transition: all ease 0.5s;
+}
+
+
+.card_css{
+  border: none;
+}
+
+
+.card-img{
+overflow: hidden;
+  height: 250px;
+}
+

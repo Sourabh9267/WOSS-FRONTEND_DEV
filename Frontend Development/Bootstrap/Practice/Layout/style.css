@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: 'neueM-l';
+    src: url(assets/fonts/NeueMachina-Light.woff);
+}
+
+@font-face {
+    font-family: 'neueM-r';
+    src: url(assets/fonts/NeueMachina-Regular.woff);
+}
+
+@font-face {
+    font-family: 'neueM-ub';
+    src:  url(assets/fonts/NeueMachina-Ultrabold.woff);
+}
+
+:root{
+    --col_main-dark:#0e0128;
+    --col_main:#6e2fe5;
+    --col_sec:#F9CDD1;;
+}   
+
+
+.banner_txt{
+    font-family: 'poppins';
+    color: var(--col_main);
+
+}
+
+.banner_txt .spantxt{
+font-family: 'neueM-r';
+color: var(--col_sec);
+}
+
+
+.btndes{
+    color: var(--col_sec);
+    background-color: var(--col_main);
+}
+
+.btndes:hover{
+    
+    color: var(--col_main);
+    background-color: var(--col_sec);
+}
+
+.main-bg{
+    /* background-color: var(--col_main-dark); */
+    background-color: var(--col_main-dark);
+}
+
+.p-txt{
+    color: var(--col_sec);
+}
+
+#imgs{
+  
+    object-position: center !important;
+    position: relative;
+}
+
+#imgs::before{
+content:'';
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 100%;
+background: linear-gradient(black,transparent);
+}
