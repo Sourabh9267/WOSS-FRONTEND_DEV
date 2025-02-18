@@ -11,8 +11,8 @@
 </head>
 <body class="bg-dark text-white">
 
-<div class="container mt-5">
-  <h2 class="text-center my-5">Student Registration Form</h2>
+<div class="container mt-5 d-flex flex-column">
+  <h2 class="text-center my-5">Student Data Fill Registration Form</h2>
   <form action="#" method="post">
     <div class="row">
       <div class="col-md-6">
@@ -39,19 +39,20 @@
       <div class="col-md-6">
         <div class="mb-3">
           <label for="phone" class="form-label">Phone Number</label>
-          <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" required>
+          <input type="number" class="form-control" id="phone" placeholder="Enter phone number" required>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="mb-3">
           <label for="dob" class="form-label">Date of Birth</label>
           <input type="date" class="form-control" id="dob" required>
         </div>
       </div>
-      <div class="col-md-6 d-flex align-items-center">
+
+      <div class="col-md-12 d-flex justify-content-center mt-2">
         <div class="d-flex gap-4">
           <label class="form-label">Gender</label>
           <div class="form-check">
@@ -76,12 +77,12 @@
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 col-md-12">
       <label for="address" class="form-label">Address</label>
       <textarea class="form-control" id="address" rows="3" placeholder="Enter address" required></textarea>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 col-md-12">
       <label for="course" class="form-label">Course</label>
       <select class="form-select" id="course" required>
         <option value="" disabled selected>Select Course</option>
@@ -91,8 +92,8 @@
       </select>
     </div>
 
-    <div class="text-center my-5">
-      <button type="submit" class="btn btn-success py-2 px-5">Register</button>
+    <div class="text-center my-5 col-md-6">
+      <button type="submit" class="btn btn-success py-2 px-5 w-50">Register</button>
     </div>
   </form>
 </div>
