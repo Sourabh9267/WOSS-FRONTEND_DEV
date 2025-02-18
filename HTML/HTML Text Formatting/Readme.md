@@ -1,1 +1,0 @@
-This Repo illustrates different text formatting available in the HTML

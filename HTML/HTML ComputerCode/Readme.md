@@ -1,1 +1,0 @@
-# This repo illustrates Computer Code Element.

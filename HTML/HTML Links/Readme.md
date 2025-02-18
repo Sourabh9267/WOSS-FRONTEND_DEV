@@ -1,1 +1,0 @@
-# This illustrates the use of Anchor <a> Tag to link and navigate between the resources.
