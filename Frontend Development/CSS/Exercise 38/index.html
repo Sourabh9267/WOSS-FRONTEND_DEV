@@ -105,14 +105,21 @@
             height: 50%;
             width: 100%;
             padding: 10px;
-           background-color: white;
-            display: flex;
-            flex-direction: column;
-            gap: 1dvh;
-
+            background-color: white;
             border-radius: 10px;
         }
 
+        .main-content h2{
+            padding: 10px 0px;
+        }
+
+        .main-content p{
+            padding: 15px 0px;
+        }
+
+      
+
+        
 
         .image-wrapper{
             border-radius: 10px;
@@ -136,36 +143,47 @@
             background-color: white;
             width: 100%;
             height: 30%;
-            padding: 2dvh;
+            padding: 15px;
         }
+
+        .about_me h2,p{
+                padding: 10px 0px;
+        }
+
 
         .popular-post{
             border-radius: 10px;
-            padding: 2dvh;
-            display: flex;
-            flex-direction: column;
-            gap: 2dvh;
+            padding: 15px;
+         
             background-color: white;
             border-color: white;
             height: 60%;
         }
+
+        .popular-post h2{
+            padding: 10px 0px;
+        }
+        
         #popular-post-img{
-            
-            height: 35dvh;
+            height: 35vh;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            gap: 5dvh;
        
         }
 
+        .img-wrapper-n{
+          padding: 30px 0px;
+        }
+
+        .img-wrapper-n img{
+            height: 100%;
+            width: 100%;
+        }
 
         .follow-me{
             border-radius: 10px;
             height: 10%;
             background-color: white;
-            padding: 2dvh;
+            padding: 15px;
         }
 
         .footer-wrapper{
@@ -246,7 +264,7 @@
                 <div class="main-content">
 
 
-                    <h1>TITLE HEADING</h1>
+                    <h2>TITLE HEADING</h2>
 
                     <p>Title Description Dec 7 2007</p>
 
@@ -270,7 +288,7 @@
                 <div class="main-content">
 
 
-                    <h1>TITLE HEADING</h1>
+                    <h2>TITLE HEADING</h2>
 
                     <p>Title Description Dec 7 2007</p>
 
@@ -299,7 +317,7 @@
                 <div class="about_me">
 
 
-                    <h1>About Me</h1>
+                    <h2>About Me</h2>
 
                     <div class="image-wrapper" id="about_me-img">
                         image
@@ -315,14 +333,26 @@
 
                 <div class="popular-post">
 
-                    <h1>popular post</h1>
+                    <h2>popular post</h2>
 
                     <div class="image-wrapper" id="popular-post-img">
 
+                        <div class="img-wrapper-n">
+                            
+                            <img src="#" alt="image">
+                        </div>
 
-                        <p>image</p>
-                        <p>image</p>
-                        <p>image</p>
+                        <div class="img-wrapper-n">
+                            
+                            <img src="#" alt="image">
+                        </div>
+
+                        <div class="img-wrapper-n">
+                            
+                            <img src="#" alt="image">
+                        </div>
+
+                        
 
 
                     </div>
@@ -332,7 +362,7 @@
 
                 <div class="follow-me">
 
-                    <h1>Follow Me</h1>
+                    <h2>Follow Me</h2>
 
                     <p>Some Text</p>
 
