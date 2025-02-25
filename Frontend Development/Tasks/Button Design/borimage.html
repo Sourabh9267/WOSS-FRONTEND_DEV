@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Image</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background-color: #232323;
+            box-sizing: border-box;
+        }
+
+        html{
+            height: 100%;
+            width: 100%;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+
+        }
+
+        img{
+            height: auto;
+            width: 25%;
+            border: 13px solid;
+            border-width: 3px;
+            border-style: solid;
+            /* border-top:linear-gradient() */
+
+            border-image: linear-gradient(red, rgb(95, 0, 19)) 1 ;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+    <img  src="https://images.unsplash.com/photo-1739924144825-4544ec14ee29?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+
+
+</body>
+</html>

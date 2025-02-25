@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transition Origin Example</title>
+<style>
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  transition: transform 0.5s ease; /* Transition on transform */
+}
+
+.box:hover {
+  transform: rotate(45deg); /* Rotate on hover */
+  transition-origin: bottom right; /* Origin at bottom-right */
+}
+</style>
+</head>
+<body>
+
+<div class="box"></div>
+
+</body>
+</html>

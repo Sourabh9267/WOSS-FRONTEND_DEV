@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 5 Components</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <style>
+    .wrap-carousel-img {
+      max-height: 500px !important;
+
+    }
+
+    .wrap-carousel-img img {
+      object-fit: cover;
+    }
+
+    .minus-icon{
+      background: url(https://img.icons8.com/?size=100&id=85458&format=png&color=000000) no-repeat;
+      background-size: 50%;
+      background-position: center;
+    }
+
+    .badge-pos{
+      top:-50%;
+      padding: 6px !important;
+      font-size: 12px;
+
+      padding: 5.5px 5.5px 6px 5.5px; /*For center alignment of text */ 
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BS5 Components</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Components</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container-fluid">
+
+    <!-- Accordion Section -->
+    <div class="content-section">
+      <div class="section-header">Accordion</div>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              FaQ
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Explore the site to know more about us.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerts Section -->
+    <div class="content-section">
+      <div class="section-header">Alerts</div>
+      <div class="alert alert-warning" role="alert">
+        You've used 90% of your data only 100 MB left.
+      </div>
+
+      <div id="liveAlertPlaceholder">Alert Closeable</div>
+      <button type="button" class="btn btn-danger" id="liveAlertBtn">DO Not Click Here</button>
+
+    </div>
+
+    <!-- Badge Section -->
+    <div class="content-section">
+      <div class="section-header">Badge</div>
+      <h2 class="h4 d-inline-flex position-relative">Programming in Java <span class="badge bg-danger position-absolute start-100 badge-pos">New</span></h2>
+      <h2 class="h4 d-inline-flex position-relative">Programming in Python<span class="badge bg-danger position-absolute start-100 badge-pos">New</span></h2>
+
+    </div>
+
+    <!-- Breadcrumb Section -->
+    <div class="content-section">
+      <div class="section-header">Breadcrumb</div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">User</a></li>
+          <li class="breadcrumb-item"><a href="#">Desktop</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Vs-code.exe</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="content-section">
+      <div class="section-header">Buttons</div>
+      <button type="button" class="btn btn-primary">Add to Cart</button>
+      <button type="button" class="btn btn-danger">Remove Item</button>
+    </div>
+
+    <!-- Button Group Section -->
+    <div class="content-section">
+      <div class="section-header">Button Group</div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Page 1</button>
+        <button type="button" class="btn btn-primary">Page 2</button>
+        <button type="button" class="btn btn-primary">Page 3</button>
+      </div>
+    </div>
+
+    <!-- Card Section -->
+    <div class="content-section">
+      <div class="section-header">Card</div>
+
+      <div class="card h-100 w-25">
+        <div class="card-image" style="height: 400px;">
+          <img class="img-fluid h-100 w-100 object-fit-cover"
+            src="https://images.unsplash.com/photo-1739536176048-caa7190dba66?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="card-img-top" alt="Card image">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Winterland Tour</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo suscipit non eos dolorem
+            distinctio asperiores. Libero modi recusandae explicabo possimus?</p>
+          <div class="d-flex w-100 justify-content-between">
+            <a href="#" class="btn btn-success">Add to Cart</a>
+            <a href="#" class="btn btn-danger">Delete from Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Section -->
+    <div class="carousel-wrapper h-25 w-100">
+
+      <div class="content-section h-25 w-100">
+        <div class="section-header">Carousel</div>
+        <div id="carouselExample" class="carousel slide carousel-fade h-25 w-100" data-bs-ride="carousel">
+          <div class="carousel-inner h-25 w-100 ">
+            <div class="carousel-item active img-fluid wrap-carousel-img">
+              <img
+                src="https://images.unsplash.com/photo-1739932215472-15ebf0ab6cf4?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item wrap-carousel-img">
+              <img
+                src="https://images.unsplash.com/photo-1734616699978-1a5fccec41e7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <!-- Modal Section -->
+    <div class="content-section">
+      <div class="section-header">Modal</div>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch
+        Modal</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Adverstiesment</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Visit amazon flipkart store to purchase some gadgets.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Ok </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navs & Tabs Section -->
+    <div class="content-section">
+      <div class="section-header">Navs & Tabs</div>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-bs-toggle="pill" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-bs-toggle="pill" href="#profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="contact-tab" data-bs-toggle="pill" href="#contact">Contact</a>
+        </li>
+      </ul>
+      <div class="tab-content mt-2">
+        <div class="tab-pane fade show active" id="home">
+          Home contentContact content tab ::: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti cum, id
+          perferendis, sit, distinctio voluptas error odio officiis praesentium nobis labore! Fugiat dolore provident
+          atque sunt qui aspernatur ipsa doloribus magnam cum officia molestias iure repellendus, nobis dolorum labore
+          non facere itaque soluta nihil veritatis, cupiditate vitae reiciendis! Maiores quia repudiandae, cum qui
+          inventore dicta quae modi sequi odio dolor aspernatur nisi molestiae, earum similique suscipit quis ullam est
+          corrupti accusantium recusandae laboriosam sunt reprehenderit excepturi! Excepturi voluptatum cupiditate hic
+          minus eaque nisi! Alias, veritatis expedita quasi quae, doloremque odit nulla dicta a ipsum tenetur
+          exercitationem deleniti excepturi animi culpa commodi modi rem esse magni ratione repudiandae nam officiis
+          voluptatibus. Quisquam voluptatem exercitationem earum cum veritatis rerum minus inventore mollitia eaque,
+          quas sunt alias odio consequuntur accusamus eveniet, enim molestiae nulla sed! Tenetur ducimus iure quia
+          delectus est numquam provident quidem quis maxime molestiae saepe dolore soluta quam sit assumenda explicabo
+          perferendis consequuntur, nam odit perspiciatis nobis nemo quasi. Quidem, dolorum perspiciatis perferendis
+          aut, modi dignissimos saepe delectus officia animi, ab nihil eum tempore repellat facilis explicabo deserunt
+          dolor. At unde voluptate quaerat totam odit a assumenda corporis dicta dolor nisi. Id nam illo, facere quae
+          temporibus adipisci incidunt quasi iure! Dolores, eum beatae, dolorum accusamus ea, dignissimos maxime qui
+          voluptas aperiam assumenda ipsum dolor eos iusto obcaecati reprehenderit! Culpa laboriosam, esse excepturi
+          eaque corporis, qui, vero illum dignissimos id officia est dicta quos repellendus magni numquam! Eaque
+          accusantium ducimus similique architecto hic assumenda voluptate natus atque ex. Nesciunt, incidunt voluptas
+          impedit maxime maiores odit quae, quisquam dignissimos, officia eius voluptatum ad tempore delectus quo saepe
+          et fugiat? Aspernatur, molestias dolores ex neque, suscipit similique labore eius dolor aliquam eaque rem
+          maxime, vitae quidem reiciendis! Explicabo officia animi ab, corrupti asperiores nostrum! Labore veritatis
+          magnam maiores cumque, porro at ullam?
+        </div>
+        <div class="tab-pane fade" id="profile">
+          Profile content tab ::: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti cum, id
+          perferendis, sit, distinctio voluptas error odio officiis praesentium nobis labore! Fugiat dolore provident
+          atque sunt qui aspernatur ipsa doloribus magnam cum officia molestias iure repellendus, nobis dolorum labore
+          non facere itaque soluta nihil veritatis, cupiditate vitae reiciendis! Maiores quia repudiandae, cum qui
+          inventore dicta quae modi sequi odio dolor aspernatur nisi molestiae, earum similique suscipit quis ullam est
+          corrupti accusantium recusandae laboriosam sunt reprehenderit excepturi! Excepturi voluptatum cupiditate hic
+          minus eaque nisi! Alias, veritatis expedita quasi quae, doloremque odit nulla dicta a ipsum tenetur
+          exercitationem deleniti excepturi animi culpa commodi modi rem esse magni ratione repudiandae nam officiis
+          voluptatibus. Quisquam voluptatem exercitationem earum cum veritatis rerum minus inventore mollitia eaque,
+          quas sunt alias odio consequuntur accusamus eveniet, enim molestiae nulla sed! Tenetur ducimus iure quia
+          delectus est numquam provident quidem quis maxime molestiae saepe dolore soluta quam sit assumenda explicabo
+          perferendis consequuntur, nam odit perspiciatis nobis nemo quasi. Quidem, dolorum perspiciatis perferendis
+          aut, modi dignissimos saepe delectus officia animi, ab nihil eum tempore repellat facilis explicabo deserunt
+          dolor. At unde voluptate quaerat totam odit a assumenda corporis dicta dolor nisi. Id nam illo, facere quae
+          temporibus adipisci incidunt quasi iure! Dolores, eum beatae, dolorum accusamus ea, dignissimos maxime qui
+          voluptas aperiam assumenda ipsum dolor eos iusto obcaecati reprehenderit! Culpa laboriosam, esse excepturi
+          eaque corporis, qui, vero illum dignissimos id officia est dicta quos repellendus magni numquam! Eaque
+          accusantium ducimus similique architecto hic assumenda voluptate natus atque ex. Nesciunt, incidunt voluptas
+          impedit maxime maiores odit quae, quisquam dignissimos, officia eius voluptatum ad tempore delectus quo saepe
+          et fugiat? Aspernatur, molestias dolores ex neque, suscipit similique labore eius dolor aliquam eaque rem
+          maxime, vitae quidem reiciendis! Explicabo officia animi ab, corrupti asperiores nostrum! Labore veritatis
+          magnam maiores cumque, porro at ullam?
+        </div>
+        <div class="tab-pane fade" id="contact">
+          Contact content tab ::: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti cum, id
+          perferendis, sit, distinctio voluptas error odio officiis praesentium nobis labore! Fugiat dolore provident
+          atque sunt qui aspernatur ipsa doloribus magnam cum officia molestias iure repellendus, nobis dolorum labore
+          non facere itaque soluta nihil veritatis, cupiditate vitae reiciendis! Maiores quia repudiandae, cum qui
+          inventore dicta quae modi sequi odio dolor aspernatur nisi molestiae, earum similique suscipit quis ullam est
+          corrupti accusantium recusandae laboriosam sunt reprehenderit excepturi! Excepturi voluptatum cupiditate hic
+          minus eaque nisi! Alias, veritatis expedita quasi quae, doloremque odit nulla dicta a ipsum tenetur
+          exercitationem deleniti excepturi animi culpa commodi modi rem esse magni ratione repudiandae nam officiis
+          voluptatibus. Quisquam voluptatem exercitationem earum cum veritatis rerum minus inventore mollitia eaque,
+          quas sunt alias odio consequuntur accusamus eveniet, enim molestiae nulla sed! Tenetur ducimus iure quia
+          delectus est numquam provident quidem quis maxime molestiae saepe dolore soluta quam sit assumenda explicabo
+          perferendis consequuntur, nam odit perspiciatis nobis nemo quasi. Quidem, dolorum perspiciatis perferendis
+          aut, modi dignissimos saepe delectus officia animi, ab nihil eum tempore repellat facilis explicabo deserunt
+          dolor. At unde voluptate quaerat totam odit a assumenda corporis dicta dolor nisi. Id nam illo, facere quae
+          temporibus adipisci incidunt quasi iure! Dolores, eum beatae, dolorum accusamus ea, dignissimos maxime qui
+          voluptas aperiam assumenda ipsum dolor eos iusto obcaecati reprehenderit! Culpa laboriosam, esse excepturi
+          eaque corporis, qui, vero illum dignissimos id officia est dicta quos repellendus magni numquam! Eaque
+          accusantium ducimus similique architecto hic assumenda voluptate natus atque ex. Nesciunt, incidunt voluptas
+          impedit maxime maiores odit quae, quisquam dignissimos, officia eius voluptatum ad tempore delectus quo saepe
+          et fugiat? Aspernatur, molestias dolores ex neque, suscipit similique labore eius dolor aliquam eaque rem
+          maxime, vitae quidem reiciendis! Explicabo officia animi ab, corrupti asperiores nostrum! Labore veritatis
+          magnam maiores cumque, porro at ullam?
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    });
+
+
+    // alert customm
+
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    const appendAlert = (message, type) => {
+      const wrapper = document.createElement('div')
+      wrapper.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close minus-icon" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+      ].join('')
+
+      alertPlaceholder.append(wrapper)
+    }
+
+    const alertTrigger = document.getElementById('liveAlertBtn')
+    if (alertTrigger) {
+      alertTrigger.addEventListener('click', () => {
+        appendAlert('Your account debited 10 Rupye', 'success')
+      })
+    }
+
+  </script>
+
+</body>
+
+</html>
