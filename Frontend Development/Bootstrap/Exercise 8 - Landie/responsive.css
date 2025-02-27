@@ -1,0 +1,29 @@
+@media screen and (max-width:992px) {
+   
+    /* NAVBAR */
+    
+    #nav_btn{
+        display: none;
+    }
+    
+    #nav_btn_s{
+        display: inline !important;
+        width: fit-content;
+        
+    }
+    
+    .collapse_div{
+        background-color: var(--lightPrimary);
+    }
+    /* NAVBAR */
+    .content{
+        width: 100% !important; 
+    }
+  
+    
+}
+
+@media screen and (max-width:580px)
+{
+    
+}

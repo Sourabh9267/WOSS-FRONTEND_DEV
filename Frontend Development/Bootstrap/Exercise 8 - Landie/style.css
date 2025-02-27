@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+    --darkPrimary:#111B47;
+    --darkSecondary:#37447E;
+    --lightPrimary:#E7ECFF;
+    --grey:#B0B8BC;
+    --t-black:#091133;
+    --t-dark:#222F65;
+    --t-light:#6F7CB2;
+    --links-secondary:#505F98;
+    --white:#FFFFFF;
+    --black:#000000;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "roboto";
+}
+
+/* NAVBAR */
+
+.collapse_nav{
+    flex-grow: unset;
+}
+
+.brand-name{
+    font-family: "roboto";
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--t-dark);
+}
+
+
+.btn_primary{
+    border-radius: 2px !important;
+    background-color: var(--darkPrimary);
+    border: none;
+    font-weight: 500;
+    border:3px solid transparent;
+}
+
+
+.links a{
+    font-size: 14px;
+    color: var(--links-secondary);
+    margin-left: 5px;
+}
+
+
+
+/* NAVBAR */
+
+
+
+/* HERO SECTIOn */
+
+.hero{
+    margin-top: 180px;
+    margin-bottom: 120px;
+}
+
+
+h2{
+    line-height: 66px;
+    font-size: 50px;
+
+}
+p{
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--t-light);
+    margin-bottom: 11px;
+}
+
+.p_margin{
+    margin-bottom: 69px;
+}
+
+.button-grp{
+    display: flex;
+    column-gap: 30px;   
+}
+
+.btn_secondary{
+    font-weight: 500;
+    border-radius: 2px !important;
+    background: transparent;
+    color: var(--t-dark);
+    border: 3px solid var(--darkPrimary);
+}
+
+
+/* Background at Hero and Nav */
+.bg-holder{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 100vh;
+    width: 100%;
+}
+
+.bg-1{
+    background: url(assets/img/herosecbanner.png) no-repeat right top / contain; 
+}
+
+.bg-2{ 
+    background:url(assets/img/path.svg) no-repeat left top/cover;
+}
+
+/* Background at Hero and Nav */

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdowns with Overflow Auto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: #f5f5f5;
+            position: relative;
+        }
+
+        .dropdown-section {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .dropdown-wrapper {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #6f0202;
+            background-color: white;
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f5f5f5;
+            position: relative;
+        }
+
+        .dropdown-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .dropdown-wrapper::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+
+        .dropdown {
+            position: relative;
+            width: 150px;
+        }
+
+        .dropdown-btn {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 16px;
+            background-color: white;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        /* The dropdown menu is positioned outside the wrapper */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 2px solid #ccc;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 150px;
+        }
+
+        .dropdown-menu li {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu li:hover {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dropdown-section">
+        <div class="dropdown-wrapper">
+            <div class="dropdown">
+                <button class="dropdown-btn">Dropdown 1</button>
+                <ul class="dropdown-menu">
+                    <li>Option D1-1</li>
+                    <li>Option D1-2</li>
+                    <li>Option D1-3</li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">Dropdown 2</button>
+                <ul class="dropdown-menu">
+                    <li>Option D2-1</li>
+                    <li>Option D2-2</li>
+                    <li>Option D2-3</li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">Dropdown 3</button>
+                <ul class="dropdown-menu">
+                    <li>Option D3-1</li>
+                    <li>Option D3-2</li>
+                    <li>Option D3-3</li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">Dropdown 4</button>
+                <ul class="dropdown-menu">
+                    <li>Option D4-1</li>
+                    <li>Option D4-2</li>
+                    <li>Option D4-3</li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">Dropdown 5</button>
+                <ul class="dropdown-menu">
+                    <li>Option D5-1</li>
+                    <li>Option D5-2</li>
+                    <li>Option D5-3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdowns = document.querySelectorAll(".dropdown");
+
+            dropdowns.forEach(dropdown => {
+                const btn = dropdown.querySelector(".dropdown-btn");
+                const menu = dropdown.querySelector(".dropdown-menu");
+
+                btn.addEventListener("click", function (event) {
+                    event.stopPropagation(); // Prevent event bubbling
+
+                    // Close all other dropdowns
+                    document.querySelectorAll(".dropdown-menu").forEach(m => {
+                        if (m !== menu) m.style.display = "none";
+                    });
+
+                    // Toggle this dropdown
+                    if (menu.style.display === "block") {
+                        menu.style.display = "none";
+                    } else {
+                        menu.style.display = "block";
+                        positionDropdown(menu, btn);
+                    }
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener("click", function () {
+                document.querySelectorAll(".dropdown-menu").forEach(menu => {
+                    menu.style.display = "none";
+                });
+            });
+
+            // Function to position dropdown correctly
+            function positionDropdown(menu, btn) {
+                const btnRect = btn.getBoundingClientRect();
+                menu.style.position = "absolute";
+                menu.style.top = `${btnRect.bottom + window.scrollY}px`;
+                menu.style.left = `${btnRect.left + window.scrollX}px`;
+                document.body.appendChild(menu); // Move outside the wrapper
+            }
+        });
+    </script>
+
+</body>
+</html>
