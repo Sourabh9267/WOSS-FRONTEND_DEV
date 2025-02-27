@@ -17,13 +17,58 @@
     }
     /* NAVBAR */
     .content{
-        width: 100% !important; 
+        width: 100% !important;
     }
-  
+
     
 }
 
 @media screen and (max-width:580px)
 {
-    
+
+  .hero{
+    margin-top: 150px;
+  }
+
+
+  
+.details-page{
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+}
+
+.left-part{
+    width: 100% !important;
+}
+
+.right-part{
+    width: 100% !important;
+}
+
+.left-top h2{
+    font-size: 36px !important;
+    margin: 40px 0px 16px 0px !important;
+}
+
+.left-top p{
+    font-size: 16px !important;
+    color: var(--t-light);
+    margin: 13px 0px;
+}
+
+.box h3{
+    font-size: 16px !important;
+    margin:14px 0px 6px 0px !important ;
+}
+
+.box p{
+    font-size: 12px !important;
+    color: var(--grey);
+}
+
+
+.pages{
+    width: 100% !important;
+}
+
 }

@@ -39,8 +39,14 @@
     border: none;
     font-weight: 500;
     border:3px solid transparent;
+    color: white;
 }
 
+.btn_primary:hover{
+    color: white;
+    border: 2px initial;
+    background-color: var(--darkSecondary);
+}
 
 .links a{
     font-size: 14px;
@@ -57,17 +63,18 @@
 /* HERO SECTIOn */
 
 .hero{
-    margin-top: 180px;
-    margin-bottom: 120px;
+    margin-top: 230px;
+    margin-bottom: 240px;
 }
 
 
-h2{
+.hero h2{
     line-height: 66px;
     font-size: 50px;
 
 }
-p{
+
+.hero p{
     margin-top: 20px;
     font-size: 18px;
     line-height: 30px;
@@ -81,7 +88,8 @@ p{
 
 .button-grp{
     display: flex;
-    column-gap: 30px;   
+    column-gap: 30px;  
+     
 }
 
 .btn_secondary{
@@ -92,14 +100,20 @@ p{
     border: 3px solid var(--darkPrimary);
 }
 
+.btn_secondary:hover{
+    color: white;
+    background: var(--darkPrimary);
+}
 
 /* Background at Hero and Nav */
 .bg-holder{
     position: absolute;
     top: 0;
     z-index: -1;
-    height: 100vh;
     width: 100%;
+    height: 120%;
+    max-height: 800px !important;
+ 
 }
 
 .bg-1{
@@ -111,3 +125,52 @@ p{
 }
 
 /* Background at Hero and Nav */
+
+
+/* Details page */
+
+.details-page{
+    margin-top: 200px !important;
+    margin-bottom: 200px !important;
+}
+.left-top h2{
+    font-size: 36px !important;
+    margin: 40px 0px 16px 0px !important;
+}
+
+.left-top p{
+    font-size: 16px !important;
+    color: var(--t-light);
+    margin: 13px 0px;
+}
+
+
+.box h3{
+    font-size: 16px !important;
+    margin:14px 0px 6px 0px !important ;
+}
+
+.box p{
+    font-size: 12px !important;
+    color: var(--grey);
+}
+
+
+/* Pages */
+
+
+.pages .right-part h2{
+    font-size: 36px !important;
+    margin-bottom: 16px;
+}
+
+.pages .right-part p{
+
+    font-size: 16px !important;
+    color: var(--t-light);
+    margin-bottom: 16px;
+}
+
+.pages{
+    margin-bottom: 120px;
+}
