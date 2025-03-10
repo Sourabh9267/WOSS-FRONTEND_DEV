@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+:root{
+    --main-bg:#151719;
+    --primary-purple:#5D5DFF;
+    --grey:#33363A;
+    --t-grey:#9BA9B4;
+    --green-bg:#C6F6D5;
+    --green-primary:#36A269;
+    --t-white:#D9E3EA;
+    --primary-purple-hover:#8686ff;
+    --testemonial-card-bg:#25282C;
+    --form-label:#C5D2DC;
+    --form-placeholder:#707D86;
+    --form-input-border:#33363A;
+
+    --btn-red:#E53D3E;
+    --btn-red-hover:#fe5656;
+}
+
+body{
+    color:var(--t-white);
+    background-color: var(--main-bg) !important;
+}
+
+*{
+    font-family: "inter";
+}
+.wrapper{
+    background: url(assets/img/Shape1.png) top right no-repeat;
+    /* background: url(assets/img/shape2.png) no-repeat ; */
+}
+
+.hero-section{
+    position: relative;
+    /* background:url(assets/img/shape2.png) no-repeat -10% 100%; */
+    padding-bottom: 50px;
+
+}
+
+.hero-section .bg-overlay-btm{
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+    z-index: -1;
+
+}
+
+.main-wrapper{
+    margin-top: 100px;
+}
+
+.btn-s,.btn-p,.btn-p{
+    font: 500 16px "inter";
+    border-radius: 2px !important;
+}
+
+
+
+.btn-s{
+    border: 2px solid transparent;
+    color: var(--t-white);
+    background-color: var(--grey);
+}
+
+.btn-p{
+    color: var(--t-white);
+    background-color: var(--primary-purple);
+    border: 2px solid transparent;
+}
+
+.btn-r{
+    color: var(--t-white);
+    background-color: var(--btn-red);
+}
+
+.btn-r:hover{
+    color: var(--btn-red);
+    background-color: var(--t-white);
+}
+
+.btn-t{
+    color: var(--t-grey);
+}
+.btn-p:hover{
+    color: var(--primary-purple);
+    background-color: transparent;
+    border: 2px solid var(--primary-purple);
+}
+
+.btn-s:hover{
+    border: 2px solid var(--grey);
+    background-color: transparent;
+    color: inherit;
+}
+
+.btn:active{
+    border-color: transparent !important;
+}
+
+
+.highlight-txt{
+    color: var(--primary-purple);
+    font-family: "Architects Daughter";
+}
+
+
+
+h2{
+    font: 800 40px "inter";
+    color: var(--t-white);
+    margin-bottom: 17px;
+}
+p{
+    font: 400 20px "inter";
+    color: var(--t-grey);
+    margin-bottom: 80px;
+}
+
+
+section{
+    margin-bottom: 64px;
+}
+
+.navbar-toggler-icon{
+    background-image: none !important;
+}
+
+.check-grp p::before {
+    content: "\f00c"; /* Unicode for checkmark (check-circle) */
+    font-family: "Font Awesome 6 Free"; /* Or "Font Awesome 6 Pro" if you're using Pro */
+    font-weight: 900; /* Required for solid icons in Font Awesome 6 */
+    color: var(--green-primary);
+    margin-right: 5px;
+}
+
+/*
+
+Navbar
+
+*/
+
+
+.header-wrapper .collapse .navbar-nav{
+    gap: 20px;
+}
+
+
+
+/* Hero Section */
+
+.hero-section h1{
+    font: 800 52px "inter";
+    color: var(--t-white);
+    margin-bottom: 16px;
+}
+
+.hero-section p{
+    font: 400 20px "inter";
+    color: var(--t-grey);
+    margin-bottom: 32px;
+    width: 50%;
+}
+
+.hero-section .btn-grp{
+    margin-bottom: 64px;
+}
+
+
+/*features section*/
+
+.features-section > p{
+    width: 60%;
+}
+
+
+.features-section .custom-card img{
+    width: 64px;
+    margin-bottom: 16px;
+    margin-top: 16px;   
+}
+
+.features-section .custom-card h3{
+    font:  700 24px "inter";
+    margin-bottom: 16px;
+}
+
+.features-section .custom-card p{
+    font:  400 18px "inter";
+}
+
+.features-section .gallery{
+    padding-bottom: 80px;
+    border-bottom: 2px solid var(--grey);
+}
+
+.features-section .custom-card{
+    border-radius: 25px;
+
+}
+
+.features-section .custom-card:hover{
+    background-color: var(--grey);
+}
+
+/* Product Section */
+
+.product-section > p{
+    width: 60%;
+}
+
+
+.product-section .btn-grp{
+width: fit-content;
+margin-bottom: 16px;
+
+}
+.product-section .btn-grp span{
+    background-color: var(--green-bg);
+    color: var(--green-primary);
+    width: fit-content;
+}
+
+.product-section .content h3{
+    font: 700 32px "inter";
+    color: var(--t-white);
+    margin-bottom: 9px;
+}
+
+.product-section .content p{
+    font: 400 20px "inter";
+    color: var(--t-grey);
+    margin-bottom: 16px;
+}
+
+
+.product-section .content .check-grp p{
+    font: 400 18px "inter";
+    margin-bottom: 8px;
+}
+
+.product{
+    margin-bottom: 80px;
+    justify-content: space-between;
+
+}
+
+.product-gallery{
+    padding-bottom: 80px;
+    border-bottom: 2px solid var(--grey) ;
+}
+
+
+
+/* Testmonial Section */
+
+
+.testmonial-section > p{
+    width: 60%;
+}
+
+.testmonial-section .card-custom-testmonial 
+{
+
+    color: var(--t-grey);
+    background-color: var(--testemonial-card-bg);
+
+}
+
+.content-testmonial{
+    padding-right: 20px !important;
+    width: 100%;
+}
+
+.testmonial-section .content-testmonial .card-custom-testmonial img{
+  margin-bottom: 16px;
+}
+
+.testmonial-section .content-testmonial .card-custom-testmonial p{
+    margin-bottom: 24px;
+    line-height: 27px;
+    font-size: 18px;
+}
+
+
+.testmonial-section .content-testmonial .card-custom-testmonial h6{
+    color: var(--t-white);
+    border-top: 2px solid var(--grey);
+    padding-top: 20px;
+    
+}
+
+.testmonial-section .content-testmonial .card-custom-testmonial h6 span{
+    color: var(--grey);
+}
+.testmonial-section .content-testmonial .card-custom-testmonial h6 a{
+    color: var(--primary-purple);
+    text-decoration: none;
+}
+
+
+
+
+/* Footer*/
+
+.ftr-top{
+    margin-inline: 0 !important;
+    padding-block: 80px;
+    padding-inline: 30px;
+    background: url(assets/img/Fill\ 1\ footer.png) no-repeat top right;
+    background-color: var(--primary-purple);
+    margin-top: 0 !important;
+    margin-bottom: 64px;
+}
+
+.ftr-top .request-text{
+    margin-top: 0;
+}
+
+.ftr-top .subscribe-form{
+    margin-top: 0;
+}
+
+.ftr-top .request-text p{
+    margin-bottom: 0;
+    font-size: 18px;
+    color: var(--t-white);
+}
+
+.ftr-top .subscribe-form input{
+    background-color: #4B4ACF;
+    outline: none !important;
+    border: 1px solid var(--t-white) !important;
+    color: var(--t-white);
+    width: 70%;
+    border-radius: 2px;
+}
+
+.ftr-top .subscribe-form input::placeholder{
+    color: var(--t-grey);
+}
+
+.ftr-top .subscribe-form button{
+    background-color: var(--t-white);
+    color: var(--primary-purple);
+    outline: none !important;
+    border: none !important;
+    margin-left: 10px;
+    width: 30%;
+  
+}
+
+.ftr-top .subscribe-form button:hover{
+background: var(--green-bg);
+color: var(--green-primary);
+}
+
+.ftr-bottom .content img{
+margin-bottom: 14px;
+}
+
+.ftr-bottom .content p{
+margin-bottom: 0;
+line-height: 24px !important;
+font: 400 16px "inter";
+width: 75%;
+}
+
+.ftr-bottom .links-wrapper ul{
+    list-style: none;
+    padding: 0;
+}
+
+.ftr-bottom .links-wrapper ul li{
+margin-bottom: 5px;
+}
+
+.ftr-bottom .links-wrapper h5{
+    color:var(--t-white);
+}
+
+.ftr-bottom .links-wrapper .links a{
+    text-decoration: none;
+    color: var(--t-grey);
+}
+
+.ftr-bottom{
+    margin-bottom: 40px;
+}
+
+.ftr-bottom-content{
+    margin-bottom: 120px;
+}
+
+.ftr-bottom-content h6{
+    color: var(--t-grey);
+    width: fit-content;
+}
+
+.social-icons i{
+    border-radius:50% ;
+    background-color: var(--grey);
+    color: var(--primary-purple);
+    font-size: 16px;
+    padding: 10px;
+}
+
+.ftr-bottom .links-wrapper .links a:hover{
+    color: var(--primary-purple) !important;
+}
+
+.ftr-bottom-content .social-icons i:hover{
+    color: var(--t-white) !important;
+    background-color: var(--primary-purple);
+    transition: all ease 0.3s;
+}
+
+
+/*Changes in Card Testmonial*/
+
+.testmonial-section .content-testmonial .card-custom-testmonial .profile-img-wrapper{
+    position: relative;
+    width: fit-content;
+
+    
+}
+
+.testmonial-section .content-testmonial .card-custom-testmonial .profile-img-wrapper::after{
+content:"";
+position: absolute;
+top: 0;
+right: -20px;
+background: url(assets/img/profile/design.png) no-repeat;
+height: 20px;
+width: 30px;
+
+
+}
+
+
+
+/**********   SIGN UP FORM    *************/
+
+.sign-up-header .header-wrapper{
+    margin-bottom: 100px;
+}
+
+.sign-up h2{
+
+    font: 800 52px "inter";
+    margin-bottom: 100px;
+}
+
+
+
+.sign-up-form-class .content-break p{
+    width: fit-content;
+    margin-bottom: 0;
+    font: 400 16px "inter";
+    color: var(--t-grey);
+}
+
+.sign-up-form-class .content-break .line{
+    background-color: var(--grey);
+    width: 20%;
+    height: 2px;
+}
+
+
+
+.sign-up-form-class label{
+font: 500 14px "inter";
+color: var(--form-label);
+}
+
+.sign-up-form-class input{
+    color: var(--t-white) !important;
+    background-color: transparent !important;
+    border: 1px solid var(--form-input-border);
+  padding: 10px;
+}
+
+.sign-up-form-class input::placeholder{
+    color: var(--form-placeholder);
+}
+
+.sign-up-form-class .form-check-label{
+    color: var(--form-placeholder);
+    font-weight: 400;
+}
+
+.sign-up-form-class .form-check-label a{
+    color: var(--form-label);
+    font: 400 16px "inter";
+}
+
+.sign-up-form-class .login-page-linker h6{
+   font: 400 16px "inter";
+   color: var(--t-grey);
+}
+.sign-up-form-class .login-page-linker h6 a{
+   font: 400 16px "inter";
+   text-decoration: none;
+   color: var(--primary-purple);
+}
+
+
+
+/************ Login Form ***************/
+
+.form-check > a{
+color: var(--primary-purple);
+text-decoration: none;
+font: 400 14px "inter";
+}
