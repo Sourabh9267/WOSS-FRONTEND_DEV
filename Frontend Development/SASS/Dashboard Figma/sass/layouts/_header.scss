@@ -1,0 +1,61 @@
+.header-wrapper{
+
+    nav{
+       
+        padding:10px 20px;
+        background-color: $var-color-dark;
+
+        .links-wrapper{
+            gap: 25px;
+
+            .links{
+
+                a{
+                    text-decoration: none;
+                    color: $var-color-white;
+                    &:hover{
+                        color: $var-color-grey;
+                        transition: all ease 0.3s;
+                    }
+
+                    i{
+                        margin-right: 5px;
+                    }
+
+                }
+
+            }
+
+        }
+
+        .dropdown{
+            .dropdown-menu
+            {
+                width: fit-content;
+                padding-inline: 0;
+                background-color: $var-color-dark;
+            }
+        }
+
+        .profile{
+            min-width: 180px;
+            height: 36px;
+            width: fit-content;
+            padding-inline: 5px;
+            background-color: $var-color-grey;
+            @include flexbox-between;
+            img{
+                height: 30px;
+                width: 30px;
+            }
+            h6{
+                color: $var-color-dark-text;
+                margin-inline: 5px;
+                font: $fw-r $fs-s $primary-font;
+            }
+        }
+
+
+    }
+
+}

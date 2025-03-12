@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.header-wrapper nav {
+  padding: 10px 20px;
+  background-color: #171717;
+}
+.header-wrapper nav .links-wrapper {
+  gap: 25px;
+}
+.header-wrapper nav .links-wrapper .links a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+.header-wrapper nav .links-wrapper .links a:hover {
+  color: #D4D4D4;
+  transition: all ease 0.3s;
+}
+.header-wrapper nav .links-wrapper .links a i {
+  margin-right: 5px;
+}
+.header-wrapper nav .dropdown .dropdown-menu {
+  width: fit-content;
+  padding-inline: 0;
+  background-color: #171717;
+}
+.header-wrapper nav .profile {
+  min-width: 180px;
+  height: 36px;
+  width: fit-content;
+  padding-inline: 5px;
+  background-color: #D4D4D4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.header-wrapper nav .profile img {
+  height: 30px;
+  width: 30px;
+}
+.header-wrapper nav .profile h6 {
+  color: #111827;
+  margin-inline: 5px;
+  font: 400 14px "Poppins";
+}
+
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */
