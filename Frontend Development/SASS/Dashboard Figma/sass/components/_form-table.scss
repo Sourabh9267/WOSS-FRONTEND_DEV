@@ -1,0 +1,152 @@
+.form-table-wrapper
+{   
+    border-radius: 10px;
+    width: 100%;
+    background-color: $var-color-white;
+    padding: 30px;
+    margin-bottom: 30px;
+    .content{
+        h2{
+            font:$fw-b $fs-xl $primary-font;
+        }
+        p{
+            
+            font:$fw-l $fs-md $primary-font;
+        }
+    }
+
+
+    .table-responsive{
+        table{
+           
+            tr{ 
+                font-family: $primary-font;
+                th{
+                    font-weight: $fw-md;
+                }
+                td{
+                    font-weight: $fw-r;
+                }
+                th,td{
+                    padding-inline: 20px;
+                    width: fit-content;
+                    .btn-grp{
+                        display: flex;
+                        align-items: center;
+                        width: fit-content;
+                        gap: 10px;
+                        
+                        button{
+                            font: $fw-r $fs-xs $primary-font !important;
+                            padding: 2px 10px ;
+
+                        }
+                        
+                        .btn-custom-primary{
+                            color: $var-color-white;
+                           background-color: $var-btn-col-primary !important;
+
+                        }
+
+                        .btn-custom-secondary{
+                            color: $var-color-white;
+                           background-color: $var-btn-col-secondary !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+   
+
+}
+
+.form-wrapper{
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: $var-color-white;
+
+    .content{
+        h2{
+            font:$fw-b $fs-xl $primary-font;
+        }
+        p{
+            
+            font:$fw-l $fs-md $primary-font;
+        }
+    }
+
+    .nav-tabs{
+        border-bottom: none;
+        
+        ul{
+            gap: 10px;
+            li{
+                
+                button{
+                    padding: 5px;
+                    font: $fw-r $fs-md $primary-font;
+                    color: black;
+                    outline: 1px solid #cfcfcf;
+                    img{
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
+                .active{
+                    color: black;
+                    
+                    outline: 1px solid transparent;
+                    background-color: #FDE68A !important;
+                }
+            }
+        }
+        
+
+        form{
+            label{
+                font: $fw-l $fs-s $primary-font;
+            }
+
+            textarea{
+                resize: none;
+                min-height: 165px;
+            }
+        }
+    }
+
+}
+
+.form-container{
+    gap: 30px;
+}
+
+.form-wrapper-2{
+    padding: 30px;
+background-color: $var-color-white;
+
+.content{
+    h2{
+        font:$fw-b $fs-xl $primary-font;
+    }
+    p{
+        
+        font:$fw-l $fs-md $primary-font;
+    }
+}
+
+form{
+    label{
+        font: $fw-l $fs-s $primary-font;
+    }
+
+    textarea{
+        resize: none;
+        min-height: 165px;
+    }
+}
+}
+
+#form-2{
+    height: fit-content;
+}

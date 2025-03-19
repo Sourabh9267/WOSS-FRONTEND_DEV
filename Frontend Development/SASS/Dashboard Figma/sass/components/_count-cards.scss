@@ -1,0 +1,26 @@
+.count-cards-wrapper{
+    margin-bottom: 30px;
+    max-width: 100%;
+    .card-wrapper{
+        max-width: 100%;
+        border-radius: 10px;
+        background-color: $var-color-white;
+    
+        padding: 20px;
+      
+
+        .count-cards-content{
+            
+            margin-left: 5px;
+            
+            h6{
+                font: $fw-l $fs-s $primary-font;
+            }
+            h3{
+
+                font: $fw-b $fs-xl $primary-font;
+            }
+        }
+    }
+
+}   

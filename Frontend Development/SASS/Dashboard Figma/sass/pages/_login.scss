@@ -1,0 +1,139 @@
+.login-wrapper{
+    background-color: $var-color-grey;
+    height: 100vh;
+    padding: 20px;
+    .login-form-wrapper{
+        border-radius: 10px;
+        display: flex;
+        width: auto;
+         height: 564px;
+         max-width: 900px;
+         width: 900px;
+        background-color: $var-color-white;
+        .img-wrapper{
+            flex:1;
+            height: 564px;
+            max-width: 450px;
+            img{
+                width: auto;
+               
+                object-fit: contain;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }   
+        }
+
+        .content{
+            h2{
+                font:$fw-b $fs-xl $primary-font;
+            }
+            p{
+                
+                font:$fw-l $fs-md $primary-font;
+            }
+        }
+
+        form{
+            max-width: 450px;
+            margin-block: 40px;
+            flex: 1;
+            padding: 0px 40px;
+          
+            h3{
+                font: $fw-r ;
+            }
+            
+            label{
+                font: $fw-l $fs-s $primary-font;
+            }
+
+            div{
+                a{
+                    font:$fw-md $fs-s $primary-font;
+                    color: $var-color-dark;
+                }
+            }
+
+            .part-2{
+                margin-top: 25px;
+                .or-div{
+                    text-align: center;
+                 p{
+                    font-size: $fs-xs;
+                    font-family: $primary-font;
+                    font-weight: 300;
+                    color: $var-color-grey;
+                    position: relative;
+                    &::after{
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        content:"";
+                        width: 45%;
+                        border-top: 1px solid $var-color-grey;
+                       
+                    }
+                    &::before{
+                        left: 0;
+                        position: absolute;
+                        content:"";
+                        top: 50%;
+                        width: 45%;
+                        border-top: 1px solid $var-color-grey;
+                        
+                    }
+                }
+            }
+            }
+        }
+       
+    }
+
+
+
+    @media screen and (max-width:767px){
+       
+    
+        .login-form-wrapper{
+            background-color: none !important;
+            background-image: linear-gradient(360deg,rgba(35, 35, 35, 0.904),rgba(0, 0, 0, 0.345)), url("/assets/imgs/icons/login/Rectangle\ 38.png") ;
+            width: 100%;
+            .img-wrapper{
+                display: none;                 
+            }
+    
+            .content{
+                h2{
+                    font:$fw-b $fs-xl $primary-font;
+                }
+                p{
+                    
+                    font:$fw-l $fs-md $primary-font;
+                }
+            }
+    
+            form{
+                margin: auto;
+                width: auto;
+                border-radius: 10px;
+                color: white;
+                padding: 20px;
+
+                h3{
+                    font: $fw-r ;
+                }
+    
+                flex: 1;
+
+                .part-2{
+                    button{
+                        color: white !important;
+                    }
+                }
+
+            }
+
+    }
+
+
+    }}

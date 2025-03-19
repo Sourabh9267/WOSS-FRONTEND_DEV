@@ -1,1 +1,61 @@
 @import "../layouts/header";
+@import "../layouts/sidebar";
+@import "../components/subnavbar";
+@import "../components/count-cards";
+@import "../components/form-table";
+
+.home-wrapper {
+  .toggler-wrapper {
+    @include flexbox-center;
+    button {
+      margin: 0;
+      padding: 0;
+      i {
+        font-size: 18px;
+        color: $var-color-white;
+      }
+    }
+  }
+
+  .main-wrapper {
+
+
+    width: 100%;
+
+    .pages-wrapper {
+      padding-bottom: 50px;
+        overflow-x: hidden;
+      // width: calc(100% - 260px);
+      width: 100%;
+      margin-left: 210px;
+      margin-top: 55px;
+      background-color: $var-color-grey-l;
+      transition: all ease 0.3s;
+
+      .alert{
+        font:$fw-r $fs-md $primary-font;
+        border-radius: 10px;
+        color:#7F1D1D;
+        background-color: #FEF2F2;
+        border: 1px solid #F87171;
+        span{
+          display: flex;
+          gap: 10px;
+        }
+
+      }
+
+
+    }
+  }
+
+}
+
+
+@media screen and (max-width:767px){
+    .home-wrapper .main-wrapper .pages-wrapper{
+        width: 100%;
+        margin-left: 0;
+        
+    }
+}

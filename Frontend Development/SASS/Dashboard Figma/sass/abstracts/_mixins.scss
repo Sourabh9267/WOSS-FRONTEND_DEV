@@ -6,7 +6,7 @@
     flex-wrap: $wrap;
 }
 
-@mixin flexbox-center($direction:row){
+@mixin flexbox-center($direction:row,$wrap:wrap){
     display: flex;
     flex-direction: $direction;
     justify-content: center;
@@ -14,11 +14,11 @@
     flex-wrap: wrap;
 }
 
-@mixin flexbox-between{
+@mixin flexbox-between($wrap:wrap){
     display: flex;
     justify-content:space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: $wrap;
 }
 
   
