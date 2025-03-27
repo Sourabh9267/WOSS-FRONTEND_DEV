@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd or Even Checker Program</title>
+</head>
+<body>
+    
+    <div class="main-wrapper">
+        <form action="#" class="form-wrapper">
+            <label for="#">Program to Find Greatest Number</label>
+            <input type="number" id="num-A" class="input-field" placeholder="Enter a Number A">
+            <input type="number" id="num-B" class="input-field" placeholder="Enter a Number B">
+            <input type="number" id="num-C" class="input-field" placeholder="Enter a Number C">
+            <p id="result" class="result-box"></p>
+            <input type="submit" value="Check" id="res-btn">
+        </form>
+    </div>
+
+    <script>
+        function result(event) {
+            event.preventDefault();
+
+            let num_A = parseFloat(document.getElementById("num-A").value);
+            let num_B = parseFloat(document.getElementById("num-B").value);
+            let num_C = parseFloat(document.getElementById("num-C").value);
+
+            let resultElement=document.getElementById("result"); 
+            
+            resultElement.innerText = num_A>num_B && num_A > num_C ? `Number : ${num_A} is Greatest` : num_B > num_A && num_B > num_C ? `Number : ${num_B} is Greatest`: num_C>num_A && num_C>num_B ? `Number : ${num_C} is Greatest`: `All Numbers -- Number A: ${num_A} and Number B: ${num_B} and Number C: ${num_C} are Equal`;
+            
+           
+        }
+
+        let res_btn = document.getElementById('res-btn');
+        res_btn.addEventListener('click', result);
+    </script>
+</body>
+</html>

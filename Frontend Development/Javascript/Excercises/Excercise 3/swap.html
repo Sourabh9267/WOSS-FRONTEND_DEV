@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap Variables</title>
+
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <form action="#" class="form-wrapper">
+
+            <label for="#">Program to Swap values</label>
+
+            <input type="number" id="num-A" class="input-field" placeholder="Enter Number A" value="0" onchange="valUpdate()">
+            <input type="number" id="num-B" class="input-field" placeholder="Enter Number B" value="0" onchange="valUpdate()">
+            
+            <p id="result" class="result-box"></p>
+
+            <input type="submit" value="Click to Swap Values" id="res-btn">
+        </form>
+    </div>
+
+    <script>
+
+        let num_A = parseFloat(document.getElementById("num-A").value);
+        let num_B = parseFloat(document.getElementById("num-B").value);
+        let resultElement = document.getElementById("result");
+
+        function valUpdate(){
+            num_A = parseFloat(document.getElementById("num-A").value);
+            num_B = parseFloat(document.getElementById("num-B").value);
+            resultElement.innerHTML=`Currently Num A is: ${num_A} and Num B is : ${num_B}`
+
+        }
+
+
+        function result(event) {
+            event.preventDefault();
+
+           
+            let num_temp=0;
+
+            num_temp=num_A;
+            num_A=num_B;
+            num_B=num_temp;
+
+            resultElement.innerHTML=`Now Num A is: ${num_A} and Num B is : ${num_B}`
+        }
+       
+      
+        
+        let res_btn = document.getElementById('res-btn');
+
+        res_btn.addEventListener('click', result);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd or Even Checker Program</title>
+</head>
+<body>
+    
+    <div class="main-wrapper">
+        <form action="#" class="form-wrapper">
+            <label for="#">Program to Check Odd or Even</label>
+            <input type="number" id="num-A" class="input-field" placeholder="Enter a Number">
+            <p id="result" class="result-box"></p>
+            <input type="submit" value="Calculate" id="res-btn">
+        </form>
+    </div>
+
+    <script>
+        function result(event) {
+            event.preventDefault();
+
+            let num_A = parseFloat(document.getElementById("num-A").value);
+            let resultElement = document.getElementById("result");
+            
+            resultElement.innerHTML = (num_A % 2 === 0) ? "Even" : "Odd";
+        }
+
+        let res_btn = document.getElementById('res-btn');
+        res_btn.addEventListener('click', result);
+    </script>
+</body>
+</html>
