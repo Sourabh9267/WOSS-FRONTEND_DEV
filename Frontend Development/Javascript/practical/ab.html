@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Current Time is: <span id="timeF"></span> </h1>
+
+    <script>
+        
+        let liveClock=new Date();
+        let timeF=document.getElementById("timeF");
+
+        setInterval(function Time() {
+            liveClock=new Date();
+
+            let update=liveClock.toLocaleTimeString();
+            console.log(update);
+            timeF.innerText=update;
+        }, 1000)
+
+
+    </script>
+</body>
+
+</html>
