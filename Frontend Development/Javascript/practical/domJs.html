@@ -1,27 +1,37 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM JS : Excercises </title>
-</head>
+<html>
 <body>
 
-    
+<h1>JavaScript Functions</h1>
+<h2>setInterval() with a Callback</h2>
 
-            <script>
+<p>Using setInterval() to display the time every second (1000 milliseconds).</p>
 
-                document.getLeme
+<h1 id="demo"></h1>
 
+<script>
+setInterval(myFunction, 1000);
 
+function myFunction() {
+  let d = new Date();
+  let time;
+  
+  let hours=d.getHours();
+  let mins=d.getMinutes();
+  let seconds=d.getSeconds();
+  
+  if(seconds<60 ){
+    time= "Current Time is: "+hours+" : "+mins.toString().padStart(2,0)+" : "+seconds.toString().padStart(2,0);
+  }
+  else{
+    time= "Current Time is: "+hours+" : "+mins+" : "+seconds;
+  }
 
-            </script>
+document.getElementById("demo").innerHTML= time;
+console.log(time);
 
-
-
-
-
+}
+</script>
 
 </body>
 </html>
