@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Example 1</title>
+</head>
+
+<body>
+    <h1 style="color: green;">
+        GeeksforGeeks
+    </h1>
+    <h3>Using document.cookie</h3>
+    <input type="text" id="uInput" 
+        placeholder="Enter cookie value">
+    <button onclick="setFn()">
+        Set Cookie
+    </button>
+    <button onclick="getFn()">
+        Get Cookie
+    </button>
+    <p id="cookieVal"></p>
+    <script>
+        function setFn() {
+            const value =
+                document.getElementById('uInput').value;
+            document.cookie =
+                `exampleCookie=${value}`;
+            alert('Cookie has been set!');
+        }
+
+        
+        function getFn() {
+            const cookies =
+                document.cookie.split('; ');
+            const cookieMap = {};
+            cookies.forEach(cookie => {
+                const [name, value] = cookie.split('=');
+                cookieMap[name] = value;
+            });
+            const cookieVal = cookieMap['exampleCookie'];
+            document.getElementById('cookieVal').textContent =
+                `Cookie Value: ${cookieVal}`;
+        }
+    </script>
+</body>
+
+</html>
