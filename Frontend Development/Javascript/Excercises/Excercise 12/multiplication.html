@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd or Even Checker Program</title>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <form action="#" class="form-wrapper">
+            <label for="#">Program to Print Table of a Number</label>
+            <input type="number" id="num-A" class="input-field" placeholder="Enter a Number">
+            <p id="result" class="result-box"></p>
+            <input type="submit" value="Calculate" id="res-btn">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('res-btn').addEventListener('click', (event) => {
+            event.preventDefault();
+            const numA = parseFloat(document.getElementById('num-A').value);
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = '';
+
+            if (isNaN(numA)) {
+                resultElement.textContent = 'Invalid input.';
+                return;
+            }
+
+            if (numA <= 0) {
+                resultElement.textContent = 'Enter a positive number.';
+                return;
+            }
+
+            for (let i = 1; i <= 10; i++) {
+                resultElement.innerHTML += `<p>${numA} x ${i} = ${numA * i}</p>`;
+            }
+        });
+    </script>
+</body>
+
+</html>

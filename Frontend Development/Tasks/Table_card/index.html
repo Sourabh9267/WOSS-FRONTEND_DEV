@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main">
+
+        <button onclick="add()">Click to add buttons</button>
+        <div id="btn-grp">
+
+            
+
+
+        </div>
+
+
+        <p id="result">
+
+            <h1 id="title-container">
+                TITLE HERE
+            </h1>
+
+            <h2 id="price-container">PRICE HERE</h2>
+        </p> 
+    </div>
+
+
+    <script>
+
+        let btngrp=document.getElementById("btn-grp");
+        let res=document.getElementById("result");
+
+        let x;
+        function add(){
+            
+            
+            for(let i=1;i<=10;i++){
+                
+                let element=document.createElement("button");
+                element.innerText=`Button ${i}`;
+                element.setAttribute("id",`${i}`);
+                console.log(element);
+                console.log(btngrp);
+                btngrp.appendChild(element);
+                // this.btngrp.appendChild();
+
+                
+            }
+            
+        }
+        const arr=[];
+        for(let x=0;x<10;x++){
+            arr.push(`Page ${x+1}`);
+        }
+        console.log(arr);
+
+       async function change(val){
+
+            let titlecon=document.getElementById("title-container");
+            let pricecon=document.getElementById("price-container");
+            console.log(titlecon,pricecon);
+
+            let rawdata = await fetch("https://fakestoreapi.com/products/");
+
+            data= await rawdata.json();
+
+
+            console.log(val);
+
+            titlecon.innerText=data[val-1].title;
+            pricecon.innerText=data[val-1].price;
+
+
+
+
+            let random1 = Math.floor(Math.random()*255);
+            let random2 = Math.floor(Math.random()*255);
+            let random3 = Math.floor(Math.random()*255);
+            document.body.style.background=`rgb(${random1},${random2},${random3})`;
+        }
+        btngrp.addEventListener('click',function (e){
+
+            x=e.target.id;
+            change(x);
+            console.log(x);
+
+
+        })
+
+
+        
+
+    </script>
+</body>
+</html>

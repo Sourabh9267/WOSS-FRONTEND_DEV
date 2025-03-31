@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Numbers in an Interval</title>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <form action="#" class="form-wrapper">
+            <label for="#">Program to Print Prime Numbers in an Interval</label>
+            <input type="number" id="num-A" class="input-field" placeholder="Enter Start Number">
+            <input type="number" id="num-B" class="input-field" placeholder="Enter End Number">
+            <p id="result" class="result-box"></p>
+            <input type="submit" value="Calculate" id="res-btn">
+        </form>
+    </div>
+
+    <script>
+        function result(event) {
+            event.preventDefault();
+
+            let num_A = parseInt(document.getElementById("num-A").value);
+            let num_B = parseInt(document.getElementById("num-B").value);
+            let resultElement = document.getElementById("result");
+            let primes = [];
+
+            for (let i = num_A; i <= num_B; i++) {
+                if (checkPrime(i)) {
+                    primes.push(i);
+                }
+            }
+
+            if (primes.length > 0) {
+                resultElement.innerHTML = `Prime numbers between ${num_A} and ${num_B} are: ${primes.join(", ")}`;
+            } else {
+                resultElement.innerHTML = `No prime numbers found between ${num_A} and ${num_B}.`;
+            }
+        }
+
+        function checkPrime(n) {
+            if (n <= 1) {
+                return false;
+            }
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        let res_btn = document.getElementById('res-btn');
+        res_btn.addEventListener('click', result);
+    </script>
+</body>
+
+</html>
