@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        let x = {
+            "children": [
+                { "name": "Jimmy Smith", "age": 15 },
+                { "name": "Sammy Sosa", "age": 12 },
+                { "name": "Idli Dosa", "age": 12 },
+                { "name": "Sambhar Chutney", "age": 12 }
+            ]
+        }
+
+        let jsonObj= {
+            "name":"bh",
+            "height":10,
+            "result":95.4
+        }
+
+
+
+
+        let str = JSON.stringify(jsonObj);
+        console.log(str);
+
+        console.log(typeof jsonObj.height);
+
+        let jsonf= JSON.parse(str);
+
+        console.log(jsonf);
+
+        
+        console.log(x["children"][1]["name"]);
+        console.log(x.children[3].name);
+
+    </script>
+
+</body>
+
+</html>
