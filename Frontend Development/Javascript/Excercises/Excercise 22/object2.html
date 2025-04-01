@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Property Example</title>
+</head>
+<body>
+    <h2>Delete Property Example</h2>
+    <button onclick="deleteProperty()">Delete Rollno Property</button>
+    <p id="before"></p>
+    <p id="after"></p>
+
+    <script>
+        let student = {
+            name: "David Rayy",
+            sclass: "VI",
+            rollno: 12
+        };
+        document.getElementById("before").innerHTML = "Before deletion: " + JSON.stringify(student);
+
+        function deleteProperty() {
+
+            delete student.rollno;
+
+            document.getElementById("after").innerHTML = "After deletion: " + JSON.stringify(student);
+        }
+    </script>
+</body>
+</html>

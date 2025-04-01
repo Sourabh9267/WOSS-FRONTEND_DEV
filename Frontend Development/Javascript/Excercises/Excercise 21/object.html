@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Properties Lister</title>
+</head>
+<body>
+    <h1>JavaScript Object Properties</h1>
+    <div id="output"></div>
+
+    <script>
+        var student = {
+            name: "David Rayy",
+            sclass: "VI",
+            rollno: 12
+        };
+
+        let propertiesList=[];
+        
+        function listProperties(obj) {
+            for(let key in obj){
+                propertiesList+= obj[`${key}`];
+            }
+            document.getElementById("output").innerHTML = " "+propertiesList;
+        }
+        
+        listProperties(student);
+    </script>
+</body>
+</html>

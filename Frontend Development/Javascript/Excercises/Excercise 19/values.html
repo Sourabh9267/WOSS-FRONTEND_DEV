@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Form values</title>
+</head>
+<body>
+    
+    <form action="#">
+
+        <div>
+
+            <input type="text" id="fname" placeholder="Enter First Name">
+            <input type="text" id="lname" placeholder="Enter Last Name">
+            <button onclick="setValues()">Set Values</button>
+        </div>
+        
+        <h1 id="result">
+
+
+        </h1>    
+    </form>
+
+
+
+<script>
+
+    let fname=document.getElementById("fname");
+    let lname=document.getElementById("lname");
+
+    let result=document.getElementById("result");
+
+    function setValues(){
+        result.innerHTML="First Name: "+fname.value+" & Last Name: "+lname.value+" ";
+    }
+
+
+</script>
+</body>
+</html>

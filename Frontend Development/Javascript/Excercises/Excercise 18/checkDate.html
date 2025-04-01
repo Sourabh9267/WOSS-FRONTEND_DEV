@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>January 1st Sunday Checker</title>
+</head>
+<body>
+    <h1>Years when January 1st is a Sunday (2014-2050)</h1>
+    <div id="result"></div>
+
+    <script>
+        const resultElement = document.getElementById('result');
+        
+        const sundayYears = [];
+        
+        for (let year = 2014; year <= 2050; year++) {
+            const januaryFirst = new Date(year, 0, 1);
+            
+            if (januaryFirst.getDay() === 0) {
+                sundayYears.push(year);
+            }
+        }
+        
+        
+        if (sundayYears.length > 0) {
+            resultElement.innerHTML = 
+                `<p>January 1st will be a Sunday in the following years:</p>
+                 <p>${sundayYears.join(', ')}</p>
+                 <p>Total: ${sundayYears.length} years</p>`;
+        } else {
+            resultElement.innerHTML = 
+                `<p>January 1st will not be a Sunday in any year between 2014 and 2050.</p>`;
+        }
+    </script>
+</body>
+</html>

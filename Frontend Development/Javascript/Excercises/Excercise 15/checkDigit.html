@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Same Last Digit Checker</title>
+</head>
+<body>
+    <h1>Check if Numbers Have the Same Last Digit</h1>
+    
+    <div>
+        <label for="number1">First Number:</label>
+        <input type="number" id="number1">
+    </div>
+    <div>
+        <label for="number2">Second Number:</label>
+        <input type="number" id="number2">
+    </div>
+    <div>
+        <label for="number3">Third Number:</label>
+        <input type="number" id="number3">
+    </div>
+    <div>
+        <button onclick="checkLastDigit()">Check</button>
+    </div>
+    
+    <div id="result"></div>
+
+    <script>
+        function checkLastDigit() {
+            const num1 = parseInt(document.getElementById('number1').value);
+            const num2 = parseInt(document.getElementById('number2').value);
+            const num3 = parseInt(document.getElementById('number3').value);
+            
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                document.getElementById('result').innerHTML = 
+                    "Please enter valid numbers in all fields.";
+                return;
+            }
+            
+            const numbers = [num1, num2, num3];
+            
+            
+            const lastDigit1 = Math.abs(num1) % 10;
+            const lastDigit2 = Math.abs(num2) % 10;
+            const lastDigit3 = Math.abs(num3) % 10;
+            
+            
+            const allSame = (lastDigit1 === lastDigit2) && (lastDigit2 === lastDigit3);
+            
+            
+            if (allSame) {
+                document.getElementById('result').innerHTML = 
+                    `The numbers ${num1}, ${num2}, and ${num3} have the same last digit: ${lastDigit1}`;
+            } else {
+                document.getElementById('result').innerHTML = 
+                    `The numbers ${num1}, ${num2}, and ${num3} do NOT all have the same last digit.<br>` +
+                    `Last digits: ${num1} (${lastDigit1}), ${num2} (${lastDigit2}), ${num3} (${lastDigit3})`;
+            }
+        }
+    </script>
+</body>
+</html>

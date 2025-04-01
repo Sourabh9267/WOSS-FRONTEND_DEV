@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Size Tracker</title>
+</head>
+<body>
+    <h1>Window Size</h1>
+    <div id="dimensions"></div>
+
+    <script>
+        const dimensionsDisplay = document.getElementById('dimensions');
+        
+        function updateWindowSize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            dimensionsDisplay.innerHTML = `Width: ${width}px, Height: ${height}px`;
+        }
+        
+        window.addEventListener('resize', updateWindowSize);
+        
+        updateWindowSize();
+    </script>
+</body>
+</html>

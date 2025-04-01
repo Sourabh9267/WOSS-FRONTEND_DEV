@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #display {
+            width: 100%;
+            height: 60px;
+            font-size: 36px;
+            padding: 10px;
+            text-align: right;
+            background-color: #eaeaea;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 24px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .button:active {
+            transform: scale(1);
+        }
+
+        .operator {
+            background-color: #f39c12;
+        }
+
+        .operator:hover {
+            background-color: #e67e22;
+        }
+
+        .clear {
+            background-color: #e74c3c;
+        }
+
+        .clear:hover {
+            background-color: #c0392b;
+        }
+
+        .equal {
+            background-color: #27ae60;
+        }
+
+        .equal:hover {
+            background-color: #2ecc71;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="button-container">
+            <!-- Row 1: Clear, Operators -->
+            <button class="button clear">C</button>
+            <button class="button operator">÷</button>
+            <button class="button operator">×</button>
+            <button class="button operator">−</button>
+
+            <!-- Row 2: 7, 8, 9, + -->
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button operator">+</button>
+
+            <!-- Row 3: 4, 5, 6, = -->
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button equal">=</button>
+
+            <!-- Row 4: 1, 2, 3, 0 -->
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button">.</button>
+            
+            <button class="button zero">0</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        let currentInput = '';
+        let previousInput = '';
+        let operator = '';
+        let calculationComplete = false;
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const buttonValue = e.target.innerText;
+
+                if (calculationComplete && !isNaN(buttonValue)) {
+                    currentInput = '';
+                    display.value = '';
+                    calculationComplete = false;
+                }
+
+                if (!isNaN(buttonValue) || buttonValue === '.') {
+                    if (buttonValue === '.' && currentInput.includes('.')) {
+                        return;
+                    }
+                    
+                    currentInput += buttonValue;
+                    display.value = currentInput;
+                    calculationComplete = false;
+                }
+                else if (['+', '−', '×', '÷'].includes(buttonValue)) {
+                    if (currentInput === '' && previousInput === '') return;
+                    
+                    if (currentInput !== '' && previousInput !== '' && operator !== '') {
+                        calculateResult();
+                    }
+                    
+                    operator = buttonValue;
+                    if (currentInput !== '') {
+                        previousInput = currentInput;
+                        currentInput = '';
+                    }
+                    display.value = previousInput + ' ' + operator;
+                    calculationComplete = false;
+                }
+                else if (buttonValue === 'C') {
+                    currentInput = '';
+                    previousInput = '';
+                    operator = '';
+                    display.value = '';
+                    calculationComplete = false;
+                }
+                else if (buttonValue === '=') {
+                    calculateResult();
+                }
+            });
+        });
+
+        function calculateResult() {
+            if (previousInput === '' || currentInput === '') return;
+            
+            const num1 = parseFloat(previousInput);
+            const num2 = parseFloat(currentInput);
+            let result;
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '−':
+                    result = num1 - num2;
+                    break;
+                case '×':
+                    result = num1 * num2;
+                    break;
+                case '÷':
+                    if (num2 === 0) {
+                        result = 'Error';
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+            }
+
+            if (typeof result === 'number') {
+                result = parseFloat(result.toFixed(8));
+            }
+
+            display.value = result;
+            currentInput = result.toString();
+            previousInput = '';
+            operator = '';
+            calculationComplete = true;
+        }
+    </script>
+</body>
+
+</html>
