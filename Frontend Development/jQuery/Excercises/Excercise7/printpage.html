@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+
+    <div class="container py-5">
+
+        <div class="row py-5 justify-content-center">
+
+            <div class="col-6">
+
+
+                <div class="table-responsive">
+                    <table class="table table-success" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Column 1</th>
+                                <th scope="col">Column 2</th>
+                                <th scope="col">Column 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td scope="row">R1C1</td>
+                                <td>R1C2</td>
+                                <td>R1C3</td>
+                            </tr>
+                            <tr class="">
+                                <td scope="row">Item</td>
+                                <td>Item</td>
+                                <td>Item</td>
+                            </tr>
+                            <tr class="">
+                                <td scope="row">Item</td>
+                                <td>Item</td>
+                                <td>Item</td>
+                            </tr>
+                            <tr class="">
+                                <td scope="row">Item</td>
+                                <td>Item</td>
+                                <td>Item</td>
+                            </tr>
+                            <tr class="">
+                                <td scope="row">Item</td>
+                                <td>Item</td>
+                                <td>Item</td>
+                            </tr>
+                            <tr class="">
+                                <td scope="row">Item</td>
+                                <td>Item</td>
+                                <td>Item</td>
+                            </tr>
+                            <tr class="">
+                                <td scope="row">Item</td>
+                                <td>Item</td>
+                                <td>Item</td>
+                            </tr>
+                            <tr class="">
+                                <td scope="row">Item</td>
+                                <td>Item</td>
+                                <td>Item</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="btn-grp">
+
+                    <button id="btnclick" class="btn-primary btn px-3 py-2">
+
+                        Add Striped Effect
+
+                    </button>
+
+
+                    <button id="printtblbtn" class="btn-success btn px-3 py-2">
+
+                        Print Full Page
+
+                    </button>
+
+
+                </div>
+            </div>
+
+            <div class="col-6">
+
+
+                <div class="img-wrapper h-50">
+                    
+                    <img id="printimg" src="https://images.unsplash.com/photo-1741632530035-c374e872ca95?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="#" style="height:100%; width: 100%;" class="mb-3" >
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius magnam qui labore nostrum officia, provident est voluptas nisi ducimus animi eligendi quasi, odio nemo dignissimos iusto nesciunt. Quod, minus sint!</p>
+                    <button id="printimgbtn" class="btn btn-success px-3 py-2">
+                        Click to Print Image
+                    </button>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            let printtblbtn = $("#printtblbtn");
+
+            printtblbtn.click(function () {
+                window.print();
+            });
+
+
+
+            let printimg= $("#printimg");
+            let printimgbtn=$("#printimgbtn")
+
+            printimgbtn.click(function(){
+                console.log(printimg);
+                console.log(printimgbtn);
+                // printimg.printArea({ mode: 'popup', popClose: true });
+                printimg.print();
+            })
+
+
+            let btn = $("#btnclick");
+            let table = $("#table");
+
+            let isClicked = false;
+
+            btn.on("click", function (e) {
+                if (!isClicked) {
+                    isClicked = true;
+                    $(this).text("Remove Stripped Effect!");
+                    $(this).removeClass("btn-primary").addClass("btn-danger");
+                    table.addClass("table-striped");
+                    
+                } else {
+                    isClicked = false;
+                    $(this).text("Add Stripped Effect!");
+                    $(this).removeClass("btn-danger").addClass("btn-primary");
+                    table.removeClass("table-striped");
+
+                }
+            });
+
+        })
+
+    </script>
+
+</body>
+
+</html>

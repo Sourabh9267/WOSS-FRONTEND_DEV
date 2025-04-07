@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>
+
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <style>
+        div {
+            overflow-x: auto;
+        }
+
+        table {
+            text-align: center;
+            border-collapse: collapse;
+            width: 200vw;
+            table-layout: fixed;
+            min-width: 800px;
+        }
+
+        th,
+        td {
+            border: 2px solid red;
+            background-color: white;
+        }
+
+        th {
+            background-color: yellow;
+        }
+
+        table thead tr th:nth-child(1),
+        table tbody tr td:nth-child(1) {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background-color: white;
+            
+            height: 50px;
+            width: 300px;   
+            
+        }
+
+        table thead tr th:nth-child(1)::after , table tbody tr td:nth-child(1)::after {
+            content: "";
+            z-index: -1;
+            /* background-color: green; */
+            position: absolute;
+            width: 300px;
+            left: 0;
+            top: 0;
+          
+            border: 1px solid red;
+             
+        }
+        
+        table thead tr th:nth-child(2)::after  , table tbody tr td:nth-child(2)::after {
+            content: "";
+            z-index: -1;
+            /* background-color: green; */
+            position: absolute;
+            width: 300px;
+            left: 0;
+            top: 0;
+            border: 2px solid red;
+            border-collapse: collapse;
+             
+        }
+        
+        
+        table thead tr th:nth-child(2),
+        table tbody tr td:nth-child(2) {
+            position: sticky;
+            left: 80px;
+            z-index: 1;
+            background-color: white;
+            width: 300px;
+            left: 302px;
+            border-collapse: collapse;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column hffyfyyfyfyfyttftrddr yrfytytyfty ytfyft7f  sfdf dfd er er f g ffdg rtgtfg trgbdvbdf fgfggfg 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                    <th>Column 4</th>
+                    <th>Column 5</th>
+                    <th>Column 6</th>
+                    <th>Column 7</th>
+                    <th>Column 8</th>
+                    <th>Column 9</th>
+                    <th>Column 10</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>R1C1</td>
+                    <td>R1C2</td>
+                    <td>R1C3</td>
+                    <td>R1C4</td>
+                    <td>R1C5</td>
+                    <td>R1C6</td>
+                    <td>R1C7</td>
+                    <td>R1C8</td>
+                    <td>R1C9</td>
+                    <td>R1C10</td>
+                </tr>
+
+                <tr>
+                    <td>Item</td>
+                    <td>Item</td>
+                    <td>Item</td>
+                    <td>Item</td>
+                    <td>Item</td>
+                    <td>Item</td>
+                    <td>Item</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</body>
+
+</html>

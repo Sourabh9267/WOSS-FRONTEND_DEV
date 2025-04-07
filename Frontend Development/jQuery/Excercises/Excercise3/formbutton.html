@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Password Match Form</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+
+    <div class="container py-5 bg-danger">
+        <div class="row justify-content-center bg-success">
+            <div class="col-6 bg-warning">
+                <form action="#">
+                    <div class="mb-3">
+                        <label for="usrname" class="form-label">User Name</label>
+                        <input type="text" class="form-control" name="fname" id="usrname"
+                            placeholder="Enter Username here!" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Enter Password here!" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cpassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" name="cpassword" id="cpassword"
+                            placeholder="Enter Password again!" />
+                    </div>
+
+
+                    <small id="helpid" class="form-text text-danger d-none">
+                        Password must be matching!
+                    </small>
+
+                    <button type="submit" class="btn btn-primary mt-3" disabled>
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('form').on('input', function () {
+                let password = $('#password').val();
+                let cpassword = $('#cpassword').val();
+
+                function isValidPassword(pwd) {
+                    let minLength = pwd.length >= 8;
+                    let hasUpperCase = /[A-Z]/.test(pwd);
+                    let hasNumber = /[0-9]/.test(pwd);
+                    let hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(pwd);
+                    return minLength && hasUpperCase && hasNumber && hasSpecialChar;
+                }
+
+                if (
+                    password.length === 0 ||
+                    cpassword.length === 0 ||
+                    password !== cpassword ||
+                    !isValidPassword(password)
+                ) {
+                    $('#helpid').removeClass('d-none').text(
+                        'Password must be at least 8 characters long, contain 1 uppercase letter, 1 number, and 1 special character, and both passwords must match.'
+                    );
+                    $('button[type="submit"]').attr('disabled', 'disabled');
+                } else {
+                    $('#helpid').addClass('d-none');
+                    $('button[type="submit"]').removeAttr('disabled');
+                }
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

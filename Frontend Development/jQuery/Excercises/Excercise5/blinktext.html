@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+
+</head>
+
+<body>
+
+
+    <div class="container p-5">
+
+
+        <div class="row p-5">
+
+
+
+            <div class="col-8">
+                <h1 class="display-6">Blink Text using JQuery!</h1>
+            </div>
+            <div class="col-4">
+
+                <button id="blinkstart" class=" btn btn-success py-2 px-3">
+                    Click to Blink!
+                </button>
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            let text = $(".display-6");
+            let blinkbtn = $("#blinkstart");
+            let intervalId;
+            let isBlinking = false;
+
+            blinkbtn.on("click", function (e) {
+                if (!isBlinking) {
+                    isBlinking = true;
+                    $(this).text("Stop Blinking!");
+                    $(this).removeClass("btn-success").addClass("btn-danger");
+
+                    intervalId = setInterval(function () {
+                        text.animate({ opacity: 0 },"fast").animate({ opacity: 1 },"fast");
+                        console.log("interval");
+                    }, 500);
+
+                } else {
+                    isBlinking = false;
+                    $(this).text("Click to Blink!");
+                    $(this).removeClass("btn-danger").addClass("btn-success");
+                    clearInterval(intervalId);
+                    text.stop();
+                }
+            });
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

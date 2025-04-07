@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <p id="para">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni atque vitae similique fuga sequi sit harum, voluptatibus ab et dolorum, est repellat quos. Dignissimos voluptas impedit in reiciendis maiores corrupti.
+    </p>
+
+    <button id="click">
+        Click to Hide or show the paragraph!
+    </button>
+
+    <script>
+        $(document).ready(function() {
+            $("#click").click(function() {
+                $("#para").toggle(1000);
+            });
+        });
+
+        $("#para").mousemove(function(){
+            alert("::: Mouse Enter :::")
+        })
+
+        $("#para").mouseleave(function(){
+            alert("::: Mouse Leave :::")
+        })
+
+    </script>
+</body>
+</html>
