@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Change Button Text</title>
+
+</head>
+<body>
+
+<h2>Change text of the button</h2>
+
+
+<button id="btn" style="padding: 10px 20px; border-radius: 25px; background: #ffac9e; border:2px solid #530404; color:#4c1aff;">Click to Change</button>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  
+    let btn=$("#btn");
+
+    btn.click(function(){
+        
+        btn.text("Hello World!")
+    });
+});
+</script>
+
+</body>
+</html>
