@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add List Elements to Unordered List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myList1").append("<li>Item 1</li>");
+            $("#myList1").append("<li>Item 2</li>");
+            $("#myList1").append("<li>Item 3</li>");
+            
+            var listItem4 = $("<li>Item 4</li>");
+            var listItem5 = $("<li>Item 5</li>");
+            $("#myList2").append(listItem4);
+            $("#myList2").append(listItem5);
+
+            $("#myList3").append("<li>Item A</li><li>Item B</li><li>Item C</li>");
+
+            var items = [
+                $("<li>Item X</li>"),
+                $("<li>Item Y</li>"),
+                $("<li>Item Z</li>")
+            ];
+            console.log(items);
+            $("#myList4").append(items);
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2>Adding List Elements to Unordered Lists using jQuery</h2>
+
+    <h3>Method 1: Using append() individually</h3>
+    <ul id="myList1">
+    </ul>
+
+    <h3>Method 2: Creating elements and then appending</h3>
+    <ul id="myList2">
+    </ul>
+
+    <h3>Method 3: Appending multiple elements at once</h3>
+    <ul id="myList3">
+    </ul>
+
+    <h3>Method 4: Creating an array of elements and then appending</h3>
+    <ul id="myList4">
+    </ul>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

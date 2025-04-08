@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple JSON Selection</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            var jsonData = {
+                "name": "Dhaval Bhai",
+                "age": 24,
+                "city": "Ahmedabad"
+            };
+            console.log(jsonData);
+            $("#displayName").text(jsonData.name);
+            $("#displayAge").text(jsonData.age);
+            $("#displayCity").text(jsonData.city);
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        <p>Name: <span id="displayName"></span></p>
+        <p>Age: <span id="displayAge"></span></p>
+        <p>City: <span id="displayCity"></span></p>
+    </div>
+</body>
+</html>
