@@ -29,6 +29,10 @@
         .underlineText{
             text-decoration: underline 2px solid;
         }
+        input{
+            padding: 10px;
+            border-radius: 10px;
+        }
     </style>
 
 </head>
@@ -46,13 +50,13 @@
                 
                 <input type="text" placeholder="enter name here" id="name">
                 <input type="email" placeholder="enter email here" id="email">
-                <input type="password" placeholder="enter password here" class="mb-5" id="password">
+                <input type="password" placeholder="enter password here" class="mb-2" id="password">
                 
             </div>
-            <textarea name="" id="tbox" style="height: 200px; width: 400px; border-radius: 10px; resize: none;"></textarea>
+            <textarea name="" id="tbox" style="height: 200px; width: 400px; border-radius: 10px; resize: none; margin-bottom: 20px;"></textarea>
             <button id="getval" class="btn btn-primary px-3 py-2">Get Value</button>
             <button id="clearval" class="btn btn-danger px-3 py-2">Clear</button>
-            <p id="p1"></p>
+            <pre id="p1"></pre>
         </div>
         </form>
         
@@ -88,10 +92,7 @@
                 // p1.text("Value of the email is: "+email.val()+"<br>")
                 // p1.text("Value of the password is: "+password.val()+"<br>")
                 // p1.text("Value of the textbox is: "+textbox.val()+"<br>")
-                str=`Value of the name is: "${name.val()}"<br>
-                    Value of the email is: "${email.val()}"<br>
-                    Value of the password is: "${password.val()}<br>
-                    Value of the textbox is: "${textbox.val()}"<br>`
+            str=`Value of the name is: ${name.val()} \nValue of the email is: ${email.val()} \nValue of the password is: ${password.val()}\nValue of the textbox is: ${textbox.val()}`
                 p1.text(str);
 
             });
@@ -108,6 +109,7 @@
 
 
     </script>
+
 
 </body>
 

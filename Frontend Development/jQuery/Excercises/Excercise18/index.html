@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        .div1 {
+            padding: 50px;
+            border-radius: 25px;
+            height: 500px;
+            width: 500px;
+
+           
+        }
+        p{
+            word-spacing: 5px;
+        }
+        .underlineText{
+            text-decoration: underline 2px solid;
+        }
+    </style>
+
+</head>
+
+
+<body class="d-flex align-items-center justify-content-center flex-column gap-3">
+
+    <h1>Value of textbox </h1>
+    <div id="div1" class="div1">
+
+        <h1>DIV 1</h1>
+
+        <button id="addcssbtn" class="btn btn-danger px-3 py-2">Add CSS to DIV</button>
+        <button id="remcssbtn" class="btn btn-danger px-3 py-2">Remove CSS from DIV</button>
+        <p id="p1"></p>
+    </div>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            let div=$("#div1");
+
+            let addbtn=$("#addcssbtn");
+            let rembtn=$("#remcssbtn");
+
+            addbtn.click(function (){
+                div.css("background-color","yellow");
+                div.css("padding","50px");
+                console.log("CSS add");
+            })
+
+            rembtn.click(function (){
+                div.css("background-color","unset");
+                div.css("padding","unset");
+                console.log("CSS remove");
+            })
+       
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>

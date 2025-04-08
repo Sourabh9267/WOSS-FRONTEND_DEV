@@ -16,10 +16,10 @@
             height: 100vh;
         }
 
-        .div {
+        div {
             padding: 50px;
             border-radius: 25px;
- 
+            height: 500px;
             width: 500px;
             background-color: rgb(255, 185, 185);
         }
@@ -37,25 +37,16 @@
 <body class="d-flex align-items-center justify-content-center flex-column gap-3">
 
     <h1>Value of textbox </h1>
-    <div id="div1" class="div">
+    <div id="div1">
 
         <h1>DIV 1</h1>
-        <form action="#">
 
-            <div class="d-flex flex-column gap-3">
-                
-                <input type="text" placeholder="enter name here" id="name">
-                <input type="email" placeholder="enter email here" id="email">
-                <input type="password" placeholder="enter password here" class="mb-5" id="password">
-                
-            </div>
-            <textarea name="" id="tbox" style="height: 200px; width: 400px; border-radius: 10px; resize: none;"></textarea>
-            <button id="getval" class="btn btn-primary px-3 py-2">Get Value</button>
-            <button id="clearval" class="btn btn-danger px-3 py-2">Clear</button>
-            <p id="p1"></p>
-        </div>
-        </form>
-        
+        <textarea name="" id="tbox" style="height: 200px; width: 400px; border-radius: 10px; resize: none;"></textarea>
+        <button id="getval" class="btn btn-primary px-3 py-2">Get Value</button>
+        <button id="clearval" class="btn btn-danger px-3 py-2">Clear</button>
+        <p id="p1"></p>
+    </div>
+
 
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -75,33 +66,18 @@
 
             let btn = $("#getval");
             let btnclr = $("#clearval");
-            let name=$("#name");
-            let email=$("#email");
-            let password=$("#password");
             let textbox=$("#tbox");
             let p1=$("#p1");
-            console.log(name,email,password);
-            let str="";
+
+
             btn.click(function(){
-
-                // p1.text("Value of the name is: "+name.val()+"<br>")
-                // p1.text("Value of the email is: "+email.val()+"<br>")
-                // p1.text("Value of the password is: "+password.val()+"<br>")
-                // p1.text("Value of the textbox is: "+textbox.val()+"<br>")
-                str=`Value of the name is: "${name.val()}"<br>
-                    Value of the email is: "${email.val()}"<br>
-                    Value of the password is: "${password.val()}<br>
-                    Value of the textbox is: "${textbox.val()}"<br>`
-                p1.text(str);
-
+                console.log(textbox.val());
+                p1.text("Value of the textbox is: "+textbox.val())
             });
 
             btnclr.click(function (){
                 console.log("clear");
                 textbox.val("");
-                name.val("");
-                email.val("");
-                password.val("");
             })
 
         })
