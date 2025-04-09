@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Dropdown Value and Text with jQuery and Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>Get Dropdown Value and Text</h2>
+        <div class="form-group">
+            <label for="myDropdown">Select an Option:</label>
+            <select class="form-control" id="myDropdown">
+                <option value="">-- Select --</option>
+                <option value="apple">Apple</option>
+                <option value="banana">Banana</option>
+                <option value="cherry">Cherry</option>
+                <option value="date">Date</option>
+            </select>
+        </div>
+
+        <p id="selectedValue"></p>
+        <p id="selectedText"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            function updateSelectedInfo() {
+                var selectedValue = $("#myDropdown").val();
+                var selectedText = $("#myDropdown option:selected").text();
+                $("#selectedValue").text("Selected Value: " + selectedValue);
+                $("#selectedText").text("Selected Text: " + selectedText);
+            }
+
+            $("#myDropdown").change(updateSelectedInfo);
+        });
+    </script>
+</body>
+
+</html>

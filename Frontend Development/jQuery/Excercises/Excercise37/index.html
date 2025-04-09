@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count All Child Elements with jQuery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1>Count All Child Elements using jQuery</h1>
+
+        <div class="bg-light border p-3 mb-3">
+            <h5 class="mb-2">Parent Element 1</h5>
+            <div id="parent1">
+                <div class="bg-light border p-3 mb-3">
+                    <h5 class="mb-2">Child 1</h5>
+                    <h5 class="mb-2">Child 2</h5>
+                    <div>
+                        <h3>Child 3 Div</h3>
+                        <div>child 3's child</div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-3 alert alert-info">Number of all children: <span id="count1" class="font-weight-bold"></span></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let parent1 = $("#parent1");
+            let allChildrenCount1 = parent1.find("*").length;
+            $("#count1").text(allChildrenCount1);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
