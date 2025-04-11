@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Excercises Navigation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #0769AD;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #0769AD;
+        }
+        .exercise-list {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .exercise-link {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+        }
+        .exercise-link:hover {
+            background-color: #f5f5f5;
+        }
+        .exercise-number {
+            font-weight: bold;
+            color: #0769AD;
+            margin-right: 10px;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery Excercises</h1>
+        
+        <div class="exercise-list">
+            <a href="Excercise1/index.html" class="exercise-link">
+                <span class="exercise-number">1.</span> Scroll to the top of the page with jQuery
+            </a>
+            <a href="Excercise2/index.html" class="exercise-link">
+                <span class="exercise-number">2.</span> Disable right click menu in html page using jQuery
+            </a>
+            <a href="Excercise3/index.html" class="exercise-link">
+                <span class="exercise-number">3.</span> Disable/enable the form submit button
+            </a>
+            <a href="Excercise4/index.html" class="exercise-link">
+                <span class="exercise-number">4.</span> Fix broken images automatically
+            </a>
+            <a href="Excercise5/index.html" class="exercise-link">
+                <span class="exercise-number">5.</span> Blink text using jQuery
+            </a>
+            <a href="Excercise6/index.html" class="exercise-link">
+                <span class="exercise-number">6.</span> Create a Zebra Stripes table effect
+            </a>
+            <a href="Excercise7/index.html" class="exercise-link">
+                <span class="exercise-number">7.</span> Print a page using jQuery
+            </a>
+            <a href="Excercise8/index.html" class="exercise-link">
+                <span class="exercise-number">8.</span> Limit character input in the textarea including count
+            </a>
+            <a href="Excercise9/index.html" class="exercise-link">
+                <span class="exercise-number">9.</span> Make first word bold of all elements
+            </a>
+            <a href="Excercise10/index.html" class="exercise-link">
+                <span class="exercise-number">10.</span> Create a div using jQuery with style tag
+            </a>
+            <a href="Excercise11/index.html" class="exercise-link">
+                <span class="exercise-number">11.</span> Move one DIV element inside another using jQuery
+            </a>
+            <a href="Excercise12/index.html" class="exercise-link">
+                <span class="exercise-number">12.</span> Select values from a JSON object using jQuery
+            </a>
+            <a href="Excercise13/index.html" class="exercise-link">
+                <span class="exercise-number">13.</span> Add a list elements within an unordered list element
+            </a>
+            <a href="Excercise14/index.html" class="exercise-link">
+                <span class="exercise-number">14.</span> Remove all the options of a select box and then add one option and select it
+            </a>
+            <a href="Excercise15/index.html" class="exercise-link">
+                <span class="exercise-number">15.</span> Underline all the words of a text using jQuery
+            </a>
+            <a href="Excercise16/index.html" class="exercise-link">
+                <span class="exercise-number">16.</span> How to get the value of a textbox using jQuery
+            </a>
+            <a href="Excercise17/index.html" class="exercise-link">
+                <span class="exercise-number">17.</span> Remove all CSS classes using jQuery
+            </a>
+            <a href="Excercise18/index.html" class="exercise-link">
+                <span class="exercise-number">18.</span> Remove style added with .css() function using jQuery
+            </a>
+            <a href="Excercise19/index.html" class="exercise-link">
+                <span class="exercise-number">19.</span> Distinguish between left and right mouse click with jQuery
+            </a>
+            <a href="Excercise20/index.html" class="exercise-link">
+                <span class="exercise-number">20.</span> Check if an object is a jQuery object
+            </a>
+            <a href="Excercise21/index.html" class="exercise-link">
+                <span class="exercise-number">21.</span> How to detect whether the user has pressed 'Enter Key' using jQuery
+            </a>
+            <a href="Excercise22/index.html" class="exercise-link">
+                <span class="exercise-number">22.</span> Count number of rows and columns in a table using jQuery
+            </a>
+            <a href="Excercise23/index.html" class="exercise-link">
+                <span class="exercise-number">23.</span> How to get textarea text using jQuery
+            </a>
+            <a href="Excercise24/index.html" class="exercise-link">
+                <span class="exercise-number">24.</span> Access form input fields using jQuery
+            </a>
+            <a href="Excercise25/index.html" class="exercise-link">
+                <span class="exercise-number">25.</span> Find the absolute position of an element using jQuery
+            </a>
+            <a href="Excercise26/index.html" class="exercise-link">
+                <span class="exercise-number">26.</span> Convert a jQuery object into a string
+            </a>
+            <a href="Excercise27/index.html" class="exercise-link">
+                <span class="exercise-number">27.</span> How to detect a textbox's content has changed using jQuery
+            </a>
+            <a href="Excercise28/index.html" class="exercise-link">
+                <span class="exercise-number">28.</span> Remove a specific value from an array using jQuery
+            </a>
+            <a href="Excercise29/index.html" class="exercise-link">
+                <span class="exercise-number">29.</span> Change button text using jQuery
+            </a>
+            <a href="Excercise30/index.html" class="exercise-link">
+                <span class="exercise-number">30.</span> Add options to a drop-down list using jQuery
+            </a>
+            <a href="Excercise31/index.html" class="exercise-link">
+                <span class="exercise-number">31.</span> Set background-image using jQuery CSS property
+            </a>
+            <a href="Excercise32/index.html" class="exercise-link">
+                <span class="exercise-number">32.</span> Delete all table rows except first one using jQuery
+            </a>
+            <a href="Excercise33/index.html" class="exercise-link">
+                <span class="exercise-number">33.</span> How to get the selected value and currently selected text of a dropdown box using jQuery
+            </a>
+            <a href="Excercise34/index.html" class="exercise-link">
+                <span class="exercise-number">34.</span> Disable a link using jQuery
+            </a>
+            <a href="Excercise35/index.html" class="exercise-link">
+                <span class="exercise-number">35.</span> Change a CSS class using jQuery
+            </a>
+            <a href="Excercise36/index.html" class="exercise-link">
+                <span class="exercise-number">36.</span> Add a CSS class using jQuery
+            </a>
+            <a href="Excercise37/index.html" class="exercise-link">
+                <span class="exercise-number">37.</span> Count child elements using jQuery
+            </a>
+            <a href="Excercise38/index.html" class="exercise-link">
+                <span class="exercise-number">38.</span> Restrict "number"-only input for textboxes including decimal points
+            </a>
+            <a href="Excercise39/index.html" class="exercise-link">
+                <span class="exercise-number">39.</span> Find the loaded jQuery version
+            </a>
+            <a href="Excercise40/index.html" class="exercise-link">
+                <span class="exercise-number">40.</span> Remove a specific table row using jQuery
+            </a>
+            <a href="Excercise41/index.html" class="exercise-link">
+                <span class="exercise-number">41.</span> Set value in input text using jQuery
+            </a>
+            <a href="Excercise42/index.html" class="exercise-link">
+                <span class="exercise-number">42.</span> Set a value in a span using jQuery
+            </a>
+            <a href="Excercise43/index.html" class="exercise-link">
+                <span class="exercise-number">43.</span> Find the class of the clicked element
+            </a>
+            <a href="Excercise44/index.html" class="exercise-link">
+                <span class="exercise-number">44.</span> Set href attribute at runtime using jQuery
+            </a>
+            <a href="Excercise45/index.html" class="exercise-link">
+                <span class="exercise-number">45.</span> Remove disabled attribute using jQuery
+            </a>
+            <a href="Excercise46/index.html" class="exercise-link">
+                <span class="exercise-number">46.</span> Find the total width of an element (including width, padding, and border) in jQuery
+            </a>
+            <a href="Excercise47/index.html" class="exercise-link">
+                <span class="exercise-number">47.</span> Change options of select using jQuery
+            </a>
+            <a href="Excercise48/index.html" class="exercise-link">
+                <span class="exercise-number">48.</span> Access HTML form data using jQuery
+            </a>
+            <a href="Excercise49/index.html" class="exercise-link">
+                <span class="exercise-number">49.</span> Add attribute using jQuery
+            </a>
+        </div>
+        
+        <footer>
+            <p>jQuery Excercise Collection &copy; 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

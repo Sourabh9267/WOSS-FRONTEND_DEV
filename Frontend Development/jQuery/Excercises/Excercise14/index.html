@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<title>Remove and Add Select Option</title>
+
+</head>
+<body>
+
+<select id="mySelect">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select>
+
+<button id="clearAndAdd">Clear and Add Option</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#clearAndAdd").click(function(){
+    const selectBox = $("#mySelect");
+
+    
+    selectBox.empty();
+
+    const newOption = $("<option></option>")
+                      .attr("value", "newOptionValue")
+                      .text("New Option Text");
+
+
+    selectBox.append(newOption);
+
+
+    selectBox.val("newOptionValue");
+  });
+});
+</script>
+
+</body>
+</html>

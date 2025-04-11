@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change CSS Class</title>
+    <style>
+        .initial-style {
+            background-color: lightblue;
+            color: black;
+            padding: 10px;
+            border: 1px solid blue;
+        }
+
+        .new-style {
+            background-color: lightgreen;
+            color: white;
+            border: 2px dashed green;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="myElement" class="initial-style">
+        Click me to change my style!
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#myElement").click(function () {
+                $(this).removeClass("initial-style").addClass("new-style");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

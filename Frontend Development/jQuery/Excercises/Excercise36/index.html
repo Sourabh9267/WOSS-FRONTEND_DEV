@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add CSS Class</title>
+    <style>
+        .base-style {
+            padding: 15px;
+            border: 1px solid gray;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="myDivToAddClass" class="base-style">
+        This div will have a class added when you click the button.
+    </div>
+
+    <button id="addButton">Add Highlight Class</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#addButton").click(function () {
+                $("#myDivToAddClass").addClass("highlight");
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -50,13 +50,14 @@
             <h1>DIV 1</h1>
             <p>This Paragpraph is in the div1 </p>
             
+            <p>Check Position on Console</p>
             
         </div>
         
         <div id="div2"> 
             <h2>DIV 2</h2>
             <p>This Paragpraph is in the div2 </p>
-        
+            <p>Check Position on Console</p>
         </div>
 
         <script
@@ -81,7 +82,7 @@
                 let div2= $('#div2');
 
                 let position = div2.offset();
-                console.log(p[position]);
+                console.log("Position is : TOP-->"+position.top+" Left-->"+position.left);
             })
            
 
