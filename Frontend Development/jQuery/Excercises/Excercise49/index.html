@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Add min Attribute</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <input type="number" id="myNumberInput">
+    <button id="addMinBtn">Add min="10"</button>
+
+    <script>
+        $(document).ready(function() {
+            $("#addMinBtn").click(function() {
+                $("#myNumberInput").attr("min", "10");
+                alert("min attribute added to the number input!");
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Select Options with jQuery and Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2>Change Select Options</h2>
+
+        <div class="form-group">
+            <label for="mySelect">Select an Option:</label>
+            <select class="form-control" id="mySelect">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+
+        <button type="button" class="btn btn-primary mb-3" id="addOptionBtn">Add New Option</button>
+        <button type="button" class="btn btn-info mb-3 ml-2" id="changeOptionsBtn">Change All Options</button>
+        <button type="button" class="btn btn-warning mb-3 ml-2" id="removeSelectedBtn">Remove Selected Option</button>
+        <button type="button" class="btn btn-danger mb-3 ml-2" id="removeAllBtn">Remove All Options</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Button to add a new option
+            $("#addOptionBtn").click(function() {
+                let newOptionValue = prompt("Enter the value for the new option:");
+                let newOptionText = prompt("Enter the text for the new option:");
+
+                if (newOptionValue !== null && newOptionText !== null) {
+                    $("#mySelect").append(`<option value="${newOptionValue}">${newOptionText}</option>`);
+                }
+            });
+
+          
+            $("#changeOptionsBtn").click(function() {
+                let newOptions = [
+                    { value: "apple", text: "Apple" },
+                    { value: "banana", text: "Banana" },
+                    { value: "cherry", text: "Cherry" }
+                ];
+
+                $("#mySelect").empty();
+
+                $.each(newOptions, function(index, option) {
+                    $("#mySelect").append(`<option value="${option.value}">${option.text}</option>`);
+                });
+            });
+
+            $("#removeSelectedBtn").click(function() {
+                $("#mySelect option:selected").remove();
+            });
+
+            $("#removeAllBtn").click(function() {
+                $("#mySelect").empty();
+            });
+
+            $("#mySelect").change(function() {
+                let selectedValue = $(this).val();
+                $("#output").text("Selected value: " + selectedValue);
+            });
+        });
+    </script>
+
+</body>
+</html>
