@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  table:hover tbody tr:last-child {
+    background-color: red;
+    color: white;
+  }
+
+  td{
+    padding: 40px;
+    vertical-align: bottom;
+  }
+</style>
+
+<body>
+  <table border="1" >
+    <thead>
+      <tr>
+        <th>S.No.</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Pranjal</td>
+        <td>22</td>
+        <td>Bhopal</td>
+        <td rowspan="3">Bhopal</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Anjali</td>
+        <td>23</td>
+        <td>Jabalpur</td>
+        <!-- <td style="border:none"></td> -->
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Rahul</td>
+        <td>21</td>
+        <td>Indore</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
