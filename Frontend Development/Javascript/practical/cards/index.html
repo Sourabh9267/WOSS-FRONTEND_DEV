@@ -5,8 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Product Store</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
     <!-- Bootstrap CSS v5.3.2 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
@@ -16,9 +14,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <!-- jsPDF and jsPDF-AutoTable -->
+    <!-- jsPDF Core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <!-- jsPDF-AutoTable removed as requested -->
 
     <!-- Custom Styles -->
     <style>
@@ -1141,8 +1139,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script>
+        // Ensure jsPDF is globally available from the UMD module
         window.jsPDF = window.jspdf.jsPDF;
-
 
 
         // Global variables
@@ -1399,7 +1397,6 @@
                             </button>
                         </div>
                     `;
-                    // Prepend to keep consistent order? Or append? Let's append.
                     cartItemsContainer.appendChild(cartItemElement);
                 });
     
@@ -1419,7 +1416,6 @@
     
         // --- Event Listeners ---
         function addProductCardActionListeners(parentElement = productList) {
-            // Helper to replace and re-add listener to avoid duplicates
             const replaceAndListen = (selector, event, handler) => {
                 parentElement.querySelectorAll(selector).forEach(button => {
                     const newButton = button.cloneNode(true);
@@ -1428,25 +1424,21 @@
                 });
             };
     
-            // Add to cart buttons
             replaceAndListen('.btn-add-cart', 'click', function() {
                 const productId = parseInt(this.closest('.card-action').getAttribute('data-product-id'));
                 addToCart(productId);
             });
     
-            // Increase quantity buttons
             replaceAndListen('.increase-btn', 'click', function() {
                 const productId = parseInt(this.closest('.card-action').getAttribute('data-product-id'));
                 addToCart(productId);
             });
     
-            // Decrease quantity buttons
             replaceAndListen('.decrease-btn', 'click', function() {
                 const productId = parseInt(this.closest('.card-action').getAttribute('data-product-id'));
                 removeFromCart(productId);
             });
     
-            // Optional: Wishlist button listener
             replaceAndListen('.btn-wishlist', 'click', () => {
                  alert('Wishlist functionality not implemented yet!');
             });
@@ -1454,7 +1446,6 @@
     
     
         function addCartItemActionListeners() {
-             // Helper to replace and re-add listener to avoid duplicates on cart items
             const replaceAndListenCart = (selector, event, handler) => {
                 cartItemsContainer.querySelectorAll(selector).forEach(button => {
                     const newButton = button.cloneNode(true);
@@ -1463,19 +1454,16 @@
                 });
             };
     
-            // Increase button
             replaceAndListenCart('.cart-item .increase-btn', 'click', function() {
                  const productId = parseInt(this.getAttribute('data-product-id'));
                  addToCart(productId);
             });
     
-            // Decrease button
             replaceAndListenCart('.cart-item .decrease-btn', 'click', function() {
                  const productId = parseInt(this.getAttribute('data-product-id'));
                  removeFromCart(productId);
             });
     
-            // Remove button
             replaceAndListenCart('.cart-item .btn-remove', 'click', function() {
                  const productId = parseInt(this.getAttribute('data-product-id'));
                  removeFromCart(productId, true); // Remove completely
@@ -1487,13 +1475,13 @@
             productsContainer.style.display = 'block';
             cartContainer.style.display = 'none';
             document.querySelector('.nav-link.active')?.classList.remove('active');
-            document.querySelector('a.nav-link[onclick*="showProducts"]').classList.add('active'); // Target home link
+            document.querySelector('a.nav-link[onclick*="showProducts"]').classList.add('active');
         }
     
         function showCart() {
             productsContainer.style.display = 'none';
             cartContainer.style.display = 'block';
-            displayCartItems(); // Refresh cart items view
+            displayCartItems();
              document.querySelector('.nav-link.active')?.classList.remove('active');
              cartLink.classList.add('active');
         }
@@ -1504,24 +1492,20 @@
                 alert('Your cart is empty. Please add items before checking out.');
                 return;
             }
-            // Reset form validation state
             customerForm.classList.remove('was-validated');
-            customerForm.reset(); // Clear previous entries
+            customerForm.reset(); 
             customerInfoModalInstance.show();
         }
     
         function processToBill() {
-            // Use Bootstrap's built-in validation
             if (!customerForm.checkValidity()) {
                 customerForm.classList.add('was-validated');
-                // Optionally focus the first invalid field
                 const firstInvalid = customerForm.querySelector(':invalid');
                 if(firstInvalid) firstInvalid.focus();
                 return;
             }
-             customerForm.classList.add('was-validated'); // Show validation feedback even if valid
+             customerForm.classList.add('was-validated'); 
     
-            // Get customer info
              customerInfo = {
                  fullName: document.getElementById('fullName').value.trim(),
                  email: document.getElementById('email').value.trim(),
@@ -1529,7 +1513,6 @@
                  address: document.getElementById('address').value.trim()
              };
     
-            // Display customer details in bill modal
             const customerDetailsDiv = document.getElementById('customer-details');
             customerDetailsDiv.innerHTML = `
                 <p><strong>Name:</strong> ${customerInfo.fullName || 'N/A'}</p>
@@ -1538,9 +1521,8 @@
                 <p><strong>Address:</strong> ${(customerInfo.address || 'N/A').replace(/\n/g, '<br>')}</p>
             `;
     
-            // Display bill items in modal
             const billItemsDiv = document.getElementById('bill-items');
-            billItemsDiv.innerHTML = ''; // Clear previous
+            billItemsDiv.innerHTML = ''; 
     
             let subtotal = 0;
             cart.forEach(item => {
@@ -1556,94 +1538,87 @@
                 billItemsDiv.appendChild(billItemElement);
             });
     
-            // Add shipping and tax rows to bill modal
-             const shippingElement = document.createElement('div');
-             shippingElement.className = 'bill-item';
-             shippingElement.innerHTML = `
+             const shippingElementModal = document.createElement('div');
+             shippingElementModal.className = 'bill-item';
+             shippingElementModal.innerHTML = `
                  <div class="bill-item-name">Shipping</div>
                  <div class="bill-item-quantity"></div>
                  <div class="bill-item-price sub-item">$${SHIPPING_COST.toFixed(2)}</div>
              `;
-             billItemsDiv.appendChild(shippingElement);
+             billItemsDiv.appendChild(shippingElementModal);
     
              const tax = subtotal * TAX_RATE;
-             const taxElement = document.createElement('div');
-             taxElement.className = 'bill-item';
-             taxElement.innerHTML = `
+             const taxElementModal = document.createElement('div');
+             taxElementModal.className = 'bill-item';
+             taxElementModal.innerHTML = `
                  <div class="bill-item-name">Tax (${(TAX_RATE * 100).toFixed(0)}%)</div>
                  <div class="bill-item-quantity"></div>
                  <div class="bill-item-price sub-item">$${tax.toFixed(2)}</div>
              `;
-             billItemsDiv.appendChild(taxElement);
+             billItemsDiv.appendChild(taxElementModal);
     
-    
-            // Update total in bill modal
             const total = subtotal + SHIPPING_COST + tax;
             document.getElementById('bill-total').textContent = `$${total.toFixed(2)}`;
     
-            // Hide customer info modal and show bill modal
             customerInfoModalInstance.hide();
             billModalInstance.show();
         }
     
         function completePayment() {
-            // Generate random order number (example)
             const orderNumber = `TEC-${new Date().getFullYear()}-${Math.floor(Math.random() * 90000) + 10000}`;
             document.getElementById('order-number').textContent = orderNumber;
     
-            // Hide bill modal and show confirmation modal
             billModalInstance.hide();
             confirmationModalInstance.show();
     
-            // --- Important: Clear Cart and Reset UI ---
-            const productIdsToUpdate = Object.keys(productQuantities).map(id => parseInt(id)); // Get IDs before clearing
+            const productIdsToUpdate = Object.keys(productQuantities).map(id => parseInt(id)); 
             cart = [];
             productQuantities = {};
-            // Keep customerInfo briefly if needed for PDF *after* confirmation, otherwise clear:
-            // customerInfo = {};
-            customerForm.reset(); // Clear form fields
-            customerForm.classList.remove('was-validated'); // Reset validation display
+            customerForm.reset(); 
+            customerForm.classList.remove('was-validated'); 
     
-            updateCartUI(); // Update count badge, disable checkout etc.
-            // Update product cards back to 'Add to Cart'
+            updateCartUI(); 
             productIdsToUpdate.forEach(id => updateProductCardUI(id));
         }
     
     
-        // --- PDF Generation ---
+        // --- PDF Generation (Manual Table) ---
         function generateBillPDF() {
-            console.log('Attempting PDF generation. Checking libraries...');
-            console.log('window.jspdf:', window.jspdf);
-            console.log('jsPDF prototype:', window.jspdf?.jsPDF?.prototype);
-    
-            // Explicitly check if jsPDF and the autoTable plugin are loaded and ready
-            const jsPDF = window.jspdf?.jsPDF; // Get the constructor
-            const autoTable = jsPDF?.prototype?.autoTable; // Check if the plugin modified the prototype
-    
-            if (typeof jsPDF !== 'function' || typeof autoTable !== 'function') {
-                console.error("jsPDF or jsPDF-AutoTable is not ready.", {
+            console.log('Attempting PDF generation with manual table...');
+            
+            const jsPDF = window.jspdf?.jsPDF;
+            if (typeof jsPDF !== 'function') {
+                console.error("jsPDF is not ready.", {
                     hasJsPDF: typeof jsPDF === 'function',
-                    hasAutoTable: typeof autoTable === 'function',
-                    jspdfObject: window.jspdf // Log the object for inspection
+                    jspdfObject: window.jspdf
                 });
-                alert("Error generating PDF: Required libraries might not be fully loaded yet. Please wait a moment and try again.");
-                return; // Exit if libraries aren't ready
+                alert("Error generating PDF: jsPDF library not loaded. Please try again.");
+                return;
             }
     
-            // --- Proceed with PDF generation ---
             const doc = new jsPDF({
-                orientation: 'p', // portrait
-                unit: 'mm',       // millimeters
-                format: 'a4'      // A4 size paper
+                orientation: 'p',
+                unit: 'mm',
+                format: 'a4'
             });
-            const TEAL_COLOR = '#00BFB2'; // Define theme color hex
-            const DARK_BLUE_COLOR = '#2C3440';
+
+            const TEAL_COLOR = '#7C00BF'; // Using --teal from CSS (approximated)
+            const DARK_BLUE_COLOR = '#161321'; // Using --dark-blue from CSS
             const PAGE_WIDTH = doc.internal.pageSize.getWidth();
             const PAGE_HEIGHT = doc.internal.pageSize.getHeight();
-            const MARGIN = 15; // Page margin in mm
-    
-            let currentY = MARGIN; // Track Y position
-    
+            const MARGIN = 15;
+            let currentY = MARGIN;
+
+            // Helper function to draw page footers
+            const drawPageFooter = (docInstance, pageNum, totalPages) => {
+                const footerY = PAGE_HEIGHT - 10;
+                docInstance.setFontSize(8);
+                docInstance.setTextColor(150); // Light gray
+                docInstance.text(`Page ${pageNum} of ${totalPages}`, PAGE_WIDTH / 2, footerY, { align: 'center' });
+                docInstance.text("Thank you for your business!", MARGIN, footerY);
+                docInstance.text("TechStore Invoice", PAGE_WIDTH - MARGIN, footerY, { align: 'right'});
+            };
+            
             // --- 1. Header ---
             doc.setFontSize(22);
             doc.setFont('helvetica', 'bold');
@@ -1652,7 +1627,7 @@
     
             doc.setFontSize(10);
             doc.setFont('helvetica', 'normal');
-            doc.setTextColor(100); // Gray color for address
+            doc.setTextColor(100); 
             doc.text("123 Innovation Drive", MARGIN, currentY + 5);
             doc.text("Tech City, TX 75001", MARGIN, currentY + 9);
             doc.text("support@techstore.example", MARGIN, currentY + 13);
@@ -1661,130 +1636,198 @@
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(DARK_BLUE_COLOR);
             doc.text("INVOICE", PAGE_WIDTH - MARGIN, currentY, { align: 'right' });
-    
-            currentY += 25; // Move down past header
+            currentY += 25;
     
             // --- 2. Bill To & Order Details ---
             doc.setLineWidth(0.5);
-            doc.setDrawColor(TEAL_COLOR);
-            doc.line(MARGIN, currentY, PAGE_WIDTH - MARGIN, currentY); // Teal separator line
+            doc.setDrawColor(TEAL_COLOR); // Use var(--teal)
+            doc.line(MARGIN, currentY, PAGE_WIDTH - MARGIN, currentY);
             currentY += 8;
     
             const col1X = MARGIN;
-            const col2X = PAGE_WIDTH / 2 + 5; // Start of second column
+            const col2X = PAGE_WIDTH / 2 + 5;
     
             doc.setFontSize(11);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(DARK_BLUE_COLOR);
             doc.text("BILL TO:", col1X, currentY);
-    
             doc.text("ORDER DETAILS:", col2X, currentY);
-    
             currentY += 5;
+
             doc.setFontSize(10);
             doc.setFont('helvetica', 'normal');
-            doc.setTextColor(50); // Dark gray text
+            doc.setTextColor(50);
     
-            // Customer Info (Column 1)
             doc.text(customerInfo.fullName || 'N/A', col1X, currentY);
             doc.text(customerInfo.email || 'N/A', col1X, currentY + 4);
             doc.text(customerInfo.phone || 'N/A', col1X, currentY + 8);
-            // Address - handle potential multi-line
-            const addressLines = doc.splitTextToSize(customerInfo.address || 'N/A', (PAGE_WIDTH / 2) - MARGIN - 5); // Max width for address
+            const addressLines = doc.splitTextToSize(customerInfo.address || 'N/A', (PAGE_WIDTH / 2) - MARGIN - 10);
             doc.text(addressLines, col1X, currentY + 12);
-            const customerInfoHeight = (addressLines.length * 4) + 12; // Estimate height
+            const customerInfoHeight = (addressLines.length * 4) + 12;
     
-            // Order Info (Column 2)
             const today = new Date();
             const formattedDate = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
-            // Attempt to get order number from confirmation screen if available, otherwise generate placeholder
             const orderNumberElement = document.getElementById('order-number');
             const orderNumber = (orderNumberElement && orderNumberElement.textContent !== 'TEC-2025-XXXXX')
                               ? orderNumberElement.textContent
-                              : `TEC-${today.getFullYear()}-PEND`; // Use placeholder if not finalized
-    
+                              : `TEC-${today.getFullYear()}-PEND`;
     
             doc.text(`Invoice Date:`, col2X, currentY);
-            doc.text(formattedDate, col2X + 30, currentY); // Align value
-    
+            doc.text(formattedDate, col2X + 30, currentY);
             doc.text(`Order Number:`, col2X, currentY + 4);
             doc.text(orderNumber, col2X + 30, currentY + 4);
-    
-             // Placeholder for Payment Method / Due Date if needed
-            // doc.text(`Payment Method:`, col2X, currentY + 8);
-            // doc.text(`Credit Card`, col2X + 30, currentY + 8);
-    
-            // Adjust currentY based on the taller column (Customer Address)
-            currentY += Math.max(customerInfoHeight, 20); // Ensure minimum space + space for address
-            currentY += 5; // Extra padding
-    
-            // --- 3. Items Table ---
-            doc.setFontSize(11);
+            
+            currentY += Math.max(customerInfoHeight, 16) + 5; // Adjust Y after customer/order details
+
+            // --- 3. Items Table (Manual Implementation) ---
+            doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(DARK_BLUE_COLOR);
             doc.text("Order Summary", MARGIN, currentY);
-            currentY += 6;
-    
-            const tableColumn = [
-                { header: 'Item Description', dataKey: 'title' },
-                { header: 'Unit Price', dataKey: 'price' },
-                { header: 'Quantity', dataKey: 'qty' },
-                { header: 'Total', dataKey: 'total' }
+            currentY += 7;
+
+            const tableStartY = currentY;
+            const itemLineHeight = 5; // mm per line of text
+            const cellPaddingVertical = 2; // mm vertical padding in cell
+            const headerHeight = itemLineHeight + cellPaddingVertical * 1.5;
+
+            // Column definitions
+            const colConfig = [
+                { title: 'Item Description', widthRatio: 0.45, align: 'left', dataKey: 'title' },
+                { title: 'Unit Price', widthRatio: 0.18, align: 'right', dataKey: 'price' },
+                { title: 'Qty', widthRatio: 0.12, align: 'center', dataKey: 'quantity' },
+                { title: 'Total', widthRatio: 0.25, align: 'right', dataKey: 'itemTotal' }
             ];
-            const tableRows = [];
+
+            const tableWidth = PAGE_WIDTH - 2 * MARGIN;
+            let currentX = MARGIN;
+            const columnStartX = [];
+
+            colConfig.forEach(col => {
+                col.width = tableWidth * col.widthRatio;
+                columnStartX.push(currentX);
+                currentX += col.width;
+            });
+            
+            // Draw Table Header
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'bold');
+            doc.setFillColor(DARK_BLUE_COLOR); // Header background
+            doc.setTextColor(255); // White text
+            doc.rect(MARGIN, currentY, tableWidth, headerHeight, 'F'); // Fill header background
+            
+            let headerTextY = currentY + itemLineHeight / 2 + cellPaddingVertical; // Center text vertically in header
+            colConfig.forEach((col, i) => {
+                let textX = columnStartX[i] + cellPaddingVertical; // Default left align with padding
+                if (col.align === 'right') {
+                    textX = columnStartX[i] + col.width - cellPaddingVertical;
+                } else if (col.align === 'center') {
+                    textX = columnStartX[i] + col.width / 2;
+                }
+                doc.text(col.title, textX, headerTextY, { align: col.align });
+            });
+            currentY += headerHeight;
+
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(50); // Dark gray for item text
             let subtotal = 0;
-    
-            cart.forEach(item => {
+
+            const drawRow = (itemData, yPos) => {
+                let maxRowHeight = itemLineHeight + cellPaddingVertical * 2; // Min height for one line
+                const titleLines = doc.splitTextToSize(itemData.title, colConfig[0].width - (2 * cellPaddingVertical));
+                if (titleLines.length * itemLineHeight + (2 * cellPaddingVertical) > maxRowHeight) {
+                    maxRowHeight = titleLines.length * itemLineHeight + (2 * cellPaddingVertical);
+                }
+
+                // Check for page break BEFORE drawing the row
+                if (yPos + maxRowHeight > PAGE_HEIGHT - MARGIN - 15) { // 15mm buffer for footer
+                    return { newPage: true, height: 0 }; // Signal new page needed
+                }
+                
+                // Draw cell content
+                let textY = yPos + itemLineHeight / 2 + cellPaddingVertical; // Baseline for text
+
+                // Item Description (can be multi-line)
+                doc.text(titleLines, columnStartX[0] + cellPaddingVertical, textY);
+
+                // Unit Price
+                doc.text(`$${itemData.price.toFixed(2)}`, columnStartX[1] + colConfig[1].width - cellPaddingVertical, textY, { align: 'right'});
+                // Quantity
+                doc.text(itemData.quantity.toString(), columnStartX[2] + colConfig[2].width / 2, textY, { align: 'center'});
+                // Total
+                doc.text(`$${itemData.itemTotal.toFixed(2)}`, columnStartX[3] + colConfig[3].width - cellPaddingVertical, textY, { align: 'right'});
+
+                // Draw horizontal line below row
+                doc.setDrawColor(220); // Light gray line
+                doc.line(MARGIN, yPos + maxRowHeight, PAGE_WIDTH - MARGIN, yPos + maxRowHeight);
+                
+                return { newPage: false, height: maxRowHeight };
+            };
+
+            let currentPageNum = 1;
+            let totalPages = 1; // Initial assumption, will update later
+
+            for (const item of cart) {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
-                tableRows.push({
-                    title: item.title, // jsPDF-AutoTable handles text wrapping
-                    price: `$${item.price.toFixed(2)}`,
-                    qty: item.quantity,
-                    total: `$${itemTotal.toFixed(2)}`
-                });
-            });
-    
-            doc.autoTable({
-                columns: tableColumn,
-                body: tableRows,
-                startY: currentY,
-                theme: 'grid', // 'striped', 'grid', 'plain'
-                headStyles: {
-                    fillColor: DARK_BLUE_COLOR, // Header background
-                    textColor: 255, // Header text white
-                    fontStyle: 'bold',
-                    halign: 'center'
-                },
-                styles: {
-                    fontSize: 9,
-                    cellPadding: 2,
-                    valign: 'middle'
-                },
-                columnStyles: {
-                    title: { cellWidth: (PAGE_WIDTH - 2 * MARGIN) * 0.45 }, // 45% width for title
-                    price: { halign: 'right', cellWidth: (PAGE_WIDTH - 2 * MARGIN) * 0.18 },
-                    qty: { halign: 'center', cellWidth: (PAGE_WIDTH - 2 * MARGIN) * 0.12 },
-                    total: { halign: 'right', cellWidth: (PAGE_WIDTH - 2 * MARGIN) * 0.25 }
-                },
-                margin: { left: MARGIN, right: MARGIN },
-                didDrawPage: function (data) {
-                    // --- Footer on each page ---
-                    const pageCount = doc.internal.getNumberOfPages();
-                    doc.setFontSize(8);
-                    doc.setTextColor(150);
-                    doc.text(`Page ${data.pageNumber} of ${pageCount}`, PAGE_WIDTH / 2, PAGE_HEIGHT - 10, { align: 'center' });
-                    doc.text("Thank you for your business!", MARGIN, PAGE_HEIGHT - 10);
-                    doc.text("TechStore Invoice", PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 10, { align: 'right'});
+                const itemData = { ...item, itemTotal };
+
+                let rowInfo = drawRow(itemData, currentY);
+
+                if (rowInfo.newPage) {
+                    drawPageFooter(doc, currentPageNum, 99); // Placeholder for total pages
+                    doc.addPage();
+                    currentPageNum++;
+                    totalPages++; // Increment as we add pages
+                    currentY = MARGIN; // Reset Y to top margin
+
+                    // Redraw table header on new page
+                    doc.setFontSize(9);
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFillColor(DARK_BLUE_COLOR);
+                    doc.setTextColor(255);
+                    doc.rect(MARGIN, currentY, tableWidth, headerHeight, 'F');
+                    headerTextY = currentY + itemLineHeight / 2 + cellPaddingVertical;
+                    colConfig.forEach((col, i) => {
+                        let textX = columnStartX[i] + cellPaddingVertical;
+                        if (col.align === 'right') textX = columnStartX[i] + col.width - cellPaddingVertical;
+                        else if (col.align === 'center') textX = columnStartX[i] + col.width / 2;
+                        doc.text(col.title, textX, headerTextY, { align: col.align });
+                    });
+                    currentY += headerHeight;
+                    doc.setFontSize(9);
+                    doc.setFont('helvetica', 'normal');
+                    doc.setTextColor(50);
+                    
+                    rowInfo = drawRow(itemData, currentY); // Draw the row that caused the page break
                 }
-            });
-    
-            currentY = doc.lastAutoTable.finalY + 10; // Get Y position after table
-    
+                currentY += rowInfo.height;
+            }
+            
+            // Draw vertical lines for the table structure
+            doc.setDrawColor(200); // Light gray
+            for(let i = 1; i < colConfig.length; i++) { // Start from the second column's left border
+                doc.line(columnStartX[i], tableStartY, columnStartX[i], currentY);
+            }
+            // Optional: Draw table outer border
+            doc.rect(MARGIN, tableStartY, tableWidth, currentY - tableStartY, 'S'); // Stroke border
+
+            currentY += 10; // Space after table
+
             // --- 4. Totals Section ---
-            const totalsX = PAGE_WIDTH / 2; // Start totals from halfway point
-            const valueX = PAGE_WIDTH - MARGIN; // Right-align values
-    
+            const totalsX = PAGE_WIDTH / 2; 
+            const valueX = PAGE_WIDTH - MARGIN; 
+            
+            // Check if totals section needs new page
+            if (currentY + 30 > PAGE_HEIGHT - MARGIN - 15) { // Estimate 30mm for totals + notes
+                drawPageFooter(doc, currentPageNum, 99); // Placeholder
+                doc.addPage();
+                currentPageNum++;
+                totalPages++;
+                currentY = MARGIN;
+            }
+
             doc.setFontSize(10);
             doc.setFont('helvetica', 'normal');
             doc.setTextColor(50);
@@ -1800,7 +1843,7 @@
             const tax = subtotal * TAX_RATE;
             doc.text(`Tax (${(TAX_RATE * 100).toFixed(0)}%):`, totalsX, currentY, { align: 'right' });
             doc.text(`$${tax.toFixed(2)}`, valueX, currentY, { align: 'right' });
-            currentY += 7; // More space before total
+            currentY += 7; 
     
             doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
@@ -1810,27 +1853,36 @@
             currentY += 15;
     
             // --- 5. Notes/Terms (Optional) ---
+             if (currentY + 15 > PAGE_HEIGHT - MARGIN - 15) { // Check for notes
+                drawPageFooter(doc, currentPageNum, 99); // Placeholder
+                doc.addPage();
+                currentPageNum++;
+                totalPages++;
+                currentY = MARGIN;
+            }
             doc.setFontSize(9);
             doc.setFont('helvetica', 'italic');
             doc.setTextColor(100);
             doc.text("Notes:", MARGIN, currentY);
             doc.text("Please contact support@techstore.example for any questions regarding this invoice.", MARGIN, currentY + 4);
-    
-    
+            
+            // Update totalPages for all footers
+            for (let i = 1; i <= totalPages; i++) {
+                doc.setPage(i);
+                drawPageFooter(doc, i, totalPages);
+            }
+
             // --- Finalize and Save ---
-            // The footer (Page #, etc.) is added automatically by didDrawPage in autoTable options
             const pdfFilename = `TechStore_Invoice_${orderNumber}.pdf`;
             doc.save(pdfFilename);
-            console.log(`PDF "${pdfFilename}" generated.`);
+            console.log(`PDF "${pdfFilename}" generated with manual table.`);
         }
     
     
         // --- Initialization ---
         document.addEventListener('DOMContentLoaded', function() {
-             // Set current year in footer
              if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
     
-            // Initialize Bootstrap Modals
             if (document.getElementById('customerInfoModal')) {
                 customerInfoModalInstance = new bootstrap.Modal(document.getElementById('customerInfoModal'));
             }
@@ -1841,10 +1893,8 @@
                 confirmationModalInstance = new bootstrap.Modal(document.getElementById('confirmationModal'));
             }
     
-            // Initial fetch of products
             fetchProducts();
     
-            // Add event listeners only if elements exist
             if (cartLink) {
                 cartLink.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1868,7 +1918,6 @@
             if (downloadPdfBillBtn) downloadPdfBillBtn.addEventListener('click', generateBillPDF);
             if (completePaymentBtn) completePaymentBtn.addEventListener('click', completePayment);
     
-             // Listener for the confirmation modal's continue shopping button
             const confirmationContinueBtn = document.getElementById('confirmationContinueShopping');
              if (confirmationContinueBtn) {
                  confirmationContinueBtn.addEventListener('click', () => {
@@ -1876,7 +1925,6 @@
                 });
              }
     
-             // Add listener for home link in header
              const homeLink = document.querySelector('a.nav-link[onclick*="showProducts"]');
              if (homeLink) {
                 homeLink.addEventListener('click', (e) => {
@@ -1884,9 +1932,6 @@
                     showProducts();
                 });
              }
-    
-    
-            // Initial cart UI update (sets count to 0 and disables checkout)
             updateCartUI();
         });
     
