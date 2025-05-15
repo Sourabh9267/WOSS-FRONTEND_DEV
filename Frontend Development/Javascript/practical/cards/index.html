@@ -4,940 +4,501 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Product Store</title>
+    <title>Artisan Goods - Curated Store</title>
     <!-- Bootstrap CSS v5.3.2 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Lato for body, Merriweather for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 
     <!-- jsPDF Core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- jsPDF-AutoTable removed as requested -->
 
-    <!-- Custom Styles -->
     <style>
         :root {
-            --dark-blue: #161321;
-            --medium-blue: #190b30;
-            --teal: #7c00bf;
-            --light-gray: #EEEEEE;
-            --white: #FFFFFF;
+            --floral-white: #fffcf2;
+            --timberwolf: #ccc5b9;
+            --black-olive: #403d39;
+            --eerie-black: #252422;
+            --flame: #eb5e28;
+            --success-green: #28a745; /* For PAID seal */
+            --paid-seal-border: #1e7e34; /* Darker green for seal border */
 
-            --primary: var(--teal);
-            --primary-dark: #2e064a;
-            --accent: var(--teal);
-            --dark-bg: var(--dark-blue);
-            --card-bg: var(--medium-blue);
-            --text-primary: var(--white);
-            --text-secondary: var(--light-gray);
-            --text-muted: #c7c7c7;
-            --border-radius: 16px;
-            --shadow-sm: 0 5px 10px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.15);
-            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+            --font-primary: 'Lato', sans-serif;
+            --font-headings: 'Merriweather', serif;
+
+            --bg-main: var(--floral-white);
+            --bg-card: #ffffff; /* Pure white for cards for contrast */
+            --text-body: var(--black-olive);
+            --text-headings: var(--eerie-black);
+            --text-subtle: #706c66; 
+            --text-on-accent: var(--floral-white);
+            --accent-primary: var(--flame);
+            --border-color: var(--timberwolf);
+            --border-color-light: #e0dbd1; 
+
+            --border-radius: 8px;
+            --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-strong: 0 6px 18px rgba(0, 0, 0, 0.12);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: var(--font-primary);
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        header {
-            background-color: var(--dark-bg);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--border-color-light); }
+        ::-webkit-scrollbar-thumb { background: var(--timberwolf); border-radius: var(--border-radius); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--black-olive); }
+
+        header.site-header {
+            background-color: var(--bg-main);
             padding: 15px 0;
-            box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1030;
+            border-bottom: 1px solid var(--border-color-light);
+            box-shadow: var(--shadow-soft);
         }
 
         .navbar-brand {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.7rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--teal), var(--light-gray));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: var(--font-headings);
+            font-size: 1.75rem;
+            font-weight: 900; 
+            color: var(--text-headings) !important; 
         }
+        .navbar-brand .brand-accent { color: var(--accent-primary); }
 
         .nav-link {
-            color: #fff;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
+            font-family: var(--font-primary);
+            font-weight: 700; 
+            color: var(--text-subtle) !important; 
+            padding: 0.5rem 1rem !important;
+            border-radius: var(--border-radius);
+            transition: color 0.2s ease, background-color 0.2s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-primary) !important;
+            background-color: rgba(235, 94, 40, 0.05); 
         }
-
-        .nav-link:hover {
-            color: var(--accent);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .nav-link i { margin-right: 6px; }
 
         .cart-count {
-            position: relative;
-            top: -6px;
-            font-size: 11px;
-            background-color: var(--accent);
-            color: var(--dark-bg);
-            padding: 2px 6px;
-            border-radius: 12px;
-            margin-left: 4px;
-            font-weight: 600;
+            background-color: var(--accent-primary);
+            color: var(--text-on-accent);
+            padding: 3px 7px;
+            border-radius: 50px; 
+            font-size: 0.7rem;
+            font-weight: 700;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            line-height: 1;
+        }
+        .nav-item .nav-link { position: relative; }
+
+        .page-title {
+            font-family: var(--font-headings);
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: var(--text-headings);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .page-title .accent-text { color: var(--accent-primary); }
+
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 30px; 
         }
 
-                .product-card {
+        .product-card {
+            background-color: var(--bg-card);
             border-radius: var(--border-radius);
-            overflow: hidden;
-            height: 100%;
-            position: relative;
-            background-color: var(--card-bg);
-            color: var(--text-primary);
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: filter 0.2s ease, transform 0.2s ease; /* Added transition for filter */
+            border: 1px solid var(--border-color-light);
+            box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
+            height: 100%;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            box-shadow: var(--shadow-strong);
+            transform: translateY(-5px);
         }
 
-    .product-card:not(:hover) {
-        filter: grayscale(100%);
-    }
-
-    .product-card:hover {
-        transform: translateY(-5px); /* Example hover effect */
-        /* transform: scale(1.01); */
-        filter: grayscale(0%); /* Remove grayscale on hover */
-    }
         .product-img-container {
-            height: 280px;
-            position: relative;
+            height: 260px; 
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px; 
+            background-color: var(--floral-white); 
+            border-bottom: 1px solid var(--border-color-light);
             position: relative;
-            overflow: hidden;
-            background-color: var(--white); /* White background for images */
-             padding: 10px;
-            
         }
-
-        .product-img-container::after{
-            content:"";
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(transparent , #190B30 90%);
-        }
-
-        .product-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* Use contain to show full image */
-        }
-
-        .product-img-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-       
-            z-index: 1;
-            pointer-events: none; /* Allow clicks through overlay */
-        }
-
-        .badge-container {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 10;
-        }
-
-        /* Removing badges as API doesn't provide this info directly */
-        /*
-        .badge-sale,
-        .badge-new {
-             ...
-        } */
+        .product-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         .price-tag {
             position: absolute;
             top: 15px;
             right: 15px;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            color: var(--text-primary);
-            font-weight: 600;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            z-index: 10;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .product-info {
-            padding: 25px 20px;
-            position: relative;
-            flex-grow: 1; /* Allow info section to grow */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Pushes action buttons down */
-        }
-
-        .product-category {
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .product-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.4;
-            color: var(--text-primary);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limit to 2 lines */
-            -webkit-box-orient: vertical;
-            max-height: 3.2em; /* Fallback for max-height */
-            min-height: 3.2em; /* Ensure space even for short titles */
-        }
-
-        .product-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* Limit to 3 lines */
-            -webkit-box-orient: vertical;
-            max-height: 4.8em; /* Fallback for max-height */
-            line-height: 1.6;
-            flex-grow: 1; /* Allow description to take available space */
-        }
-
-        .rating {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .stars {
-            color: #ffc107;
-            letter-spacing: 2px;
-        }
-
-        .rating-number {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-left: 8px;
-        }
-
-        .card-action {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 15px; /* Pushed down by description flex-grow */
-        }
-
-        .btn-add-cart {
-            flex: 1;
-            background: var(--teal);
-            color: var(--dark-bg);
-            border: none;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-add-cart:hover {
-            background: var(--primary-dark);
-            color: var(--white);
-        }
-
-        .btn-wishlist {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            border: none;
-            border-radius: 8px;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .btn-wishlist:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: var(--accent);
-        }
-
-        /* Quantity controls */
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex: 1;
-            background: var(--teal);
-            border-radius: 8px;
-            padding: 6px;
-            color: var(--dark-bg);
-            height: 44px; /* Match wishlist button height */
-        }
-
-        .quantity-btn {
-            background-color: rgba(0, 0, 0, 0.2);
-            border: none;
-            color: var(--text-primary);
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .quantity-btn:hover {
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-
-        .quantity-btn:active {
-            transform: scale(0.95);
-        }
-
-        .quantity-number {
-            font-weight: 600;
-            font-size: 1rem;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .accent-shape {
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,191,178,0.2) 0%, rgba(44,52,64,0) 70%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Cart page styles */
-        .cart-page {
-            padding: 30px 0;
-            min-height: 70vh;
-        }
-
-        .cart-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-sm);
-            padding: 10px; /* Add some padding */
-        }
-
-        .cart-item-img-container {
-             width: 100px;
-             height: 100px;
-             flex-shrink: 0; /* Prevent shrinking */
-             background-color: white; /* White bg for image */
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             border-radius: 8px;
-             margin-right: 15px;
-        }
-
-        .cart-item-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .cart-item-details {
-            flex: 1;
-            padding: 5px 15px 5px 0; /* Adjust padding */
-        }
-
-        .cart-item-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: var(--text-primary);
-             overflow: hidden;
-             text-overflow: ellipsis;
-             display: -webkit-box;
-             -webkit-line-clamp: 1; /* Limit to 1 line in cart */
-             -webkit-box-orient: vertical;
-        }
-
-        .cart-item-price {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: var(--teal);
-            margin-bottom: 10px;
-        }
-
-        .cart-quantity-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cart-quantity-btn {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: var(--text-primary);
-            width: 30px;
-            height: 30px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .cart-quantity-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .cart-quantity-number {
-            font-weight: 600;
-            font-size: 0.9rem;
-            min-width: 25px;
-            text-align: center;
-        }
-
-        .cart-item-remove {
-            margin-left: 15px; /* Add some margin */
-            padding-right: 10px; /* Adjust padding */
-        }
-
-        .btn-remove {
-            background-color: rgba(255, 0, 0, 0.2);
-            color: #ff5252;
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .btn-remove:hover {
-            background-color: #ff5252;
-            color: white;
-        }
-
-        .cart-summary {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 100px;
-        }
-
-        .summary-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-family: 'Inter', sans-serif;
-        }
-         .summary-item span:first-child {
-            color: var(--text-secondary);
-         }
-         .summary-item span:last-child {
-             font-weight: 500;
-         }
-
-        .summary-item.total {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        .summary-item.total span:first-child {
-             color: var(--text-primary);
-         }
-         .summary-item.total span:last-child {
-             color: var(--teal);
-             font-weight: 700;
-         }
-
-
-        .btn-checkout {
-            width: 100%;
-            background: var(--teal);
-            color: var(--dark-bg);
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-checkout:hover {
-            background: var(--primary-dark);
-            color: var(--white);
-        }
-         .btn-checkout:disabled {
-             background-color: #555;
-             cursor: not-allowed;
-         }
-
-        .btn-continue-shopping {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--teal);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .btn-continue-shopping:hover {
-            color: var(--light-gray);
-            text-decoration: underline;
-        }
-
-        .empty-cart {
-            text-align: center;
-            padding: 50px 0;
-            color: var(--text-secondary);
-        }
-
-        .empty-cart-icon {
-            font-size: 5rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .empty-cart-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-        }
-        .empty-cart .btn-add-cart { /* Style the button in empty cart */
-            margin-top: 20px;
-            padding: 10px 25px;
-        }
-
-
-        /* Modal styles */
-        .modal-content {
-            border-radius: 16px;
-            border: none;
-            box-shadow: var(--shadow-lg);
-            background-color: var(--card-bg);
-            color: var(--text-primary);
-        }
-         .btn-close-white {
-             filter: invert(1) grayscale(100%) brightness(200%); /* Make close button white */
-         }
-
-        .modal-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px 30px;
-        }
-
-        .modal-body {
-            padding: 20px 30px;
-        }
-
-        .modal-footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between; /* Align buttons */
-        }
-         .modal-footer .btn {
-             min-width: 100px;
-         }
-         .modal-footer .btn-secondary {
-             background-color: rgba(255,255,255,0.1);
-             border: 1px solid rgba(255,255,255,0.2);
-         }
-         .modal-footer .btn-secondary:hover {
-              background-color: rgba(255,255,255,0.2);
-         }
-         .modal-footer .btn-primary {
-             background-color: var(--teal);
-             border: none;
-             color: var(--dark-bg);
-         }
-         .modal-footer .btn-primary:hover {
-              background-color: var(--primary-dark);
-              color: var(--white);
-         }
-
-
-        .modal-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Bill Modal Specific Styles */
-        .bill-customer-details p {
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-        .bill-customer-details strong {
-            color: var(--text-secondary);
-            display: inline-block;
-            width: 80px; /* Align labels */
-        }
-
-        .bill-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-        }
-
-        .bill-item:last-child {
-            border-bottom: none;
-        }
-
-        .bill-item-name {
-            font-weight: 500;
-            flex: 1;
-            padding-right: 10px;
-        }
-
-        .bill-item-quantity {
-            margin: 0 15px;
-            color: var(--text-muted);
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .bill-item-price {
-            font-weight: 600;
-            min-width: 80px;
-            text-align: right;
-            color: var(--text-secondary);
-        }
-        .bill-item-price.sub-item { /* Style for shipping/tax rows */
-             color: var(--text-primary);
-        }
-
-        .bill-total {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--accent-primary);
+            color: var(--text-on-accent);
+            font-family: var(--font-primary);
             font-weight: 700;
-            font-size: 1.1rem;
-        }
-         .bill-total span:last-child {
-            color: var(--teal);
-         }
-
-
-        /* Form styles */
-        .checkout-form {
-            margin-bottom: 30px;
+            padding: 6px 12px;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .form-label {
-            color: var(--text-primary);
-            font-weight: 500;
+        .product-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .product-title {
+            font-family: var(--font-headings);
+            font-size: 1.2rem; 
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: var(--text-headings);
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            min-height: calc(1.2rem * 1.4 * 2); 
+        }
+        .product-description {
             font-size: 0.9rem;
-            margin-bottom: 5px;
+            color: var(--text-body);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+            flex-grow: 1;
         }
+        .rating { margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+        .stars { color: var(--flame); opacity:0.8; letter-spacing: 1px; } 
+        .rating-number { font-size: 0.8rem; color: var(--text-subtle); margin-left: 5px; }
 
-        .form-control {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-primary);
-            border-radius: 8px;
-            padding: 10px 15px;
-            transition: all 0.3s ease;
+        .card-action { display: flex; align-items: stretch; gap: 10px; margin-top: auto; }
+
+        /* THEME BUTTONS */
+        .btn-theme {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 10px 18px; 
+            border-radius: var(--border-radius);
+            border: 1px solid transparent;
+            transition: all 0.25s ease-out;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            line-height: 1.5; 
+            min-height: 42px; 
+            box-sizing: border-box;
         }
+        .btn-theme i { margin-right: 8px; font-size: 0.9em; }
 
-        .form-control:focus {
-            background-color: rgba(255, 255, 255, 0.15);
-            border-color: var(--teal);
-            box-shadow: 0 0 0 0.25rem rgba(0, 191, 178, 0.25);
-            color: var(--text-primary);
+        .btn-theme-primary {
+            background-color: var(--accent-primary);
+            color: var(--text-on-accent);
+            border-color: var(--accent-primary);
+            box-shadow: 0 2px 5px rgba(235, 94, 40, 0.2);
         }
-
-        .form-control::placeholder {
-            color: var(--text-muted);
+        .btn-theme-primary:hover {
+            background-color: #d9531f; 
+            border-color: #d9531f;
+            box-shadow: 0 4px 10px rgba(235, 94, 40, 0.3);
+            transform: translateY(-1px);
+        }
+        .btn-theme-primary:disabled {
+            background-color: var(--timberwolf);
+            border-color: var(--timberwolf);
+            color: var(--text-subtle);
+            box-shadow: none;
+            cursor: not-allowed;
             opacity: 0.7;
         }
-        .form-control:required:invalid {
-             border-color: #ff5252; /* Indicate invalid fields */
+
+        .btn-theme-secondary {
+            background-color: transparent;
+            color: var(--black-olive);
+            border: 1px solid var(--timberwolf);
         }
+        .btn-theme-secondary:hover {
+            background-color: var(--black-olive);
+            color: var(--floral-white);
+            border-color: var(--black-olive);
+        }
+        
+        .btn-theme-link {
+            background: none;
+            border: none;
+            color: var(--accent-primary);
+            text-decoration: none;
+            padding: 5px; 
+            text-transform: none;
+            letter-spacing: normal;
+            min-height: auto;
+        }
+        .btn-theme-link:hover { color: #d9531f; text-decoration: underline; }
+
+
+        .quantity-control {
+            display: flex;
+            align-items: stretch; 
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            overflow: hidden; 
+            flex: 1; 
+            min-height: 42px; 
+            box-sizing: border-box;
+        }
+        .quantity-btn {
+            background-color: var(--floral-white);
+            color: var(--black-olive);
+            border: none;
+            width: 40px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+            padding: 0; 
+        }
+        .quantity-btn:hover { background-color: var(--border-color-light); }
+        .quantity-btn:first-child { border-right: 1px solid var(--border-color); }
+        .quantity-btn:last-child { border-left: 1px solid var(--border-color); }
+        .quantity-number {
+            font-weight: 700;
+            font-size: 1rem;
+            min-width: 40px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px; 
+            color: var(--text-headings);
+            background-color: var(--bg-main);
+            flex-grow: 1; 
+            text-align: center;
+        }
+
+        /* Cart Page */
+        .cart-page { padding: 40px 0; }
+        .cart-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+        }
+        .cart-item-img-container {
+            width: 90px; height: 90px; flex-shrink: 0;
+            background-color: var(--floral-white); border-radius: var(--border-radius);
+            margin-right: 20px; padding: 5px; display:flex; align-items:center; justify-content:center;
+            border: 1px solid var(--border-color-light);
+        }
+        .cart-item-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .cart-item-details { flex-grow: 1; }
+        .cart-item-title { font-family:var(--font-headings); font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color:var(--text-headings); }
+        .cart-item-price { font-weight: 700; color: var(--accent-primary); margin-bottom: 10px; font-size:1rem; }
+
+        .cart-quantity-control .quantity-btn { width: 32px; height: 32px; } /* Smaller for cart */
+        .cart-quantity-control .quantity-number { min-width: 30px; font-size: 0.9rem; }
+        .cart-quantity-control { min-height: 32px; max-width: 120px; } /* Max width to prevent overly wide controls */
+
+
+        .btn-remove { 
+            background: transparent;
+            color: var(--text-subtle);
+            border: none;
+            padding: 5px 8px;
+            font-size: 1.1rem;
+            border-radius: 50%;
+        }
+        .btn-remove:hover { color: var(--flame); background-color: rgba(235, 94, 40, 0.1); }
+
+        .cart-summary {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow-medium);
+            position: sticky; top: 100px; 
+        }
+        .summary-title { font-family:var(--font-headings); font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color:var(--text-headings); }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; }
+        .summary-item span:first-child { color: var(--text-subtle); }
+        .summary-item.total { border-top: 1px solid var(--border-color); padding-top: 12px; margin-top: 12px; font-weight: 700; font-size: 1.1rem; }
+        .summary-item.total span:first-child { color: var(--text-headings); }
+        .summary-item.total span:last-child { color: var(--accent-primary); font-weight: 700; font-size: 1.2rem; }
+
+        .empty-cart { text-align: center; padding: 50px 20px; background-color: var(--bg-card); border-radius: var(--border-radius); box-shadow: var(--shadow-soft); }
+        .empty-cart-icon { font-size: 4rem; color: var(--timberwolf); margin-bottom: 20px; }
+        .empty-cart-text { font-family:var(--font-headings); font-size: 1.2rem; margin-bottom: 25px; color: var(--text-subtle); }
+        
+        /* Modals */
+        .modal-content {
+            background-color: var(--bg-main);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-strong);
+            color: var(--text-body);
+        }
+        .modal-header { border-bottom: 1px solid var(--border-color-light); padding: 20px 25px; }
+        .modal-title { font-family:var(--font-headings); font-weight: 700; font-size: 1.25rem; color:var(--text-headings); }
+        .btn-close { filter: contrast(0) sepia(100%) hue-rotate(-15deg) saturate(0%) brightness(0.4); } /* Dark close icon */
+        .modal-body { padding: 25px; }
+        .modal-footer { border-top: 1px solid var(--border-color-light); padding: 15px 25px; display: flex; justify-content: flex-end; gap: 10px; }
+        .modal-footer .btn-theme { min-width: 120px; }
+
+        /* Form Styles */
+        .form-label { font-family: var(--font-primary); font-weight:700; color: var(--text-subtle); font-size: 0.85rem; margin-bottom: 6px; text-transform: uppercase; }
+        .form-control {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-body);
+            border-radius: var(--border-radius);
+            padding: 10px 15px; font-size: 0.95rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-control:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 0.2rem rgba(235, 94, 40, 0.2);
+            background-color: var(--bg-card); color: var(--text-body);
+        }
+        .form-control::placeholder { color: var(--timberwolf); }
+
+        /* Bill Modal Specifics */
+        .bill-customer-details { background-color: var(--floral-white); border:1px solid var(--border-color-light); border-radius: var(--border-radius); padding: 15px; }
+        .bill-customer-details p { margin-bottom: 5px; font-size: 0.9rem; }
+        .bill-customer-details strong { color: var(--text-subtle); display: inline-block; min-width: 80px; font-weight: 700; }
+        .bill-item { display: flex; justify-content: space-between; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed var(--border-color-light); font-size: 0.9rem; }
+        .bill-item:last-of-type { border-bottom: none; }
+        .bill-item-name { flex-grow: 1; padding-right: 10px; color: var(--text-headings); }
+        .bill-item-quantity { color: var(--text-subtle); text-align: center; min-width: 40px; } /* Added min-width */
+        .bill-item-price { font-weight: 600; text-align: right; min-width: 70px; color: var(--text-headings); }
+        .bill-item-price.sub-item {color: var(--text-body); font-weight: normal;}
+
+        .bill-total { border-top: 2px solid var(--accent-primary); font-size: 1.15rem; padding-top: 10px; margin-top: 10px; }
+        .bill-total span:first-child {font-weight: 700; color: var(--text-headings);}
+        .bill-total span:last-child {font-weight: 700; color: var(--accent-primary);}
+        
+        /* Confirmation Modal */
+        #confirmationModalEl .modal-body i.fa-check-circle { font-size: 4rem; color: var(--success-green); margin-bottom: 15px; }
+        #confirmationModalEl .modal-body h4 { font-family:var(--font-headings); font-weight: 700; font-size: 1.4rem; color:var(--text-headings); }
+        #orderNumberConfirmedSpan { color: var(--accent-primary); font-weight: bold; }
 
 
         /* Footer */
-        footer {
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
-            padding: 40px 0 30px;
+        footer.site-footer {
+            background-color: var(--eerie-black);
+            color: var(--timberwolf);
+            padding: 40px 0 20px;
             margin-top: 60px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--teal), #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-            justify-content: center;
-            gap: 20px;
-            margin: 15px 0;
-        }
-
-        .footer-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .social-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .social-icon:hover {
-            background-color: var(--accent);
-            color: var(--dark-bg);
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 20px;
             text-align: center;
         }
-
-        /* Loading spinner */
-        .loading-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 300px;
-            width: 100%; /* Ensure it takes full width */
+        .footer-logo { font-family:var(--font-headings); font-size: 1.5rem; font-weight: 900; margin-bottom: 15px; color: var(--floral-white); }
+        .footer-logo .brand-accent { color: var(--accent-primary); }
+        .footer-links { gap: 20px; margin-bottom: 20px; }
+        .footer-link { color: var(--timberwolf); font-size: 0.9rem; text-decoration: none; }
+        .footer-link:hover { color: var(--floral-white); text-decoration: underline; }
+        .social-links { gap: 15px; margin-bottom: 20px; }
+        .social-icon {
+            width: 36px; height: 36px; border-radius: 50%;
+            background-color: var(--black-olive); color: var(--floral-white);
+            font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
         }
+        .social-icon:hover { background-color: var(--accent-primary); }
+        .copyright { font-size: 0.85rem; opacity: 0.8; }
+        .copyright .fa-heart { color: var(--accent-primary); }
 
+        /* Loading Spinner */
+        .loading-container { display: flex; flex-direction:column; justify-content: center; align-items: center; min-height: 300px; width: 100%; }
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(0, 191, 178, 0.2);
+            width: 50px; height: 50px;
+            border: 5px solid var(--border-color-light);
             border-radius: 50%;
-            border-left-color: var(--teal);
-            animation: spin 1s linear infinite;
+            border-top-color: var(--accent-primary);
+            animation: spin 0.8s linear infinite;
         }
-         .loading-text {
-             margin-left: 15px;
-             font-size: 1.1rem;
-             color: var(--text-secondary);
-         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .loading-text { margin-top: 15px; font-size: 1rem; color: var(--text-subtle); font-family:var(--font-primary); font-weight:700; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .product-img-container {
-                height: 220px;
-            }
-        }
-
         @media (max-width: 768px) {
-             .product-card {
-                max-width: 400px; /* Slightly increase max width for better layout */
-                margin: 0 auto;
-            }
-            .product-img-container {
-                height: 200px;
-            }
-            .cart-summary {
-                margin-top: 30px;
-                position: static; /* Remove sticky positioning */
-            }
-             .navbar-nav {
-                 text-align: center; /* Center nav items when collapsed */
-             }
+            .page-title { font-size: 2rem; }
+            .cart-summary { position: static; margin-top: 30px; }
+            .modal-footer { flex-direction: column; gap: 10px; }
+            .modal-footer .btn-theme { width: 100%; }
+             .card-action { flex-direction: column; align-items: stretch;}
+             .card-action .btn-theme, .card-action .quantity-control { width: 100%;}
         }
+         @media (max-width: 576px) {
+            .cart-item { flex-direction: column; align-items: stretch; }
+            .cart-item-img-container { width: 100%; height: 180px; margin-bottom: 15px; }
+            .cart-item-remove { position: absolute; top: 10px; right: 10px; }
+            .product-title {font-size: 1.1rem; min-height: calc(1.1rem * 1.4 * 2);}
+            .bill-modal-footer { flex-direction: column; align-items: stretch;}
+            .bill-modal-footer > div { width: 100%; margin-top: 10px; }
+            .bill-modal-footer > div > .btn-theme { width: 100%; margin-bottom: 5px; }
+            .bill-modal-footer > .btn-theme-secondary { order: 2; margin-top:10px;}
+            .bill-modal-footer > div {order: 1;}
 
-        @media (max-width: 576px) {
-            .product-card {
-                max-width: 340px;
-            }
-             .product-title {
-                 font-size: 1.05rem;
-             }
-             .product-description {
-                 font-size: 0.8rem;
-             }
 
-            .cart-item {
-                flex-direction: column;
-                align-items: stretch; /* Stretch items full width */
-                position: relative; /* For positioning remove button */
-                 padding: 15px;
-            }
-
-            .cart-item-img-container {
-                width: 100%;
-                height: 150px; /* Adjust height for vertical layout */
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-             .cart-item-details {
-                padding: 0; /* Remove padding */
-            }
-
-            .cart-item-remove {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                margin-left: 0;
-                padding: 0;
-            }
-            .modal-footer {
-                flex-direction: column-reverse; /* Stack buttons vertically */
-                gap: 10px;
-            }
-             .modal-footer .btn {
-                 width: 100%; /* Full width buttons */
-             }
-        }
+         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#" onclick="showProducts(); return false;">TechStore</a>
+                <a class="navbar-brand" href="#" onclick="showProducts(); return false;"><span class="brand-accent">Artisan</span>Goods</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" onclick="showProducts(); return false;"><i class="fas fa-home me-1"></i> Home</a>
+                            <a class="nav-link me-lg-3 active" href="#" onclick="showProducts(); return false;"><i class="fas fa-store"></i> Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" id="cartLink">
-                                <i class="fas fa-shopping-cart me-1"></i> Cart
+                            <a class="nav-link" href="#" id="cartLinkEl">
+                                <i class="fas fa-shopping-basket"></i> Cart
                                 <span id="cart-count" class="cart-count">0</span>
                             </a>
                         </li>
@@ -947,141 +508,116 @@
         </nav>
     </header>
 
-    <!-- Main Content - Products Page -->
-    <div class="container mt-5" id="products-container">
-        <div class="row mb-4">
-            <div class="col-12">
-                <h2 class="mb-4 text-center display-5 fw-bold">Featured Products</h2>
+    <main class="container mt-4 mb-5">
+        <div id="products-container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h1 class="page-title">Curated <span class="accent-text">Collections</span></h1>
+                </div>
+            </div>
+            <div id="product-list">
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <span class="loading-text">Loading Our Wares...</span>
+                </div>
             </div>
         </div>
-        <div class="row gy-4" id="product-list"> <!-- Added gy-4 for vertical gap -->
-            <!-- Loading spinner -->
-            <div class="loading-container col-12">
-                <div class="spinner"></div>
-                <span class="loading-text">Loading Products...</span>
-            </div>
-            <!-- Products will be loaded here by JavaScript -->
-        </div>
-    </div>
 
-    <!-- Cart Page (Initially Hidden) -->
-    <div class="container cart-page" id="cart-container" style="display: none;">
-        <div class="row mb-4">
-            <div class="col-12">
-                <h2 class="cart-title">Your Shopping Cart</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <div id="cart-items">
-                    <!-- Cart items will be loaded here -->
-                     <div class="empty-cart" style="display: none;">
-                         <div class="empty-cart-icon">
-                             <i class="fas fa-shopping-cart"></i>
-                         </div>
-                         <div class="empty-cart-text">
-                             Your cart is currently empty.
-                         </div>
-                         <button class="btn-add-cart" id="startShoppingBtn">Start Shopping</button>
-                     </div>
+        <div class="cart-page" id="cart-container" style="display: none;">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h1 class="page-title">Your <span class="accent-text">Basket</span></h1>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="cart-summary" style="display: none;"> <!-- Initially hidden -->
-                    <h3 class="summary-title">Order Summary</h3>
-                    <div class="summary-item">
-                        <span>Subtotal</span>
-                        <span id="subtotal">$0.00</span>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="cart-items">
+                         <div class="empty-cart" style="display: none;">
+                             <div class="empty-cart-icon"> <i class="fas fa-box-open"></i> </div>
+                             <div class="empty-cart-text"> Your basket feels a bit light. Find something you love! </div>
+                             <button class="btn-theme btn-theme-primary" id="startShoppingBtnEl"><i class="fas fa-magic"></i> Discover Products</button>
+                         </div>
                     </div>
-                    <div class="summary-item">
-                        <span>Shipping</span>
-                        <span id="shipping">$5.99</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Tax (10%)</span>
-                        <span id="tax">$0.00</span>
-                    </div>
-                    <div class="summary-item total">
-                        <span>Total</span>
-                        <span id="total">$0.00</span>
-                    </div>
-                    <button class="btn-checkout mt-3" id="checkoutBtn" disabled>Proceed to Checkout</button>
-                    <div class="text-center">
-                        <a href="#" class="btn-continue-shopping" id="continueShoppingBtn"> <i class="fas fa-arrow-left me-1"></i> Continue Shopping</a>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart-summary" style="display: none;">
+                        <h3 class="summary-title">Order Summary</h3>
+                        <div class="summary-item"> <span>Subtotal</span> <span id="subtotalEl">$0.00</span> </div>
+                        <div class="summary-item"> <span>Shipping</span> <span id="shippingEl">$5.99</span> </div>
+                        <div class="summary-item"> <span>Tax (10%)</span> <span id="taxEl">$0.00</span> </div>
+                        <div class="summary-item total"> <span>Total</span> <span id="totalEl">$0.00</span> </div>
+                        <button class="btn-theme btn-theme-primary w-100 mt-4" id="checkoutBtnEl" disabled><i class="fas fa-lock"></i> Proceed to Checkout</button>
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn-theme btn-theme-link" id="continueShoppingBtnEl">
+                                <i class="fas fa-arrow-left me-1"></i> Continue Shopping
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Customer Info Modal -->
-    <div class="modal fade" id="customerInfoModal" tabindex="-1" aria-labelledby="customerInfoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="customerInfoModalEl" tabindex="-1" aria-labelledby="customerInfoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="customerInfoModalLabel">Customer Information</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="customerInfoModalLabel">Your Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="customerForm" class="checkout-form" novalidate> <!-- Added novalidate -->
+                    <form id="customerFormEl" class="checkout-form" novalidate>
                         <div class="mb-3">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="John Doe" required>
+                            <label for="fullNameInput" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullNameInput" placeholder="e.g., Jane Appleseed" required>
                              <div class="invalid-feedback">Please enter your full name.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                            <label for="emailInput" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="emailInput" placeholder="e.g., jane@example.com" required>
                              <div class="invalid-feedback">Please enter a valid email address.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="e.g., 123-456-7890" required pattern="[0-9\-]+"> <!-- Basic pattern -->
+                            <label for="phoneInput" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneInput" placeholder="e.g., (555) 123-4567" required pattern="[0-9\-+ ()]{7,}">
                              <div class="invalid-feedback">Please enter a valid phone number.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label">Shipping Address</label>
-                            <textarea class="form-control" id="address" rows="3" placeholder="123 Main St, City, Country" required></textarea>
+                            <label for="addressInput" class="form-label">Shipping Address</label>
+                            <textarea class="form-control" id="addressInput" rows="3" placeholder="e.g., 123 Craft Lane, Artville, ST 12345" required></textarea>
                              <div class="invalid-feedback">Please enter your shipping address.</div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="proceedToBill">Proceed to Bill</button>
+                    <button type="button" class="btn-theme btn-theme-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn-theme btn-theme-primary" id="proceedToBillBtnEl"><i class="fas fa-receipt"></i> Review Order</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bill Modal -->
-    <div class="modal fade" id="billModal" tabindex="-1" aria-labelledby="billModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Made modal larger -->
+    <div class="modal fade" id="billModalEl" tabindex="-1" aria-labelledby="billModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="billModalLabel">Your Bill Summary</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="billModalLabel">Order Invoice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h6 class="mb-3 text-uppercase letter-spacing-1">Customer Details:</h6>
-                    <div class="mb-4 p-3 bg-dark rounded bill-customer-details" id="customer-details">
-                        <!-- Customer details will be inserted here -->
-                    </div>
-
-                    <h6 class="mb-3 text-uppercase letter-spacing-1">Order Items:</h6>
-                    <div id="bill-items" class="mb-3">
-                        <!-- Bill items will be loaded here -->
-                    </div>
-                    <div class="bill-total">
-                        <span>Grand Total</span>
-                        <span id="bill-total">$0.00</span>
-                    </div>
+                    <h6 class="text-uppercase letter-spacing-1 mb-2" style="font-size: 0.8rem; color: var(--text-subtle);">Customer Details:</h6>
+                    <div class="mb-4 p-3 bill-customer-details" id="customerDetailsDiv"></div>
+                    <h6 class="text-uppercase letter-spacing-1 mb-2" style="font-size: 0.8rem; color: var(--text-subtle);">Order Items:</h6>
+                    <div id="billItemsDiv" class="mb-3"></div>
+                    <div class="bill-total"> <span>Grand Total</span> <span id="billTotalSpan">$0.00</span> </div>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <div> <!-- Group PDF and Payment buttons -->
-                         <button type="button" class="btn btn-info me-2" id="downloadPdfBill"><i class="fas fa-file-pdf me-1"></i> Download PDF</button>
-                         <button type="button" class="btn btn-primary" id="completePayment"><i class="fas fa-credit-card me-1"></i> Complete Payment</button>
+                <div class="modal-footer bill-modal-footer">
+                     <button type="button" class="btn-theme btn-theme-secondary" data-bs-dismiss="modal">Edit Order</button>
+                    <div class="ms-auto"> 
+                         <button type="button" class="btn-theme btn-theme-secondary me-2" id="downloadInvoicePreviewBtnEl"><i class="fas fa-file-pdf"></i> Download Invoice</button>
+                         <button type="button" class="btn-theme btn-theme-primary" id="completePaymentBtnEl"><i class="fas fa-credit-card"></i> Confirm & Pay</button>
                     </div>
                 </div>
             </div>
@@ -1089,144 +625,142 @@
     </div>
 
     <!-- Order Confirmation Modal -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="confirmationModalEl" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <!-- Corrected HTML structure here -->
             <div class="modal-content">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title" id="confirmationModalLabel">Order Confirmation</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="confirmationModalLabel">Payment Confirmed!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center py-4">
-                    <i class="fas fa-check-circle mb-4" style="font-size: 5rem; color: var(--teal);"></i>
-                    <h4 class="mb-3">Thank you for your order!</h4>
-                    <p class="mb-4 text-secondary">Your order has been placed successfully and is being processed.</p>
-                    <p class="mb-1">Order #: <strong id="order-number">TEC-2025-XXXXX</strong></p>
-                    <p class="text-muted small">You will receive an email confirmation shortly.</p>
+                    <i class="fas fa-check-circle mb-3"></i>
+                    <h4 class="mb-2">Thank You! Your Order is Placed.</h4>
+                    <p class="mb-1 text-body">Order ID: <strong id="orderNumberConfirmedSpan"></strong></p>
+                    <p class="text-subtle small mb-3">An email confirmation with your receipt will be sent shortly.</p>
                 </div>
-                <div class="modal-footer border-0 justify-content-center">
-                    <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal" id="confirmationContinueShopping">Continue Shopping</button>
+                <div class="modal-footer border-0 justify-content-center flex-column flex-sm-row gap-2">
+                    <button type="button" class="btn-theme btn-theme-secondary" id="downloadReceiptBtnEl"><i class="fas fa-receipt"></i> Download Receipt</button>
+                    <button type="button" class="btn-theme btn-theme-primary" data-bs-dismiss="modal" id="confirmationContinueShoppingBtnEl"><i class="fas fa-shopping-bag"></i> Continue Shopping</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">TechStore</div>
+                <div class="footer-logo"><span class="brand-accent">Artisan</span>Goods</div>
                 <div class="footer-links">
-                    <a href="#" class="footer-link">About Us</a>
-                    <a href="#" class="footer-link">Contact</a>
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Our Story</a> <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Privacy Policy</a> <a href="#" class="footer-link">Terms of Use</a>
                 </div>
                 <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
                 </div>
                 <div class="copyright">
-                    © <span id="currentYear"></span> TechStore. All rights reserved. | Powered by FakeStoreAPI
+                    © <span id="currentYearSpan"></span> ArtisanGoods. All rights reserved. Crafted with <i class="fas fa-heart"></i> by You & FakeStoreAPI.
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script>
-        // Ensure jsPDF is globally available from the UMD module
+        // CSS Variable Access for JS
+        const ROOT_STYLES = getComputedStyle(document.documentElement);
+        const CSS_FLAME_COLOR = ROOT_STYLES.getPropertyValue('--flame').trim();
+        const CSS_BLACK_OLIVE_COLOR = ROOT_STYLES.getPropertyValue('--black-olive').trim();
+        const CSS_TIMBERWOLF_COLOR = ROOT_STYLES.getPropertyValue('--timberwolf').trim();
+        const CSS_SUCCESS_GREEN_COLOR = ROOT_STYLES.getPropertyValue('--success-green').trim();
+        const CSS_PAID_SEAL_BORDER_COLOR = ROOT_STYLES.getPropertyValue('--paid-seal-border').trim();
+
+
         window.jsPDF = window.jspdf.jsPDF;
 
+        let allProducts = [];
+        let cart = [];
+        let productQuantities = {}; // { productId: quantity }
+        let customerInfo = {};
+        let cartForReceipt = [];
+        let customerInfoForReceipt = {};
+        let orderNumberForReceipt = '';
 
-        // Global variables
-        let allProducts = []; // To store products fetched from API
-        let cart = []; // To store items in the cart { id, title, price, image, quantity }
-        let productQuantities = {}; // To track quantity for each product ID { productId: quantity }
-        let customerInfo = {}; // To store customer details for the bill/PDF
         const SHIPPING_COST = 5.99;
         const TAX_RATE = 0.10; // 10%
     
-        // DOM elements
-        const productList = document.getElementById('product-list');
-        const cartCount = document.getElementById('cart-count');
-        const productsContainer = document.getElementById('products-container');
-        const cartContainer = document.getElementById('cart-container');
-        const cartItemsContainer = document.getElementById('cart-items');
-        const cartSummaryElement = document.querySelector('.cart-summary');
-        const emptyCartMessage = cartItemsContainer.querySelector('.empty-cart');
-        const subtotalElement = document.getElementById('subtotal');
-        const shippingElement = document.getElementById('shipping');
-        const taxElement = document.getElementById('tax');
-        const totalElement = document.getElementById('total');
-        const cartLink = document.getElementById('cartLink');
-        const continueShoppingBtn = document.getElementById('continueShoppingBtn');
-        const startShoppingBtn = document.getElementById('startShoppingBtn');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const proceedToBillBtn = document.getElementById('proceedToBill');
-        const downloadPdfBillBtn = document.getElementById('downloadPdfBill');
-        const completePaymentBtn = document.getElementById('completePayment');
-        const customerForm = document.getElementById('customerForm');
-        const currentYearSpan = document.getElementById('currentYear');
+        // Renamed DOM elements for consistency
+        const productListEl = document.getElementById('product-list');
+        const cartCountEl = document.getElementById('cart-count');
+        const productsContainerEl = document.getElementById('products-container');
+        const cartContainerEl = document.getElementById('cart-container');
+        const cartItemsContainerEl = document.getElementById('cart-items');
+        const cartSummaryEl = document.querySelector('.cart-summary');
+        const emptyCartMsgEl = cartItemsContainerEl.querySelector('.empty-cart');
+        const subtotalEl = document.getElementById('subtotalEl');
+        const shippingEl = document.getElementById('shippingEl');
+        const taxEl = document.getElementById('taxEl');
+        const totalEl = document.getElementById('totalEl');
+        const cartLinkEl = document.getElementById('cartLinkEl');
+        const continueShoppingBtnEl = document.getElementById('continueShoppingBtnEl');
+        const startShoppingBtnEl = document.getElementById('startShoppingBtnEl');
+        const checkoutBtnEl = document.getElementById('checkoutBtnEl');
+        const proceedToBillBtnEl = document.getElementById('proceedToBillBtnEl');
+        const downloadInvoicePreviewBtnEl = document.getElementById('downloadInvoicePreviewBtnEl');
+        const completePaymentBtnEl = document.getElementById('completePaymentBtnEl');
+        const customerFormEl = document.getElementById('customerFormEl');
+        const currentYearSpanEl = document.getElementById('currentYearSpan');
+        const downloadReceiptBtnEl = document.getElementById('downloadReceiptBtnEl');
+        const orderNumberConfirmedSpanEl = document.getElementById('orderNumberConfirmedSpan');
+        const customerDetailsDivEl = document.getElementById('customerDetailsDiv');
+        const billItemsDivEl = document.getElementById('billItemsDiv');
+        const billTotalSpanEl = document.getElementById('billTotalSpan');
+
+        // Modal related DOM elements (for JS instantiation)
+        const customerInfoModalEl = document.getElementById('customerInfoModalEl');
+        const billModalEl = document.getElementById('billModalEl');
+        const confirmationModalEl = document.getElementById('confirmationModalEl');
     
-        // Bootstrap Modals Instances
-        let customerInfoModalInstance;
-        let billModalInstance;
-        let confirmationModalInstance;
+        let bsCustomerInfoModal, bsBillModal, bsConfirmationModal; // Bootstrap Modal instances
     
-        // --- API Fetching ---
         async function fetchProducts() {
             const apiUrl = 'https://fakestoreapi.com/products';
             const loadingContainer = document.querySelector('.loading-container');
-            productList.innerHTML = ''; // Clear previous content if any
-            if (loadingContainer) loadingContainer.style.display = 'flex'; // Show loading spinner
-    
+            productListEl.innerHTML = '';
+            if (loadingContainer) loadingContainer.style.display = 'flex';
             try {
                 const response = await fetch(apiUrl);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                allProducts = data; // Store fetched products globally
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                allProducts = await response.json();
                 displayProducts(allProducts);
             } catch (error) {
                 console.error("Failed to fetch products:", error);
-                productList.innerHTML = `<div class="col-12 text-center text-danger p-5"><h4>Failed to load products</h4><p>Please check your network connection and try again later.</p></div>`;
+                productListEl.innerHTML = `<div class="col-12 text-center p-5"><h4 style="color:var(--flame);">Could Not Load Products</h4><p>Please check your internet connection and try refreshing.</p></div>`;
             } finally {
-                 if (loadingContainer) loadingContainer.style.display = 'none'; // Hide loading spinner
+                 if (loadingContainer) loadingContainer.style.display = 'none';
             }
         }
     
-        // --- Product Display ---
         function displayProducts(productsToDisplay) {
-            productList.innerHTML = ''; // Clear previous content or spinner
-    
+            productListEl.innerHTML = '';
              if (!productsToDisplay || productsToDisplay.length === 0) {
-                 productList.innerHTML = `<div class="col-12 text-center text-muted p-5"><h4>No products found.</h4></div>`;
+                 productListEl.innerHTML = `<div class="col-12 text-center p-5"><p>No products are currently available. Please check back later!</p></div>`;
                  return;
              }
-    
             productsToDisplay.forEach(product => {
-                const displayPrice = product.price; // API doesn't have sale price
-                const productCard = document.createElement('div');
-                // Use d-flex and align-items-stretch for equal height cards within a row
-                productCard.className = 'col-md-6 col-lg-4 mb-4 d-flex align-items-stretch';
-    
-                const starRating = generateStarRating(product.rating?.rate); // Use optional chaining
-    
-                productCard.innerHTML = `
+                const starRating = generateStarRating(product.rating?.rate);
+                const productCardWrapper = document.createElement('div');
+                productCardWrapper.innerHTML = `
                     <div class="product-card">
                         <div class="product-img-container">
                             <img src="${product.image}" alt="${product.title}" class="product-img">
-                            <div class="price-tag">$${displayPrice.toFixed(2)}</div>
+                            <div class="price-tag">$${product.price.toFixed(2)}</div>
                         </div>
                         <div class="product-info">
-                            <div> <!-- Wrap top info to push actions down -->
-                                <div class="product-category text-capitalize">${product.category}</div>
+                            <div>
+                                <div class="product-category">${product.category}</div>
                                 <h3 class="product-title">${product.title}</h3>
                                 <p class="product-description">${product.description}</p>
                                 <div class="rating">
@@ -1237,15 +771,10 @@
                             <div class="card-action" data-product-id="${product.id}">
                                 ${getCardActionHTML(product.id)}
                             </div>
-                            <div class="accent-shape"></div>
                         </div>
-                    </div>
-                `;
-    
-                productList.appendChild(productCard);
+                    </div>`;
+                productListEl.appendChild(productCardWrapper);
             });
-    
-            // Add event listeners for buttons on the newly created cards
             addProductCardActionListeners();
         }
     
@@ -1254,688 +783,505 @@
              if (quantity > 0) {
                  return `
                      <div class="quantity-control">
-                         <button class="quantity-btn decrease-btn" aria-label="Decrease quantity">-</button>
+                         <button class="quantity-btn decrease-btn" aria-label="Decrease quantity"><i class="fas fa-minus"></i></button>
                          <span class="quantity-number">${quantity}</span>
-                         <button class="quantity-btn increase-btn" aria-label="Increase quantity">+</button>
+                         <button class="quantity-btn increase-btn" aria-label="Increase quantity"><i class="fas fa-plus"></i></button>
                      </div>
-                     <button class="btn-wishlist" aria-label="Add to Wishlist">
-                         <i class="far fa-heart"></i>
-                     </button>
-                 `;
-             } else {
-                 return `
-                     <button class="btn-add-cart">Add to Cart</button>
-                     <button class="btn-wishlist" aria-label="Add to Wishlist">
-                         <i class="far fa-heart"></i>
-                     </button>
-                 `;
+                     <button class="btn-theme btn-theme-secondary" aria-label="Wishlist" style="min-width:42px; padding:0 10px;"><i class="far fa-heart" style="margin-right:0;"></i></button>`;
              }
+             return `
+                 <button class="btn-theme btn-theme-primary btn-add-cart flex-grow-1"><i class="fas fa-cart-plus"></i>Add to Cart</button>
+                 <button class="btn-theme btn-theme-secondary" aria-label="Wishlist" style="min-width:42px; padding:0 10px;"><i class="far fa-heart" style="margin-right:0;"></i></button>`;
         }
     
-        function generateStarRating(rating) {
-            if (typeof rating !== 'number' || rating < 0) rating = 0; // Handle undefined/invalid rating
-            const fullStars = Math.floor(rating);
-            const halfStar = rating % 1 >= 0.4; // Threshold for half star
+        function generateStarRating(ratingVal) {
+            if (typeof ratingVal !== 'number' || ratingVal < 0) ratingVal = 0;
+            const fullStars = Math.floor(ratingVal);
+            const halfStar = ratingVal % 1 >= 0.4;
             const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-            let starsHTML = '';
-    
-            for (let i = 0; i < fullStars; i++) starsHTML += '<i class="fas fa-star"></i>';
+            let starsHTML = Array(fullStars).fill('<i class="fas fa-star"></i>').join('');
             if (halfStar) starsHTML += '<i class="fas fa-star-half-alt"></i>';
-            for (let i = 0; i < emptyStars; i++) starsHTML += '<i class="far fa-star"></i>';
-    
-            return starsHTML || '<i class="far fa-star"></i>'.repeat(5); // Default if rating is 0
+            starsHTML += Array(emptyStars).fill('<i class="far fa-star"></i>').join('');
+            return starsHTML || Array(5).fill('<i class="far fa-star"></i>').join('');
         }
-    
-        // --- Cart Logic ---
+        
         function addToCart(productId) {
             const product = allProducts.find(p => p.id === productId);
-            if (!product) {
-                console.error("Product not found for ID:", productId);
-                return;
-            }
-    
-            // Update quantity map
+            if (!product) return;
             productQuantities[productId] = (productQuantities[productId] || 0) + 1;
-    
-            // Update cart array
             const existingItemIndex = cart.findIndex(item => item.id === productId);
             if (existingItemIndex !== -1) {
                 cart[existingItemIndex].quantity = productQuantities[productId];
             } else {
-                cart.push({
-                    id: product.id,
-                    title: product.title,
-                    price: product.price,
-                    image: product.image,
-                    quantity: 1 // Start with quantity 1
-                });
+                cart.push({ ...product, quantity: 1 });
             }
             updateCartUI();
-            updateProductCardUI(productId); // Update the specific product card
+            updateProductCardUI(productId);
         }
-    
+
         function removeFromCart(productId, removeCompletely = false) {
             const productIndex = cart.findIndex(item => item.id === productId);
-            if (productIndex === -1) return; // Item not in cart
-    
-             const currentQuantity = productQuantities[productId] || 0;
-    
+            if (productIndex === -1) return;
+            const currentQuantity = productQuantities[productId] || 0;
             if (removeCompletely || currentQuantity <= 1) {
-                 // Remove completely
                 delete productQuantities[productId];
                 cart.splice(productIndex, 1);
             } else {
-                 // Decrease quantity
                 productQuantities[productId]--;
                 cart[productIndex].quantity = productQuantities[productId];
             }
             updateCartUI();
-            updateProductCardUI(productId); // Update the specific product card
+            updateProductCardUI(productId);
         }
-    
+
         function updateCartUI() {
-            // Update cart count badge
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-    
-            // Enable/disable checkout button
-            checkoutBtn.disabled = totalItems === 0;
-    
-            // Update cart page if visible
-            if (cartContainer.style.display !== 'none') {
-                displayCartItems();
-            }
+            cartCountEl.textContent = totalItems;
+            checkoutBtnEl.disabled = totalItems === 0;
+            if (cartContainerEl.style.display !== 'none') displayCartItems();
         }
-    
+
         function updateProductCardUI(productId) {
-             // Find the specific card action container for the product
-             const cardActionDiv = productList.querySelector(`.card-action[data-product-id="${productId}"]`);
+             const cardActionDiv = productListEl.querySelector(`.card-action[data-product-id="${productId}"]`);
              if (cardActionDiv) {
                  cardActionDiv.innerHTML = getCardActionHTML(productId);
-                 // Re-attach listeners ONLY to the updated element's children
                  addProductCardActionListeners(cardActionDiv);
              }
         }
-    
-    
-        // --- Cart Page Display ---
+
         function displayCartItems() {
-             // Clear previous items except the empty cart message structure
-            cartItemsContainer.querySelectorAll('.cart-item').forEach(el => el.remove());
-    
+            cartItemsContainerEl.querySelectorAll('.cart-item').forEach(el => el.remove());
             if (cart.length === 0) {
-                emptyCartMessage.style.display = 'block';
-                cartSummaryElement.style.display = 'none'; // Hide summary
+                emptyCartMsgEl.style.display = 'block';
+                cartSummaryEl.style.display = 'none';
             } else {
-                emptyCartMessage.style.display = 'none';
-                cartSummaryElement.style.display = 'block'; // Show summary
-    
+                emptyCartMsgEl.style.display = 'none';
+                cartSummaryEl.style.display = 'block';
                 let calculatedSubtotal = 0;
-    
                 cart.forEach(item => {
                     const itemTotal = item.price * item.quantity;
                     calculatedSubtotal += itemTotal;
-    
                     const cartItemElement = document.createElement('div');
                     cartItemElement.className = 'cart-item';
                     cartItemElement.innerHTML = `
-                        <div class="cart-item-img-container">
-                           <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-                        </div>
+                        <div class="cart-item-img-container"> <img src="${item.image}" alt="${item.title}" class="cart-item-img"> </div>
                         <div class="cart-item-details">
                             <h3 class="cart-item-title">${item.title}</h3>
                             <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                            <div class="cart-quantity-control">
-                                <button class="cart-quantity-btn decrease-btn" data-product-id="${item.id}" aria-label="Decrease quantity">-</button>
-                                <span class="cart-quantity-number">${item.quantity}</span>
-                                <button class="cart-quantity-btn increase-btn" data-product-id="${item.id}" aria-label="Increase quantity">+</button>
+                            <div class="quantity-control cart-quantity-control">
+                                <button class="quantity-btn decrease-btn" data-product-id="${item.id}" aria-label="Decrease quantity"><i class="fas fa-minus"></i></button>
+                                <span class="quantity-number">${item.quantity}</span>
+                                <button class="quantity-btn increase-btn" data-product-id="${item.id}" aria-label="Increase quantity"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
-                        <div class="cart-item-remove">
-                            <button class="btn-remove" data-product-id="${item.id}" aria-label="Remove item">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    `;
-                    cartItemsContainer.appendChild(cartItemElement);
+                        <div class="cart-item-remove ms-auto">
+                            <button class="btn-remove" data-product-id="${item.id}" aria-label="Remove item"><i class="fas fa-times"></i></button>
+                        </div>`;
+                    cartItemsContainerEl.appendChild(cartItemElement);
                 });
-    
-                // Update summary totals
                 const calculatedTax = calculatedSubtotal * TAX_RATE;
                 const calculatedTotal = calculatedSubtotal + SHIPPING_COST + calculatedTax;
-    
-                subtotalElement.textContent = `$${calculatedSubtotal.toFixed(2)}`;
-                shippingElement.textContent = `$${SHIPPING_COST.toFixed(2)}`;
-                taxElement.textContent = `$${calculatedTax.toFixed(2)}`;
-                totalElement.textContent = `$${calculatedTotal.toFixed(2)}`;
-    
-                // Add event listeners to the newly added cart item buttons
+                subtotalEl.textContent = `$${calculatedSubtotal.toFixed(2)}`;
+                shippingEl.textContent = `$${SHIPPING_COST.toFixed(2)}`;
+                taxEl.textContent = `$${calculatedTax.toFixed(2)}`;
+                totalEl.textContent = `$${calculatedTotal.toFixed(2)}`;
                 addCartItemActionListeners();
             }
         }
-    
-        // --- Event Listeners ---
-        function addProductCardActionListeners(parentElement = productList) {
-            const replaceAndListen = (selector, event, handler) => {
+            
+        function addProductCardActionListeners(parentElement = productListEl) { 
+            const replaceAndListen = (selector, event, handler) => { 
                 parentElement.querySelectorAll(selector).forEach(button => {
                     const newButton = button.cloneNode(true);
                     button.parentNode.replaceChild(newButton, button);
                     newButton.addEventListener(event, handler);
                 });
             };
-    
-            replaceAndListen('.btn-add-cart', 'click', function() {
-                const productId = parseInt(this.closest('.card-action').getAttribute('data-product-id'));
-                addToCart(productId);
-            });
-    
-            replaceAndListen('.increase-btn', 'click', function() {
-                const productId = parseInt(this.closest('.card-action').getAttribute('data-product-id'));
-                addToCart(productId);
-            });
-    
-            replaceAndListen('.decrease-btn', 'click', function() {
-                const productId = parseInt(this.closest('.card-action').getAttribute('data-product-id'));
-                removeFromCart(productId);
-            });
-    
-            replaceAndListen('.btn-wishlist', 'click', () => {
-                 alert('Wishlist functionality not implemented yet!');
-            });
+            replaceAndListen('.btn-add-cart', 'click', function() { addToCart(parseInt(this.closest('.card-action').dataset.productId)); });
+            replaceAndListen('.quantity-control .increase-btn', 'click', function() { addToCart(parseInt(this.closest('.card-action').dataset.productId)); });
+            replaceAndListen('.quantity-control .decrease-btn', 'click', function() { removeFromCart(parseInt(this.closest('.card-action').dataset.productId)); });
+            replaceAndListen('.card-action .btn-theme-secondary[aria-label="Wishlist"]', 'click', () => alert('Wishlist feature coming soon!'));
         }
     
-    
-        function addCartItemActionListeners() {
-            const replaceAndListenCart = (selector, event, handler) => {
-                cartItemsContainer.querySelectorAll(selector).forEach(button => {
+        function addCartItemActionListeners() { 
+             const replaceAndListenCart = (selector, event, handler) => { 
+                cartItemsContainerEl.querySelectorAll(selector).forEach(button => {
                     const newButton = button.cloneNode(true);
                     button.parentNode.replaceChild(newButton, button);
                     newButton.addEventListener(event, handler);
                 });
             };
-    
-            replaceAndListenCart('.cart-item .increase-btn', 'click', function() {
-                 const productId = parseInt(this.getAttribute('data-product-id'));
-                 addToCart(productId);
-            });
-    
-            replaceAndListenCart('.cart-item .decrease-btn', 'click', function() {
-                 const productId = parseInt(this.getAttribute('data-product-id'));
-                 removeFromCart(productId);
-            });
-    
-            replaceAndListenCart('.cart-item .btn-remove', 'click', function() {
-                 const productId = parseInt(this.getAttribute('data-product-id'));
-                 removeFromCart(productId, true); // Remove completely
-            });
+            replaceAndListenCart('.cart-item .increase-btn', 'click', function() { addToCart(parseInt(this.dataset.productId)); });
+            replaceAndListenCart('.cart-item .decrease-btn', 'click', function() { removeFromCart(parseInt(this.dataset.productId)); });
+            replaceAndListenCart('.cart-item .btn-remove', 'click', function() { removeFromCart(parseInt(this.dataset.productId), true); });
         }
-    
-        // --- Page Navigation ---
-        function showProducts() {
-            productsContainer.style.display = 'block';
-            cartContainer.style.display = 'none';
-            document.querySelector('.nav-link.active')?.classList.remove('active');
+
+        function showProducts() { 
+            productsContainerEl.style.display = 'block';
+            cartContainerEl.style.display = 'none';
+            document.querySelectorAll('.nav-link.active').forEach(l => l.classList.remove('active'));
             document.querySelector('a.nav-link[onclick*="showProducts"]').classList.add('active');
         }
-    
-        function showCart() {
-            productsContainer.style.display = 'none';
-            cartContainer.style.display = 'block';
+
+        function showCart() { 
+            productsContainerEl.style.display = 'none';
+            cartContainerEl.style.display = 'block';
             displayCartItems();
-             document.querySelector('.nav-link.active')?.classList.remove('active');
-             cartLink.classList.add('active');
+            document.querySelectorAll('.nav-link.active').forEach(l => l.classList.remove('active'));
+            cartLinkEl.classList.add('active');
         }
-    
-        // --- Checkout Flow ---
-        function processCheckout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty. Please add items before checking out.');
+
+        function processCheckout() { 
+            if (cart.length === 0) { alert('Your basket is empty. Add some items to proceed!'); return; }
+            customerFormEl.classList.remove('was-validated');
+            customerFormEl.reset(); 
+            bsCustomerInfoModal.show();
+        }
+
+        function processToBill() { 
+            if (!customerFormEl.checkValidity()) {
+                customerFormEl.classList.add('was-validated');
+                customerFormEl.querySelector(':invalid')?.focus();
                 return;
             }
-            customerForm.classList.remove('was-validated');
-            customerForm.reset(); 
-            customerInfoModalInstance.show();
-        }
-    
-        function processToBill() {
-            if (!customerForm.checkValidity()) {
-                customerForm.classList.add('was-validated');
-                const firstInvalid = customerForm.querySelector(':invalid');
-                if(firstInvalid) firstInvalid.focus();
-                return;
-            }
-             customerForm.classList.add('was-validated'); 
-    
-             customerInfo = {
-                 fullName: document.getElementById('fullName').value.trim(),
-                 email: document.getElementById('email').value.trim(),
-                 phone: document.getElementById('phone').value.trim(),
-                 address: document.getElementById('address').value.trim()
-             };
-    
-            const customerDetailsDiv = document.getElementById('customer-details');
-            customerDetailsDiv.innerHTML = `
+            customerFormEl.classList.add('was-validated'); 
+            customerInfo = { 
+                 fullName: document.getElementById('fullNameInput').value.trim(),
+                 email: document.getElementById('emailInput').value.trim(),
+                 phone: document.getElementById('phoneInput').value.trim(),
+                 address: document.getElementById('addressInput').value.trim()
+            };
+            customerDetailsDivEl.innerHTML = `
                 <p><strong>Name:</strong> ${customerInfo.fullName || 'N/A'}</p>
                 <p><strong>Email:</strong> ${customerInfo.email || 'N/A'}</p>
                 <p><strong>Phone:</strong> ${customerInfo.phone || 'N/A'}</p>
-                <p><strong>Address:</strong> ${(customerInfo.address || 'N/A').replace(/\n/g, '<br>')}</p>
-            `;
-    
-            const billItemsDiv = document.getElementById('bill-items');
-            billItemsDiv.innerHTML = ''; 
-    
+                <p><strong>Address:</strong> ${(customerInfo.address || 'N/A').replace(/\n/g, '<br>')}</p>`;
+            
+            billItemsDivEl.innerHTML = ''; 
             let subtotal = 0;
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                const billItemElement = document.createElement('div');
-                billItemElement.className = 'bill-item';
-                billItemElement.innerHTML = `
-                    <div class="bill-item-name">${item.title}</div>
-                    <div class="bill-item-quantity">x${item.quantity}</div>
-                    <div class="bill-item-price">$${itemTotal.toFixed(2)}</div>
-                `;
-                billItemsDiv.appendChild(billItemElement);
+                const itemTotal = item.price * item.quantity; subtotal += itemTotal;
+                billItemsDivEl.innerHTML += `<div class="bill-item"><div class="bill-item-name">${item.title}</div><div class="bill-item-quantity">x${item.quantity}</div><div class="bill-item-price">$${itemTotal.toFixed(2)}</div></div>`;
             });
-    
-             const shippingElementModal = document.createElement('div');
-             shippingElementModal.className = 'bill-item';
-             shippingElementModal.innerHTML = `
-                 <div class="bill-item-name">Shipping</div>
-                 <div class="bill-item-quantity"></div>
-                 <div class="bill-item-price sub-item">$${SHIPPING_COST.toFixed(2)}</div>
-             `;
-             billItemsDiv.appendChild(shippingElementModal);
-    
-             const tax = subtotal * TAX_RATE;
-             const taxElementModal = document.createElement('div');
-             taxElementModal.className = 'bill-item';
-             taxElementModal.innerHTML = `
-                 <div class="bill-item-name">Tax (${(TAX_RATE * 100).toFixed(0)}%)</div>
-                 <div class="bill-item-quantity"></div>
-                 <div class="bill-item-price sub-item">$${tax.toFixed(2)}</div>
-             `;
-             billItemsDiv.appendChild(taxElementModal);
-    
-            const total = subtotal + SHIPPING_COST + tax;
-            document.getElementById('bill-total').textContent = `$${total.toFixed(2)}`;
-    
-            customerInfoModalInstance.hide();
-            billModalInstance.show();
+            const tax = subtotal * TAX_RATE;
+            billItemsDivEl.innerHTML += `<div class="bill-item"><div class="bill-item-name">Shipping</div><div class="bill-item-quantity"></div><div class="bill-item-price sub-item">$${SHIPPING_COST.toFixed(2)}</div></div>`;
+            billItemsDivEl.innerHTML += `<div class="bill-item"><div class="bill-item-name">Tax (${(TAX_RATE * 100).toFixed(0)}%)</div><div class="bill-item-quantity"></div><div class="bill-item-price sub-item">$${tax.toFixed(2)}</div></div>`;
+            billTotalSpanEl.textContent = `$${(subtotal + SHIPPING_COST + tax).toFixed(2)}`;
+            bsCustomerInfoModal.hide();
+            bsBillModal.show();
         }
     
         function completePayment() {
-            const orderNumber = `TEC-${new Date().getFullYear()}-${Math.floor(Math.random() * 90000) + 10000}`;
-            document.getElementById('order-number').textContent = orderNumber;
-    
-            billModalInstance.hide();
-            confirmationModalInstance.show();
+            orderNumberForReceipt = `AG-${new Date().getFullYear().toString().slice(-2)}${String(Date.now()).slice(-7)}`; 
+            orderNumberConfirmedSpanEl.textContent = orderNumberForReceipt;
+
+            cartForReceipt = JSON.parse(JSON.stringify(cart));
+            customerInfoForReceipt = JSON.parse(JSON.stringify(customerInfo));
+
+            bsBillModal.hide();
+            bsConfirmationModal.show();
     
             const productIdsToUpdate = Object.keys(productQuantities).map(id => parseInt(id)); 
-            cart = [];
-            productQuantities = {};
-            customerForm.reset(); 
-            customerForm.classList.remove('was-validated'); 
-    
+            cart = []; productQuantities = {};
+            customerFormEl.reset(); customerFormEl.classList.remove('was-validated'); 
             updateCartUI(); 
             productIdsToUpdate.forEach(id => updateProductCardUI(id));
         }
-    
-    
-        // --- PDF Generation (Manual Table) ---
-        function generateBillPDF() {
-            console.log('Attempting PDF generation with manual table...');
-            
-            const jsPDF = window.jspdf?.jsPDF;
-            if (typeof jsPDF !== 'function') {
-                console.error("jsPDF is not ready.", {
-                    hasJsPDF: typeof jsPDF === 'function',
-                    jspdfObject: window.jspdf
-                });
-                alert("Error generating PDF: jsPDF library not loaded. Please try again.");
+
+        function generateBillPDF(itemsForBill, customerDetailsForBill, billType = "Invoice", orderNum = "") {
+            if (!itemsForBill || itemsForBill.length === 0 || !customerDetailsForBill || Object.keys(customerDetailsForBill).length === 0) {
+                alert(`Cannot generate ${billType.toLowerCase()}: Missing cart items or customer information.`);
                 return;
             }
-    
-            const doc = new jsPDF({
-                orientation: 'p',
-                unit: 'mm',
-                format: 'a4'
-            });
 
-            const TEAL_COLOR = '#7C00BF'; // Using --teal from CSS (approximated)
-            const DARK_BLUE_COLOR = '#161321'; // Using --dark-blue from CSS
+            const jsPDF = window.jspdf?.jsPDF;
+            if (typeof jsPDF !== 'function') { alert(`Error: PDF library not loaded.`); return; }
+    
+            const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
             const PAGE_WIDTH = doc.internal.pageSize.getWidth();
             const PAGE_HEIGHT = doc.internal.pageSize.getHeight();
             const MARGIN = 15;
             let currentY = MARGIN;
 
-            // Helper function to draw page footers
+            // PDF Specific Colors (using CSS vars for consistency)
+            const PDF_ACCENT_COLOR = CSS_FLAME_COLOR;
+            const PDF_TEXT_PRIMARY = CSS_BLACK_OLIVE_COLOR;
+            const PDF_TEXT_SECONDARY = '#6c757d'; // Standard Bootstrap muted grey for secondary PDF text
+            const PDF_BORDER_COLOR = CSS_TIMBERWOLF_COLOR;
+
+            // Placeholder for fonts - real TTF files would need to be loaded
+            // For now, jsPDF will use built-in Helvetica/Times.
+            // doc.addFileToVFS('Merriweather-Regular.ttf', /* base64 encoded font */);
+            // doc.addFont('Merriweather-Regular.ttf', 'Merriweather', 'normal');
+            // doc.addFileToVFS('Merriweather-Bold.ttf', /* base64 encoded font */);
+            // doc.addFont('Merriweather-Bold.ttf', 'Merriweather', 'bold');
+            // doc.addFileToVFS('Lato-Regular.ttf', /* base64 encoded font */);
+            // doc.addFont('Lato-Regular.ttf', 'Lato', 'normal');
+            // doc.addFileToVFS('Lato-Bold.ttf', /* base64 encoded font */);
+            // doc.addFont('Lato-Bold.ttf', 'Lato', 'bold');
+            const FONT_HEADINGS = "helvetica"; // Fallback
+            const FONT_BODY = "helvetica";    // Fallback
+
+
             const drawPageFooter = (docInstance, pageNum, totalPages) => {
-                const footerY = PAGE_HEIGHT - 10;
-                docInstance.setFontSize(8);
-                docInstance.setTextColor(150); // Light gray
-                docInstance.text(`Page ${pageNum} of ${totalPages}`, PAGE_WIDTH / 2, footerY, { align: 'center' });
-                docInstance.text("Thank you for your business!", MARGIN, footerY);
-                docInstance.text("TechStore Invoice", PAGE_WIDTH - MARGIN, footerY, { align: 'right'});
+                const footerY = PAGE_HEIGHT - 15;
+                docInstance.setFont(FONT_BODY, 'normal');
+                docInstance.setFontSize(8); 
+                docInstance.setTextColor(PDF_TEXT_SECONDARY);
+                docInstance.text(`Page ${pageNum} of ${totalPages}`, PAGE_WIDTH / 2, footerY + 5, { align: 'center' });
+                docInstance.text("Thank you for choosing ArtisanGoods!", MARGIN, footerY + 5);
+                docInstance.text(`ArtisanGoods ${billType}`, PAGE_WIDTH - MARGIN, footerY + 5, { align: 'right'});
             };
             
-            // --- 1. Header ---
-            doc.setFontSize(22);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(DARK_BLUE_COLOR);
-            doc.text("TechStore", MARGIN, currentY);
+            // Header
+            doc.setFont(FONT_HEADINGS, 'bold');
+            doc.setFontSize(22); doc.setTextColor(PDF_ACCENT_COLOR);
+            doc.text("ArtisanGoods", MARGIN, currentY);
+            
+            doc.setFont(FONT_BODY, 'normal');
+            doc.setFontSize(9); doc.setTextColor(PDF_TEXT_SECONDARY);
+            doc.text("123 Craft Lane, Artville, ST 12345", MARGIN, currentY + 6);
+            doc.text("support@artisangoods.example | (555) 123-4567", MARGIN, currentY + 10);
+            
+            doc.setFont(FONT_HEADINGS, 'bold');
+            doc.setFontSize(18); doc.setTextColor(PDF_TEXT_PRIMARY);
+            doc.text(billType.toUpperCase(), PAGE_WIDTH - MARGIN, currentY + 2, { align: 'right' });
+            currentY += 20;
     
-            doc.setFontSize(10);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(100); 
-            doc.text("123 Innovation Drive", MARGIN, currentY + 5);
-            doc.text("Tech City, TX 75001", MARGIN, currentY + 9);
-            doc.text("support@techstore.example", MARGIN, currentY + 13);
-    
-            doc.setFontSize(18);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(DARK_BLUE_COLOR);
-            doc.text("INVOICE", PAGE_WIDTH - MARGIN, currentY, { align: 'right' });
-            currentY += 25;
-    
-            // --- 2. Bill To & Order Details ---
-            doc.setLineWidth(0.5);
-            doc.setDrawColor(TEAL_COLOR); // Use var(--teal)
-            doc.line(MARGIN, currentY, PAGE_WIDTH - MARGIN, currentY);
-            currentY += 8;
-    
-            const col1X = MARGIN;
-            const col2X = PAGE_WIDTH / 2 + 5;
-    
-            doc.setFontSize(11);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(DARK_BLUE_COLOR);
-            doc.text("BILL TO:", col1X, currentY);
-            doc.text("ORDER DETAILS:", col2X, currentY);
-            currentY += 5;
+            // Bill To & Order Details
+            doc.setLineWidth(0.2); doc.setDrawColor(PDF_BORDER_COLOR); 
+            doc.line(MARGIN, currentY, PAGE_WIDTH - MARGIN, currentY); currentY += 6;
+            const col1X = MARGIN, col2X = PAGE_WIDTH / 2 + 6;
+            
+            doc.setFont(FONT_BODY, 'bold');
+            doc.setFontSize(10); doc.setTextColor(PDF_TEXT_PRIMARY);
+            doc.text("BILL TO:", col1X, currentY); doc.text(billType.toUpperCase() + " DETAILS:", col2X, currentY); currentY += 5;
+            
+            doc.setFont(FONT_BODY, 'normal'); doc.setTextColor(PDF_TEXT_SECONDARY);
+            doc.setFontSize(9);
+            doc.text(customerDetailsForBill.fullName || 'N/A', col1X, currentY);
+            let lineOffset = 0;
+            const addressLines = doc.splitTextToSize(customerDetailsForBill.address || 'N/A', (PAGE_WIDTH / 2) - MARGIN - 15);
+            addressLines.forEach(line => { doc.text(line, col1X, currentY + 4 + lineOffset); lineOffset += 3.5; }); 
+            doc.text(customerDetailsForBill.email || 'N/A', col1X, currentY + 4 + lineOffset); lineOffset += 3.5;
+            doc.text(customerDetailsForBill.phone || 'N/A', col1X, currentY + 4 + lineOffset);
+            const customerInfoHeight = lineOffset + 8;
 
-            doc.setFontSize(10);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(50);
-    
-            doc.text(customerInfo.fullName || 'N/A', col1X, currentY);
-            doc.text(customerInfo.email || 'N/A', col1X, currentY + 4);
-            doc.text(customerInfo.phone || 'N/A', col1X, currentY + 8);
-            const addressLines = doc.splitTextToSize(customerInfo.address || 'N/A', (PAGE_WIDTH / 2) - MARGIN - 10);
-            doc.text(addressLines, col1X, currentY + 12);
-            const customerInfoHeight = (addressLines.length * 4) + 12;
-    
             const today = new Date();
             const formattedDate = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
-            const orderNumberElement = document.getElementById('order-number');
-            const orderNumber = (orderNumberElement && orderNumberElement.textContent !== 'TEC-2025-XXXXX')
-                              ? orderNumberElement.textContent
-                              : `TEC-${today.getFullYear()}-PEND`;
-    
-            doc.text(`Invoice Date:`, col2X, currentY);
+            const finalOrderNumber = orderNum || `INV-PREVIEW-${String(Math.floor(Math.random()*9000)+1000)}`;
+            
+            doc.setFont(FONT_BODY, 'bold'); doc.setTextColor(PDF_TEXT_PRIMARY);
+            doc.text(`${billType} Date:`, col2X, currentY);
+            doc.setFont(FONT_BODY, 'normal'); doc.setTextColor(PDF_TEXT_SECONDARY);
             doc.text(formattedDate, col2X + 30, currentY);
-            doc.text(`Order Number:`, col2X, currentY + 4);
-            doc.text(orderNumber, col2X + 30, currentY + 4);
-            
-            currentY += Math.max(customerInfoHeight, 16) + 5; // Adjust Y after customer/order details
 
-            // --- 3. Items Table (Manual Implementation) ---
-            doc.setFontSize(12);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(DARK_BLUE_COLOR);
-            doc.text("Order Summary", MARGIN, currentY);
-            currentY += 7;
+            doc.setFont(FONT_BODY, 'bold'); doc.setTextColor(PDF_TEXT_PRIMARY);
+            doc.text(`${billType} No.:`, col2X, currentY + 5); 
+            doc.setFont(FONT_BODY, 'normal'); doc.setTextColor(PDF_TEXT_SECONDARY);
+            doc.text(finalOrderNumber, col2X + 30, currentY + 5);
 
-            const tableStartY = currentY;
-            const itemLineHeight = 5; // mm per line of text
-            const cellPaddingVertical = 2; // mm vertical padding in cell
-            const headerHeight = itemLineHeight + cellPaddingVertical * 1.5;
-
-            // Column definitions
+            if (billType.toLowerCase() === "receipt") {
+                doc.setFont(FONT_BODY, 'bold'); doc.setTextColor(PDF_TEXT_PRIMARY);
+                doc.text("Payment:", col2X, currentY + 10);
+                doc.setFont(FONT_BODY, 'normal'); doc.setTextColor(PDF_TEXT_SECONDARY);
+                doc.text("Online Payment", col2X + 30, currentY + 10);
+            }
+            currentY += Math.max(customerInfoHeight, (billType.toLowerCase() === "receipt" ? 18 : 13)) + 5;
+    
+            // Items Table
+            doc.setFont(FONT_HEADINGS, 'bold');
+            doc.setFontSize(10); doc.setTextColor(PDF_TEXT_PRIMARY);
+            doc.text("Order Summary", MARGIN, currentY); currentY += 5;
+            const tableStartY = currentY, itemLineHeight = 4, cellPadding = 1.5; 
+            const headerHeight = itemLineHeight + cellPadding * 2.5; 
             const colConfig = [
-                { title: 'Item Description', widthRatio: 0.45, align: 'left', dataKey: 'title' },
-                { title: 'Unit Price', widthRatio: 0.18, align: 'right', dataKey: 'price' },
-                { title: 'Qty', widthRatio: 0.12, align: 'center', dataKey: 'quantity' },
-                { title: 'Total', widthRatio: 0.25, align: 'right', dataKey: 'itemTotal' }
+                { title: 'Item', widthRatio: 0.50, align: 'left', dataKey: 'title' },
+                { title: 'Price', widthRatio: 0.18, align: 'right', dataKey: 'price' },
+                { title: 'Qty', widthRatio: 0.10, align: 'center', dataKey: 'quantity' },
+                { title: 'Total', widthRatio: 0.22, align: 'right', dataKey: 'itemTotal' }
             ];
-
             const tableWidth = PAGE_WIDTH - 2 * MARGIN;
-            let currentX = MARGIN;
-            const columnStartX = [];
-
-            colConfig.forEach(col => {
-                col.width = tableWidth * col.widthRatio;
-                columnStartX.push(currentX);
-                currentX += col.width;
-            });
+            let currentTableX = MARGIN; const columnStartX = [];
+            colConfig.forEach(col => { col.width = tableWidth * col.widthRatio; columnStartX.push(currentTableX); currentTableX += col.width; });
             
-            // Draw Table Header
-            doc.setFontSize(9);
-            doc.setFont('helvetica', 'bold');
-            doc.setFillColor(DARK_BLUE_COLOR); // Header background
-            doc.setTextColor(255); // White text
-            doc.rect(MARGIN, currentY, tableWidth, headerHeight, 'F'); // Fill header background
-            
-            let headerTextY = currentY + itemLineHeight / 2 + cellPaddingVertical; // Center text vertically in header
-            colConfig.forEach((col, i) => {
-                let textX = columnStartX[i] + cellPaddingVertical; // Default left align with padding
-                if (col.align === 'right') {
-                    textX = columnStartX[i] + col.width - cellPaddingVertical;
-                } else if (col.align === 'center') {
-                    textX = columnStartX[i] + col.width / 2;
-                }
+            doc.setFont(FONT_BODY, 'bold');
+            doc.setFontSize(8); 
+            doc.setFillColor(240, 240, 240); doc.setTextColor(PDF_TEXT_PRIMARY); 
+            doc.rect(MARGIN, currentY, tableWidth, headerHeight, 'F');
+            let headerTextY = currentY + itemLineHeight / 2 + cellPadding * 1.2;
+            colConfig.forEach((col, i) => { 
+                let textX = columnStartX[i] + cellPadding;
+                if (col.align === 'right') textX = columnStartX[i] + col.width - cellPadding;
+                else if (col.align === 'center') textX = columnStartX[i] + col.width / 2;
                 doc.text(col.title, textX, headerTextY, { align: col.align });
             });
             currentY += headerHeight;
-
-            doc.setFontSize(9);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(50); // Dark gray for item text
+            
+            doc.setFont(FONT_BODY, 'normal');
+            doc.setFontSize(8); doc.setTextColor(PDF_TEXT_SECONDARY);
             let subtotal = 0;
-
             const drawRow = (itemData, yPos) => {
-                let maxRowHeight = itemLineHeight + cellPaddingVertical * 2; // Min height for one line
-                const titleLines = doc.splitTextToSize(itemData.title, colConfig[0].width - (2 * cellPaddingVertical));
-                if (titleLines.length * itemLineHeight + (2 * cellPaddingVertical) > maxRowHeight) {
-                    maxRowHeight = titleLines.length * itemLineHeight + (2 * cellPaddingVertical);
+                let maxRowHeight = itemLineHeight + cellPadding * 2;
+                const titleLines = doc.splitTextToSize(itemData.title, colConfig[0].width - (2 * cellPadding));
+                if (titleLines.length * itemLineHeight + (2 * cellPadding) > maxRowHeight) {
+                    maxRowHeight = titleLines.length * itemLineHeight + (2 * cellPadding);
                 }
-
-                // Check for page break BEFORE drawing the row
-                if (yPos + maxRowHeight > PAGE_HEIGHT - MARGIN - 15) { // 15mm buffer for footer
-                    return { newPage: true, height: 0 }; // Signal new page needed
-                }
+                if (yPos + maxRowHeight > PAGE_HEIGHT - MARGIN - 30) return { newPage: true, height: 0 }; 
                 
-                // Draw cell content
-                let textY = yPos + itemLineHeight / 2 + cellPaddingVertical; // Baseline for text
-
-                // Item Description (can be multi-line)
-                doc.text(titleLines, columnStartX[0] + cellPaddingVertical, textY);
-
-                // Unit Price
-                doc.text(`$${itemData.price.toFixed(2)}`, columnStartX[1] + colConfig[1].width - cellPaddingVertical, textY, { align: 'right'});
-                // Quantity
+                let textY = yPos + itemLineHeight + cellPadding * 0.5; 
+                doc.text(titleLines, columnStartX[0] + cellPadding, textY);
+                doc.text(`$${itemData.price.toFixed(2)}`, columnStartX[1] + colConfig[1].width - cellPadding, textY, { align: 'right'});
                 doc.text(itemData.quantity.toString(), columnStartX[2] + colConfig[2].width / 2, textY, { align: 'center'});
-                // Total
-                doc.text(`$${itemData.itemTotal.toFixed(2)}`, columnStartX[3] + colConfig[3].width - cellPaddingVertical, textY, { align: 'right'});
+                doc.setTextColor(PDF_TEXT_PRIMARY);
+                doc.text(`$${itemData.itemTotal.toFixed(2)}`, columnStartX[3] + colConfig[3].width - cellPadding, textY, { align: 'right'});
+                doc.setTextColor(PDF_TEXT_SECONDARY);
 
-                // Draw horizontal line below row
-                doc.setDrawColor(220); // Light gray line
+                doc.setDrawColor(230); 
                 doc.line(MARGIN, yPos + maxRowHeight, PAGE_WIDTH - MARGIN, yPos + maxRowHeight);
-                
                 return { newPage: false, height: maxRowHeight };
             };
 
-            let currentPageNum = 1;
-            let totalPages = 1; // Initial assumption, will update later
-
-            for (const item of cart) {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
+            let currentPageNum = 1, totalPages = 1;
+            for (const item of itemsForBill) {
+                const itemTotal = item.price * item.quantity; subtotal += itemTotal;
                 const itemData = { ...item, itemTotal };
-
                 let rowInfo = drawRow(itemData, currentY);
-
-                if (rowInfo.newPage) {
-                    drawPageFooter(doc, currentPageNum, 99); // Placeholder for total pages
-                    doc.addPage();
-                    currentPageNum++;
-                    totalPages++; // Increment as we add pages
-                    currentY = MARGIN; // Reset Y to top margin
-
-                    // Redraw table header on new page
-                    doc.setFontSize(9);
-                    doc.setFont('helvetica', 'bold');
-                    doc.setFillColor(DARK_BLUE_COLOR);
-                    doc.setTextColor(255);
+                if (rowInfo.newPage) { 
+                    drawPageFooter(doc, currentPageNum, 99); doc.addPage(); currentPageNum++; totalPages++; currentY = MARGIN;
+                    doc.setFont(FONT_BODY, 'bold'); doc.setFontSize(8); doc.setFillColor(240, 240, 240); doc.setTextColor(PDF_TEXT_PRIMARY);
                     doc.rect(MARGIN, currentY, tableWidth, headerHeight, 'F');
-                    headerTextY = currentY + itemLineHeight / 2 + cellPaddingVertical;
-                    colConfig.forEach((col, i) => {
-                        let textX = columnStartX[i] + cellPaddingVertical;
-                        if (col.align === 'right') textX = columnStartX[i] + col.width - cellPaddingVertical;
+                    headerTextY = currentY + itemLineHeight / 2 + cellPadding * 1.2;
+                    colConfig.forEach((col, i) => {  
+                        let textX = columnStartX[i] + cellPadding;
+                        if (col.align === 'right') textX = columnStartX[i] + col.width - cellPadding;
                         else if (col.align === 'center') textX = columnStartX[i] + col.width / 2;
                         doc.text(col.title, textX, headerTextY, { align: col.align });
                     });
-                    currentY += headerHeight;
-                    doc.setFontSize(9);
-                    doc.setFont('helvetica', 'normal');
-                    doc.setTextColor(50);
-                    
-                    rowInfo = drawRow(itemData, currentY); // Draw the row that caused the page break
+                    currentY += headerHeight; doc.setFont(FONT_BODY, 'normal'); doc.setFontSize(8); doc.setTextColor(PDF_TEXT_SECONDARY);
+                    rowInfo = drawRow(itemData, currentY);
                 }
                 currentY += rowInfo.height;
             }
-            
-            // Draw vertical lines for the table structure
-            doc.setDrawColor(200); // Light gray
-            for(let i = 1; i < colConfig.length; i++) { // Start from the second column's left border
-                doc.line(columnStartX[i], tableStartY, columnStartX[i], currentY);
+            doc.setDrawColor(220);
+            for(let i=0; i < colConfig.length; i++) { 
+                 doc.line(columnStartX[i], tableStartY, columnStartX[i], currentY);
             }
-            // Optional: Draw table outer border
-            doc.rect(MARGIN, tableStartY, tableWidth, currentY - tableStartY, 'S'); // Stroke border
-
-            currentY += 10; // Space after table
-
-            // --- 4. Totals Section ---
-            const totalsX = PAGE_WIDTH / 2; 
-            const valueX = PAGE_WIDTH - MARGIN; 
-            
-            // Check if totals section needs new page
-            if (currentY + 30 > PAGE_HEIGHT - MARGIN - 15) { // Estimate 30mm for totals + notes
-                drawPageFooter(doc, currentPageNum, 99); // Placeholder
-                doc.addPage();
-                currentPageNum++;
-                totalPages++;
-                currentY = MARGIN;
+            doc.line(MARGIN + tableWidth, tableStartY, MARGIN + tableWidth, currentY); 
+            currentY += 6;
+    
+            // Totals Section
+            const totalsX = PAGE_WIDTH / 1.85, valueX = PAGE_WIDTH - MARGIN; 
+            if (currentY + 30 > PAGE_HEIGHT - MARGIN - 25) {  
+                drawPageFooter(doc, currentPageNum, 99); doc.addPage(); currentPageNum++; totalPages++; currentY = MARGIN;
             }
-
-            doc.setFontSize(10);
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(50);
-    
-            doc.text("Subtotal:", totalsX, currentY, { align: 'right' });
-            doc.text(`$${subtotal.toFixed(2)}`, valueX, currentY, { align: 'right' });
-            currentY += 5;
-    
-            doc.text("Shipping:", totalsX, currentY, { align: 'right' });
-            doc.text(`$${SHIPPING_COST.toFixed(2)}`, valueX, currentY, { align: 'right' });
-            currentY += 5;
-    
+            doc.setFont(FONT_BODY, 'normal');
+            doc.setFontSize(9); doc.setTextColor(PDF_TEXT_SECONDARY);
+            doc.text("Subtotal:", totalsX, currentY, { align: 'right' }); 
+            doc.setTextColor(PDF_TEXT_PRIMARY); doc.text(`$${subtotal.toFixed(2)}`, valueX, currentY, { align: 'right' }); currentY += 4.5;
+            
+            doc.setTextColor(PDF_TEXT_SECONDARY); doc.text("Shipping:", totalsX, currentY, { align: 'right' }); 
+            doc.setTextColor(PDF_TEXT_PRIMARY); doc.text(`$${SHIPPING_COST.toFixed(2)}`, valueX, currentY, { align: 'right' }); currentY += 4.5;
+            
             const tax = subtotal * TAX_RATE;
-            doc.text(`Tax (${(TAX_RATE * 100).toFixed(0)}%):`, totalsX, currentY, { align: 'right' });
-            doc.text(`$${tax.toFixed(2)}`, valueX, currentY, { align: 'right' });
-            currentY += 7; 
-    
-            doc.setFontSize(12);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(DARK_BLUE_COLOR);
-            doc.text("GRAND TOTAL:", totalsX, currentY, { align: 'right' });
-            doc.text(`$${(subtotal + SHIPPING_COST + tax).toFixed(2)}`, valueX, currentY, { align: 'right' });
-            currentY += 15;
-    
-            // --- 5. Notes/Terms (Optional) ---
-             if (currentY + 15 > PAGE_HEIGHT - MARGIN - 15) { // Check for notes
-                drawPageFooter(doc, currentPageNum, 99); // Placeholder
-                doc.addPage();
-                currentPageNum++;
-                totalPages++;
-                currentY = MARGIN;
-            }
-            doc.setFontSize(9);
-            doc.setFont('helvetica', 'italic');
-            doc.setTextColor(100);
-            doc.text("Notes:", MARGIN, currentY);
-            doc.text("Please contact support@techstore.example for any questions regarding this invoice.", MARGIN, currentY + 4);
+            doc.setTextColor(PDF_TEXT_SECONDARY); doc.text(`Tax (${(TAX_RATE * 100).toFixed(0)}%):`, totalsX, currentY, { align: 'right' }); 
+            doc.setTextColor(PDF_TEXT_PRIMARY); doc.text(`$${tax.toFixed(2)}`, valueX, currentY, { align: 'right' }); currentY += 5;
             
-            // Update totalPages for all footers
-            for (let i = 1; i <= totalPages; i++) {
-                doc.setPage(i);
-                drawPageFooter(doc, i, totalPages);
+            doc.setLineWidth(0.3); doc.setDrawColor(PDF_TEXT_PRIMARY);
+            doc.line(totalsX - 15 , currentY, PAGE_WIDTH - MARGIN, currentY); currentY += 4.5;
+
+            doc.setFont(FONT_BODY, 'bold');
+            doc.setFontSize(10); doc.setTextColor(PDF_TEXT_PRIMARY);
+            doc.text("GRAND TOTAL:", totalsX, currentY, { align: 'right' }); 
+            doc.setTextColor(PDF_ACCENT_COLOR); doc.text(`$${(subtotal + SHIPPING_COST + tax).toFixed(2)}`, valueX, currentY, { align: 'right' }); 
+            
+            let finalContentY = currentY + 10;
+
+
+            // "PAID" Seal and Authorized Signatory for Receipt
+             let sealAndSignatoryStartY = PAGE_HEIGHT - MARGIN - 45; // Start from bottom up
+             if (sealAndSignatoryStartY < finalContentY + 10) { // Not enough space on current page
+                 drawPageFooter(doc, currentPageNum, 99); doc.addPage(); currentPageNum++; totalPages++;
+                 finalContentY = MARGIN; // Reset Y for new page
+                 sealAndSignatoryStartY = PAGE_HEIGHT - MARGIN - 45; // Recalculate
+             }
+
+
+            if (billType.toLowerCase() === "receipt") {
+                const sealX = MARGIN + 20; 
+                const sealY = sealAndSignatoryStartY + 15; // Position it within the reserved space
+                const sealRadius = 12;
+
+                doc.setLineWidth(2); // Thicker border for seal
+                doc.setDrawColor(CSS_PAID_SEAL_BORDER_COLOR); 
+                doc.setFillColor(255,255,255); // White fill for better contrast with green text if needed, or remove fill
+                // doc.setFillColor(CSS_SUCCESS_GREEN_COLOR); // If green fill is desired
+                doc.circle(sealX, sealY, sealRadius, 'FD'); // Fill and Stroke (or just 'S' if no fill)
+
+                doc.setFont(FONT_BODY, 'bold');
+                doc.setFontSize(9);
+                doc.setTextColor(CSS_SUCCESS_GREEN_COLOR); 
+                doc.text("PAID", sealX, sealY + 1.5, { align: 'center'}); 
+
+                // Authorized Signatory
+                const signatoryX = PAGE_WIDTH - MARGIN - 50;
+                const signatoryYpos = sealAndSignatoryStartY + 5; // Align with top of seal space
+
+                doc.setFont(FONT_BODY, 'normal');
+                doc.setFontSize(8);
+                doc.setTextColor(PDF_TEXT_SECONDARY);
+                doc.text("Authorized Signatory", signatoryX, signatoryYpos);
+                doc.setLineWidth(0.2);
+                doc.setDrawColor(PDF_TEXT_SECONDARY);
+                doc.rect(signatoryX, signatoryYpos + 2, 40, 15, 'S'); // Placeholder for signature PNG
+                doc.text("ArtisanGoods Team", signatoryX, signatoryYpos + 20);
+
+                finalContentY = Math.max(finalContentY, signatoryYpos + 25); 
             }
 
-            // --- Finalize and Save ---
-            const pdfFilename = `TechStore_Invoice_${orderNumber}.pdf`;
+            // Notes 
+            const notesStartY = PAGE_HEIGHT - MARGIN - (billType.toLowerCase() === "receipt" ? 60 : 25);
+            let effectiveNotesY = notesStartY;
+            if (finalContentY > notesStartY - 10) { // If content is too close to where notes would ideally start
+                 drawPageFooter(doc, currentPageNum, 99); doc.addPage(); currentPageNum++; totalPages++;
+                 finalContentY = MARGIN; // Reset Y for new page content
+                 effectiveNotesY = MARGIN + 5; // Place notes at top of new page after a small margin
+            }
+
+
+            doc.setFont(FONT_BODY, 'italic');
+            doc.setFontSize(7.5); doc.setTextColor(PDF_TEXT_SECONDARY);
+            const notesText = `Thank you for your business! If you have any questions concerning this ${billType.toLowerCase()}, please contact support@artisangoods.example. All sales are final unless otherwise stated.`;
+            const splitNotes = doc.splitTextToSize(notesText, tableWidth - (billType.toLowerCase() === "receipt" ? 40: 0) ); // Make space for seal if receipt
+            doc.text(splitNotes, MARGIN, effectiveNotesY); 
+    
+            for (let i = 1; i <= totalPages; i++) { doc.setPage(i); drawPageFooter(doc, i, totalPages); }
+            const pdfFilename = `ArtisanGoods_${billType}_${finalOrderNumber}.pdf`;
             doc.save(pdfFilename);
-            console.log(`PDF "${pdfFilename}" generated with manual table.`);
         }
     
-    
-        // --- Initialization ---
         document.addEventListener('DOMContentLoaded', function() {
-             if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
-    
-            if (document.getElementById('customerInfoModal')) {
-                customerInfoModalInstance = new bootstrap.Modal(document.getElementById('customerInfoModal'));
-            }
-             if (document.getElementById('billModal')) {
-                billModalInstance = new bootstrap.Modal(document.getElementById('billModal'));
-            }
-             if (document.getElementById('confirmationModal')) {
-                confirmationModalInstance = new bootstrap.Modal(document.getElementById('confirmationModal'));
-            }
-    
+            if (currentYearSpanEl) currentYearSpanEl.textContent = new Date().getFullYear();
+            
+            bsCustomerInfoModal = new bootstrap.Modal(customerInfoModalEl);
+            bsBillModal = new bootstrap.Modal(billModalEl);
+            bsConfirmationModal = new bootstrap.Modal(confirmationModalEl);
+            
             fetchProducts();
-    
-            if (cartLink) {
-                cartLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showCart();
-                });
-            }
-            if (continueShoppingBtn) {
-                 continueShoppingBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showProducts();
-                });
-            }
-            if (startShoppingBtn) {
-                startShoppingBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showProducts();
-                });
-            }
-            if (checkoutBtn) checkoutBtn.addEventListener('click', processCheckout);
-            if (proceedToBillBtn) proceedToBillBtn.addEventListener('click', processToBill);
-            if (downloadPdfBillBtn) downloadPdfBillBtn.addEventListener('click', generateBillPDF);
-            if (completePaymentBtn) completePaymentBtn.addEventListener('click', completePayment);
-    
-            const confirmationContinueBtn = document.getElementById('confirmationContinueShopping');
-             if (confirmationContinueBtn) {
-                 confirmationContinueBtn.addEventListener('click', () => {
-                     showProducts();
-                });
-             }
-    
-             const homeLink = document.querySelector('a.nav-link[onclick*="showProducts"]');
-             if (homeLink) {
-                homeLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showProducts();
-                });
-             }
+            
+            cartLinkEl.addEventListener('click', (e) => { e.preventDefault(); showCart(); });
+            if(continueShoppingBtnEl) continueShoppingBtnEl.addEventListener('click', (e) => { e.preventDefault(); showProducts(); });
+            if(startShoppingBtnEl) startShoppingBtnEl.addEventListener('click', (e) => { e.preventDefault(); showProducts(); });
+            checkoutBtnEl.addEventListener('click', processCheckout);
+            proceedToBillBtnEl.addEventListener('click', processToBill);
+            downloadInvoicePreviewBtnEl.addEventListener('click', () => generateBillPDF(cart, customerInfo, "Invoice"));
+            completePaymentBtnEl.addEventListener('click', completePayment);
+            downloadReceiptBtnEl.addEventListener('click', () => generateBillPDF(cartForReceipt, customerInfoForReceipt, "Receipt", orderNumberForReceipt));
+            document.getElementById('confirmationContinueShoppingBtnEl').addEventListener('click', showProducts);
+            document.querySelector('a.nav-link[onclick*="showProducts"]').addEventListener('click', (e) => { e.preventDefault(); showProducts(); });
+            
             updateCartUI();
         });
-    
     </script>
 </body>
-
 </html>
