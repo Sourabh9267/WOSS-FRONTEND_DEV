@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <style>
+
+        :root{
+
+            --col1:#FF7300;
+            --col2:#FF5644;
+            --fs:20px;
+            --fs-xs:12px;
+
+        }
+
+        *{
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'Poppins';
+        }
+
+        body{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .debit-card-container{
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to right,var(--col1),var(--col2));
+            border-radius: 10px;
+            padding: 20px 20px 10px 20px;
+
+        }
+
+        .sub-title{
+            display: flex;
+            justify-content: space-between;
+
+            h4{
+                font-size: var(--fs);
+                margin-bottom: 10px;
+            }
+
+            span{
+                background-color: white;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius:10px ;
+
+                i{
+                    color: red;
+                }
+
+            }
+        }
+
+        .img-wrapper{
+
+            height: 40px;
+            width: 50px;
+            margin-bottom: 10px;
+            margin-left: 30px;
+
+            img{
+                height: 100%;
+                width: 100%;
+            }
+
+        }
+
+        .card-number{
+
+            display: flex;
+            gap: 20px;
+            font-size: var(--fs);
+            margin-bottom: 5px;
+
+            
+        }
+
+        .card-number span:last-child{
+            margin-right: 60px;
+        }
+        .validity{
+
+            font-size: var(--fs-xs);
+
+        }
+
+        .debit-card-container::after{
+            content:"M";
+            position: absolute;
+            color: #ffffff46;
+            font-size: 232px;
+            font-weight: 800;
+            left: 189px;
+            top: -36px;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+
+
+        <div class="debit-card-container">
+
+            
+            <div class="sub-title">
+
+
+                <h4>Debit Card</h4>
+                <h5>MVK Bank</h5>
+                
+            </div>
+            
+            <div class="img-wrapper">
+
+                <img src="chip.png" alt="">
+
+            </div>
+
+            <p class="card-number">
+
+                <span>1234</span> 
+                <span>4567</span>
+                <span>8903</span>
+                <span>3241</span>
+                <span>4323</span>
+
+            </p>
+
+            <p class="validity">
+
+                Valid 12/22
+
+            </p>
+
+            <div class="sub-title">
+
+                <h4 >John Doe</h4>
+                <span><i class="fa-solid fa-trash"></i></span>
+
+            </div>
+
+
+        </div>
+
+
+
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

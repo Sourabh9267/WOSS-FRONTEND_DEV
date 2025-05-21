@@ -21,15 +21,14 @@
 // Object using Object Literals
 
 
-// const obj={name:"Sourabh Gour",
-//     age:22,
-//     mno:6266030044
-// };
+const obj={name:"Sourabh Gour",
+    age:22,
+    mno:6266030044
+};
 
-// for(let i in obj){
-//     console.log(obj[`${i}`]);
-    
-// }
+for(let i in obj){
+    console.table(`Key: ${i}  and Value:  ${obj[i]}`);
+}
 
 
 
@@ -42,7 +41,7 @@
 // const obj={name:"Sourabh Gour",
 //     age:22,
 //     mno:6266030044
-// };
+// }; 
 
 
 // Object.assign(obj2,obj);
@@ -56,18 +55,18 @@
 // Object Shallow Copy using assignment operator
 
 
-const obj={name:"Sourabh Gour",
-    age:22,
-    mno:6266030044
-};
+// const obj={name:"Sourabh Gour",
+//     age:22,
+//     mno:6266030044
+// };
 
 
-const obj1 = obj;
-console.log("Obj");
-console.log(obj);
+// const obj1 = obj;
+// console.log("Obj");
+// console.log(obj);
 
-console.log("Obj1");
-console.log(obj1);
+// console.log("Obj1");
+// console.log(obj1);
 
 
 

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+    />
+    <title>Interactive Doraemon | Pure CSS & JS</title>
+
+    <meta
+      name="title"
+      content="Interactive Doraemon | Pure CSS, JS & love of Ritwick"
+    />
+    <meta name="author" content="Ritwick Dey, ritwickdey@outlook.com, with JS enhancements" />
+    <meta
+      name="description"
+      content="Doraemon (cartoon character) designed with CSS & HTML, enhanced with JavaScript interactivity."
+    />
+
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --body-color: #298abf;
+        --body-shawdow-color: #1976a8;
+        --body-shawdow-color-light: #1976a82b;
+        --body-color2: #fff;
+        --belt-color: rgb(186, 62, 85);
+        --black: #555; /* This is more like dark gray, let's define true black too */
+        --true-black: #000000;
+        --mouth-bg-color: rgb(140, 51, 77);
+        --page-bg-color: #eee;
+        --app-height: 100vh;
+      }
+
+      body {
+        background: var(--page-bg-color);
+        max-width: 100vw;
+        overflow-x: hidden;
+        --footer-height: 30px;
+      }
+
+      .container {
+        padding: 0.5rem;
+        width: 100vw;
+        height: calc(var(--app-height) - var(--footer-height));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer {
+        width: 100vw;
+        height: var(--footer-height);
+        padding: 8px 0;
+        position: fixed;
+        bottom: 0;
+        background: #c7c7c7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.9rem;
+        line-height: 1;
+      }
+
+      .footer a {
+        text-decoration: none;
+        color: var(--true-black);
+      }
+      .github {
+        text-decoration: none;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        display: block;
+        cursor: pointer;
+        opacity: 0.8;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100; /* Ensure it's above Doraemon */
+      }
+
+      .github img {
+        max-width: 1.8rem;
+      }
+
+      .github span {
+        color: var(--true-black);
+        font-size: 0.8em;
+        line-height: 1;
+        display: block;
+        margin-top: 5px;
+      }
+
+      .doraemon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        --head-height: 300px;
+        --head-width: calc(var(--head-height) * 1.183);
+        --belt-width: calc(var(--head-width) * 0.6625);
+        --belt-height: 25px;
+        /* transition for potential smooth scaling if added beyond responsiveness */
+        /* transition: transform 0.1s linear; */
+      }
+
+      .head {
+        height: var(--head-height);
+        width: var(--head-width);
+        border: 1px solid var(--black);
+        background: var(--body-color);
+        border-radius: 60% 60% 40% 40% / 60% 60% 70% 70%;
+        position: relative;
+        box-shadow: inset 0px 0px 11px 4px var(--body-shawdow-color);
+      }
+
+      .face {
+        height: 250px;
+        width: 300px;
+        background: #fff;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        border-radius: inherit;
+        transform: translateX(-50%);
+      }
+
+      .belt {
+        z-index: 2;
+        width: var(--belt-width);
+        height: var(--belt-height);
+        background: var(--belt-color);
+        background-image: radial-gradient(
+          circle at 100%,
+          var(--black) 0%,
+          var(--belt-color) 20%
+        );
+        position: relative;
+        top: -20px;
+        border: 1px solid var(--black);
+        border-radius: 20% 20% 20% 20% / 20% 20% 30% 30%;
+      }
+
+      .bell-ring {
+        height: 50px;
+        width: 49px;
+        background: rgba(225, 186, 111, 1);
+        border-radius: 55% 55% 50% 50%/55% 55% 50% 50%;
+        border: 1px solid var(--black);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%); /* Keep this for base positioning */
+        box-shadow: inset 0px 0px 9px 3px var(--black) 55538;
+        overflow: hidden;
+        cursor: pointer;
+        transform-origin: center 20%; /* For jingle animation */
+      }
+
+      .bell-ring-strip {
+        width: 125%;
+        height: 50%;
+        display: inline-block;
+        border: solid 1px var(--black);
+        border-color: var(--black) transparent transparent transparent;
+        border-radius: 100% 70% 0 0/ 90% 120% 0 0;
+        position: absolute;
+        top: 18%;
+        left: -12.5%;
+        transform: rotateZ(3deg);
+      }
+      .bell-ring-strip:nth-child(2) {
+        top: 30%;
+      }
+
+      .bell-ring::before {
+        content: "";
+        width: 10px;
+        height: 30px;
+        display: inline-block;
+        border-right: solid 1px var(--black);
+        transform: translate(-61%, 0%) rotateZ(6deg);
+        border-radius: 50%;
+        position: absolute;
+        top: calc(100% - 18px);
+        left: 45%;
+      }
+
+      .bell-ring::after {
+        content: "";
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        border: solid 1px var(--black);
+        background: #d0d0d0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -25%);
+        border-radius: 50%/45% 50% 50% 50%;
+      }
+
+      .eyes {
+        position: relative;
+      }
+      .eye {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 65px;
+        height: 84px;
+        border: 1px solid var(--black);
+        border-radius: 100% 80% 86% 89% / 100% 83% 80% 100%;
+        background: #fff;
+        top: -36px;
+        overflow: hidden; /* Important for some blink effects if using pseudo-elements */
+        transform-origin: center center; /* For blink scaling */
+      }
+
+      .eye-left {
+        left: 50%;
+        transform: translateX(-100%);
+      }
+      .eye-right {
+        right: 50%;
+        transform: translateX(100%) scaleX(-1);
+      }
+
+      .eyeball {
+        height: 20px;
+        width: 15px;
+        border-radius: 50%;
+        background: var(--true-black); /* Use true black for pupil */
+        position: absolute;
+        top: 50%;
+        /* Centered for easier translation, original was right:10px */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease-out; /* Smooth pupil movement */
+      }
+      /* Specific initial eyeball offsets (closer to nose) */
+      .eye-left .eyeball {
+        transform: translate(calc(-50% + 8px), -50%); /* Move right towards nose */
+      }
+      .eye-right .eyeball {
+         /* transform already flips this eye, so +8px moves it towards its own "right" which is visually left (towards nose) */
+        transform: translate(calc(-50% + 8px), -50%);
+      }
+
+
+      .eyeball::after {
+        content: "";
+        height: 40%;
+        width: 40%;
+        display: inline-block;
+        background: #fff;
+        position: absolute;
+        border-radius: 50%;
+        bottom: 10%;
+        left: 30%;
+      }
+
+      .nose {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: var(--belt-color);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Base transform */
+        top: 28px;
+        /* position: relative; /* This was causing issues with transform */
+        cursor: pointer;
+        transition: transform 0.2s ease-out; /* For hover scale */
+      }
+      .nose:hover {
+        transform: translateX(-50%) scale(1.1);
+      }
+      .nose:hover::before {
+        box-shadow: 0px 0 10px 4px #eeeeeeef, 10px 5px 8px 8px #55555599;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .nose::after { /* Vertical line below nose */
+        content: "";
+        display: inline-block;
+        width: 2px; /* Make it a line */
+        height: 43px;
+        position: absolute;
+        background: var(--black); /* Give it color */
+        /* border-left: 2px solid var(--black); Original style*/
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%); /* Center the line */
+      }
+
+      .nose::before { /* Highlight */
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 14px;
+        background: #fff;
+        border-radius: 50%/50%;
+        left: 38%;
+        position: absolute;
+        top: 48%;
+        transform: translate(-50%, -50%); /* Base transform for highlight */
+        box-shadow: 0px 0 7px 2px #eeeeeea1, 7px 3px 6px 6px #55555559;
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      }
+
+      .mustache {
+        position: absolute;
+        width: 85px;
+        height: 40px;
+        top: 59px;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 1;
+      }
+
+      .mustache-hair {
+        position: absolute;
+        width: 100px;
+        background: var(--black);
+        height: 2px;
+      }
+
+      .mustache-left-hair {
+        left: -100px;
+      }
+      .mustache-left-hair:nth-child(1) { top: 0; transform: rotate(15deg); transform-origin: 100%; }
+      .mustache-left-hair:nth-child(2) { top: 50%; transform: translate(-3px, -40%) rotate(2deg); transform-origin: 100%; }
+      .mustache-left-hair:nth-child(3) { transform: rotate(-10deg) translate(1px, 2px); bottom: 0%; transform-origin: 100%; }
+
+      .mustache-right-hair { right: -100px; }
+      .mustache-right-hair:nth-child(4) { top: 0; transform: rotate(-15deg); transform-origin: 0%; }
+      .mustache-right-hair:nth-child(5) { top: 50%; transform: translate(8px, -40%) rotate(-2deg); transform-origin: 0%; }
+      .mustache-right-hair:nth-child(6) { transform: rotate(10deg); bottom: 0%; transform-origin: 0%; }
+
+      .mouth {
+        --mouth-height: 115px;
+        --mouth-top-height: 25px;
+        --mouth-bottom-height: calc(var(--mouth-height) - var(--mouth-top-height));
+        position: absolute;
+        bottom: 0;
+        width: calc(var(--mouth-height) * 2.2);
+        height: 115px;
+        left: 50%;
+        transform: translate(-50%);
+        top: 100px;
+        z-index: 0;
+      }
+      /* Other mouth styles remain the same */
+      .mouth-top{width:calc(100% - 34px);left:51%;transform:translate(calc(-50% - 1px));background:#fff;position:absolute;height:var(--mouth-top-height);display:inline-block;top:5px;overflow:hidden}.mouth-top-right-round{display:inline-block;background:var(--mouth-bg-color);width:100%;height:var(--mouth-top-height);border-radius:60% 97% 10px 0% / 159% 136% 10px 0%;transform:translate(-1px,0px)}.mouth-bottom{overflow:hidden;width:inherit;height:var(--mouth-bottom-height);border-radius:5px 5px 100% 100% / 5px 5px 200% 200%;position:absolute;bottom:0}.mouth-bottom-ui{position:absolute;top:0;left:0;width:100%;background:var(--mouth-bg-color);height:174px;overflow:hidden;border-radius:inherit;z-index:0;transform:translateY(calc(var(--mouth-bottom-height) - 100%));border-top:none;display:inline-block}.mouth-top-right-round-fixer{content:"";background:#ffffff;position:absolute;top:0;width:117px;z-index:100;height:24px;border-radius:45%;transform:rotateZ(-9deg) translate(-19px,-11px)}.mouth-top-right-round-fixer::after{content:"";background:var(--mouth-bg-color);position:absolute;width:22px;height:50px;border-radius:72% 0% 0 1% / 90% 0 0% 1%;z-index:1111;top:7%;left:78%;transform:rotateZ(70deg)}.tongue-container{z-index:1;position:absolute;top:84%;left:50%;transform:translate(-50%,10%) rotate(45deg) scale(1.5)}.tongue{position:relative;width:50px;height:50px;background:rgba(211,99,95,1)}.tongue::before,.tongue::after{content:"";position:absolute;height:100%;width:100%;border-radius:100%;background:inherit}.tongue::before{left:-60%;box-shadow:inset 6px -2px 4px 0px #00000038}.tongue::after{top:-60%;box-shadow:inset -6px 6px 4px 0px #00000038}
+
+
+      .body-part {
+        --body-part-width: calc(var(--belt-width) * 1);
+        --body-part-height: calc(var(--body-part-width) * 0.705 + 10px);
+        --shoe-height: 20px;
+        position: relative;
+        top: -20px;
+        height: var(--body-part-height);
+        width: var(--body-part-width);
+      }
+      /* Other body-part styles remain the same */
+      .left-body-part,.right-body-part{position:absolute;width:calc(var(--body-part-width) / 2 - 15px);height:calc(var(--body-part-height) - var(--shoe-height));top:-10px;background:var(--body-color);border:1px solid var(--black);z-index:1}.left-body-part{left:0;border-right:none;border-top-left-radius:18% 20%;border-bottom-left-radius:14% 60%;box-shadow:inset -7px -12px 11px 4px var(--body-shawdow-color),inset 4px -1px 13px 5px var(--body-shawdow-color-light)}.right-body-part{right:0;border-top-right-radius:18% 20%;border-bottom-right-radius:14% 50%;box-shadow:inset 12px -3px 9px 5px var(--body-shawdow-color);border-left:none}.left-body-part::before{content:"";position:absolute;width:4px;height:19px;background:var(--body-color);border-radius:100px;box-shadow:inset 4px -1px 13px 5px var(--body-shawdow-color-light);transform:rotate(21deg) translate(3px,9px)}.dress{position:absolute;width:calc(var(--body-part-width) * .808);height:calc(var(--body-part-height) * .852);z-index:1;background:#fff;top:-25px;left:50%;transform:translate(-50%);border:1px solid var(--black);border-radius:66% 66% 100% 100% / 100% 100% 90% 90%}.pocket{--pocket-width:70%;position:absolute;top:45%;bottom:0;width:var(--pocket-width);height:calc(var(--pocket-width) / 1.8);border:1px solid var(--black);left:52%;transform:translate(-50%) rotate(0deg);border-radius:0% 0% 100% 100% / 0% 0% 200% 200%; cursor: pointer;}.leg-gap{content:"";position:absolute;top:105px;left:50%;width:40px;height:41px;transform:translate(-50%);background:var(--body-color);box-shadow:inset -18px 8px 11px 4px var(--body-shawdow-color),inset 18px 8px 11px 4px var(--body-shawdow-color);overflow:hidden}.leg-gap::after{content:"";position:absolute;top:21px;background:var(--page-bg-color);width:40px;height:200px;border-radius:50% 50% 50% 50% / 50% 50% 50% 50%;border:1px solid var(--black)}.leg{position:absolute;top:98%;z-index:1;height:calc(var(--shoe-height) + 10px);width:105%;left:0%;background:#fff;border-radius:10% 10% 100% 100% / 60% 60% 100% 100%;border:1px solid var(--black)}.leg.left-leg{left:5%;border-radius:10% 10% 129% 75%/ 60% 60% 86% 100%;box-shadow:inset 6px -1px 5px 1px #5555553d}.leg.right-leg{transform:translate(-5px,0px);left:-5%;border-radius:10% 10% 75% 129% / 60% 60% 100% 86%;box-shadow:inset -2px -4px 5px 1px #5555553d}.left-hand{position:absolute;left:-25%;width:50px;height:118px;background:var(--body-color);transform:rotateZ(45deg) translate(10px,-26px);border-radius:10% 10% 83% 80% / 10% 10% 95% 95%;border:1px solid var(--black);box-shadow:inset -11px -13px 8px 3px #5555555c}.left-hand::after{content:"";position:absolute;top:calc(100% - 35px);left:-2px;width:50px;height:50px;background:#fff;border-radius:50%;border:1px solid var(--black)}.right-hand{position:absolute;right:3%;width:50px;height:118px;background:var(--body-color);transform:rotateZ(51deg);border-radius:83% 80% 10% 10%/ 95% 95% 10% 10%;border:1px solid var(--black);transform-origin:50% 100%;top:-44%;box-shadow:inset -7px -8px 8px 2px #5555555c}
+      .right-hand::after{content:"";position:absolute;top:calc(-20px);right:-2px;width:50px;height:50px;background:#fff;border-radius:50%;border:1px solid var(--black)}
+
+
+      /* --- Animations & Interactive States --- */
+      /* Eye Blinking */
+      .eye.is-blinking .eyeball { display: none; }
+      .eye-left.is-blinking { animation: actual-blink-left 0.25s ease-in-out; }
+      @keyframes actual-blink-left {
+        0%   { transform: translateX(-100%) scaleY(1); background-color: #fff; }
+        50%  { transform: translateX(-100%) scaleY(0.05); background-color: var(--body-color); }
+        100% { transform: translateX(-100%) scaleY(1); background-color: #fff;}
+      }
+      .eye-right.is-blinking { animation: actual-blink-right 0.25s ease-in-out; }
+      @keyframes actual-blink-right {
+        0%   { transform: translateX(100%) scaleX(-1) scaleY(1); background-color: #fff; }
+        50%  { transform: translateX(100%) scaleX(-1) scaleY(0.05); background-color: var(--body-color); }
+        100% { transform: translateX(100%) scaleX(-1) scaleY(1); background-color: #fff;}
+      }
+
+      /* Nose Click Twitch */
+      .nose.clicked { animation: nose-twitch 0.3s ease-in-out; }
+      .nose.clicked::before { animation: nose-highlight-twitch 0.3s ease-in-out; }
+      @keyframes nose-twitch {
+          0%, 100% { transform: translateX(-50%) scale(1) rotate(0deg); }
+          50% { transform: translateX(-50%) scale(1.05) rotate(3deg); }
+      }
+      @keyframes nose-highlight-twitch {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); }
+          50% {  transform: translate(-50%, -50%) scale(1.1); }
+      }
+
+      /* Bell Jingle */
+      .bell-ring.jingling { animation: jingle 0.5s ease-in-out; }
+      @keyframes jingle {
+          0%, 100% { transform: translateX(-50%) rotate(0deg); }
+          25% { transform: translateX(-50%) rotate(-15deg); }
+          75% { transform: translateX(-50%) rotate(15deg); }
+      }
+
+      /* Waving Hand (Right Hand) */
+      .right-hand.interactive-wave {
+          animation: wave-hand-anim 2.5s ease-in-out infinite;
+      }
+      @keyframes wave-hand-anim { /* Original: rotateZ(51deg) */
+          0%   { transform: rotateZ(45deg); }
+          50%  { transform: rotateZ(25deg); } /* Waves "up" more (less Z rotation) */
+          100% { transform: rotateZ(45deg); }
+      }
+
+      /* Gadget from Pocket */
+      .gadget-item {
+          width: 60px; /* Slightly wider */
+          height: 70px; /* Slightly taller */
+          background-color: #FF69B4; /* Hot Pink - example gadget color */
+          border: 2px solid var(--true-black);
+          border-radius: 8px;
+          position: absolute;
+          /* Positioned within .dress, emerges from pocket area */
+          left: 50%;
+          bottom: 50px; /* Adjust based on pocket position visually */
+          transform: translateX(-50%) translateY(100%); /* Start hidden below */
+          opacity: 0;
+          z-index: 0; /* Behind pocket initially */
+          transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease-out;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 11px;
+          text-align: center;
+          font-weight: bold;
+          color: var(--true-black);
+          padding: 5px;
+          box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+          line-height: 1.2;
+      }
+      .gadget-item.show {
+          transform: translateX(-50%) translateY(-85%); /* Emerge more upwards from pocket */
+          opacity: 1;
+          z-index: 2; /* Above pocket lip when shown */
+      }
+
+      /* Idle Breathing Animation */
+      .body-part.breathing-effect {
+          animation: body-breathing 3.5s ease-in-out infinite alternate;
+          transform-origin: center bottom; /* Breath from bottom up */
+      }
+      @keyframes body-breathing {
+          from { transform: scaleY(1) scaleX(1); }
+          to   { transform: scaleY(1.015) scaleX(1.005); }
+      }
+      .head.breathing-effect-head {
+          animation: head-breathing 3.5s ease-in-out infinite alternate;
+          transform-origin: center bottom;
+      }
+      @keyframes head-breathing {
+          from { transform: scaleY(1) scaleX(1); }
+          to   { transform: scaleY(1.01) scaleX(1); }
+      }
+
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+      <div class="doraemon">
+        <div class="head">
+          <div class="face">
+            <div class="eyes">
+              <div class="eye eye-left">
+                <div class="eyeball"></div>
+              </div>
+              <div class="eye eye-right">
+                <div class="eyeball"></div>
+              </div>
+            </div>
+
+            <div class="mouth">
+              <div class="mouth-top">
+                <div class="mouth-top-right-round">
+                  <div class="mouth-top-right-round-fixer"></div>
+                </div>
+              </div>
+              <div class="mouth-bottom">
+                <div class="mouth-bottom-ui">
+                  <div class="tongue-container">
+                    <div class="tongue"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nose"></div>
+            <div class="mustache">
+              <div class="mustache-hair mustache-left-hair"></div>
+              <div class="mustache-hair mustache-left-hair"></div>
+              <div class="mustache-hair mustache-left-hair"></div>
+              <div class="mustache-hair mustache-right-hair"></div>
+              <div class="mustache-hair mustache-right-hair"></div>
+              <div class="mustache-hair mustache-right-hair"></div>
+            </div>
+          </div>
+        </div>
+        <div class="belt">
+          <div class="bell-ring">
+            <div class="bell-ring-strip"></div>
+            <div class="bell-ring-strip"></div>
+          </div>
+        </div>
+
+        <div class="body-part">
+          <div class="left-body-part">
+            <div class="leg left-leg"></div>
+          </div>
+          <div class="right-body-part">
+            <div class="leg right-leg"></div>
+          </div>
+          <div class="left-hand"></div>
+          <div class="right-hand"></div>
+          <div class="dress">
+            <div class="pocket" id="doraemonPocket"></div>
+            <div class="gadget-item" id="doraemonGadget">Gadget!</div>
+          </div>
+          <div class="leg-gap"></div>
+        </div>
+      </div>
+    </div>
+    
+</body>
+
+<script>
+    // --- Existing Responsive Functions ---
+    function changeObjScale() {
+      const objDim = { height: 530, width: 460 };
+      const doraemonContainer = document.querySelector(".doraemon");
+      if (!doraemonContainer) {
+        console.error("doraemon container not found.");
+        return 1; // Return default scale
+      }
+
+      let currentScale = 1; // To store the calculated scale
+
+      function updateScale(scale) {
+        currentScale = Math.min(scale, 1);
+        doraemonContainer.style.setProperty(
+          "transform",
+          `scale(${currentScale}, ${currentScale})`
+        );
+      }
+
+      const windowDim = {
+        width: Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0),
+        height: Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0),
+      };
+
+      let scaleX = 1, scaleY = 1;
+
+      if (windowDim.width < objDim.width) {
+        scaleX = windowDim.width / objDim.width;
+      }
+      if (windowDim.height < objDim.height) {
+        scaleY = windowDim.height / objDim.height;
+      }
+      updateScale(Math.min(scaleX, scaleY));
+      return currentScale; // Return the scale for other functions to use
+    }
+
+    function updateAppHeight() {
+      const doc = document.documentElement;
+      doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+    }
+
+    function onViewPortChange() {
+      updateAppHeight();
+      const currentResponsiveScale = changeObjScale(); // Get current scale
+      // Pass scale to functions that need it, like pupil movement
+      if (window.doraemonPupilMover) {
+        window.doraemonPupilMover.updateScale(currentResponsiveScale);
+      }
+    }
+
+
+    // --- New Interactive Features ---
+    function initDoraemonInteractions() {
+        const eyes = document.querySelectorAll('.eye');
+        const eyeballs = document.querySelectorAll('.eyeball');
+        const nose = document.querySelector('.nose');
+        const bellRing = document.querySelector('.bell-ring');
+        const rightHand = document.querySelector('.right-hand');
+        const pocket = document.getElementById('doraemonPocket');
+        const gadget = document.getElementById('doraemonGadget');
+        const doraemonContainer = document.querySelector(".doraemon");
+        const bodyPart = document.querySelector('.body-part');
+        const head = document.querySelector('.head');
+
+        setupEyeBlinking(eyes);
+        window.doraemonPupilMover = setupPupilMovement(eyeballs, doraemonContainer, eyes); // Store the returned object
+        setupNoseInteraction(nose);
+        setupBellJingle(bellRing);
+        setupWavingHand(rightHand);
+        setupPocketGadget(pocket, gadget);
+        setupIdleAnimation(bodyPart, head);
+    }
+
+    function setupEyeBlinking(eyeElements) {
+        if (!eyeElements || eyeElements.length === 0) return;
+        setInterval(() => {
+            eyeElements.forEach(eye => {
+                if (eye.classList.contains('is-blinking')) return; // Avoid re-blinking if already
+                eye.classList.add('is-blinking');
+                const eyeball = eye.querySelector('.eyeball');
+                if (eyeball) eyeball.style.display = 'none';
+
+                setTimeout(() => {
+                    eye.classList.remove('is-blinking');
+                    if (eyeball) eyeball.style.display = '';
+                }, 250); // Animation duration
+            });
+        }, Math.random() * 4000 + 3000);
+    }
+
+    function setupPupilMovement(pupilElements, referenceContainer, eyeElements) {
+        if (!pupilElements || pupilElements.length === 0 || !referenceContainer || !eyeElements) return { updateScale: () => {} };
+
+        let currentGlobalScale = 1; // Will be updated by responsive scaling
+
+        const eyeData = Array.from(eyeElements).map(eye => ({
+            element: eye,
+            pupil: eye.querySelector('.eyeball'),
+            // Initial transform from CSS (e.g., calc(-50% + 8px), -50%)
+            // We need the numeric part of the X offset.
+            initialXOffset: eye.classList.contains('eye-left') || eye.classList.contains('eye-right') ? 8 : 0,
+        }));
+
+
+        function movePupils(e) {
+            const containerRect = referenceContainer.getBoundingClientRect();
+
+            eyeData.forEach(data => {
+                if (!data.pupil) return;
+                const eyeRect = data.element.getBoundingClientRect();
+
+                const mouseXInEye = (e.clientX - eyeRect.left) / currentGlobalScale;
+                const mouseYInEye = (e.clientY - eyeRect.top) / currentGlobalScale;
+
+                const eyeCenterX = data.element.offsetWidth / 2;
+                const eyeCenterY = data.element.offsetHeight / 2;
+
+                const maxPupilMoveX = data.element.offsetWidth / 5; // Max travel for pupil
+                const maxPupilMoveY = data.element.offsetHeight / 5;
+
+                let deltaX = (mouseXInEye - eyeCenterX) * 0.15; // Sensitivity
+                let deltaY = (mouseYInEye - eyeCenterY) * 0.1;
+
+                deltaX = Math.max(-maxPupilMoveX, Math.min(maxPupilMoveX, deltaX));
+                deltaY = Math.max(-maxPupilMoveY, Math.min(maxPupilMoveY, deltaY));
+
+                // Base transform is translate(calc(-50% + initialXOffset), -50%)
+                // We add deltaX and deltaY to this.
+                data.pupil.style.transform = `translate(calc(-50% + ${data.initialXOffset + deltaX}px), calc(-50% + ${deltaY}px))`;
+            });
+        }
+
+        document.addEventListener('mousemove', movePupils);
+
+        // Return an object with a method to update the scale
+        return {
+            updateScale: (newScale) => {
+                currentGlobalScale = newScale;
+            }
+        };
+    }
+
+    function setupNoseInteraction(noseElement) {
+        if (!noseElement) return;
+        noseElement.addEventListener('click', () => {
+            if (noseElement.classList.contains('clicked')) return;
+            noseElement.classList.add('clicked');
+            setTimeout(() => {
+                noseElement.classList.remove('clicked');
+            }, 300);
+        });
+    }
+
+    function setupBellJingle(bellElement) {
+        if (!bellElement) return;
+        bellElement.addEventListener('click', () => {
+            if (bellElement.classList.contains('jingling')) return;
+            bellElement.classList.add('jingling');
+            setTimeout(() => {
+                bellElement.classList.remove('jingling');
+            }, 500);
+        });
+    }
+
+    function setupWavingHand(handElement) {
+        if (!handElement) return;
+        handElement.classList.add('interactive-wave');
+    }
+
+    function setupPocketGadget(pocketTriggerElement, gadgetElement) {
+        if (!pocketTriggerElement || !gadgetElement) return;
+
+        const gadgets = [
+            "Anywhere<br>Door!", "Bamboo<br>Copter!", "Time<br>Machine!",
+            "Trans-<br>lation<br>Jelly!", "Small<br>Light!", "Hopter!"
+        ];
+        let gadgetVisible = false;
+
+        pocketTriggerElement.addEventListener('click', () => {
+            gadgetVisible = !gadgetVisible;
+            if (gadgetVisible) {
+                gadgetElement.innerHTML = gadgets[Math.floor(Math.random() * gadgets.length)];
+                gadgetElement.classList.add('show');
+            } else {
+                gadgetElement.classList.remove('show');
+            }
+        });
+    }
+
+    function setupIdleAnimation(bodyElement, headElement) {
+        if (bodyElement) bodyElement.classList.add('breathing-effect');
+        if (headElement) headElement.classList.add('breathing-effect-head');
+    }
+
+    // --- Initialize ---
+    window.addEventListener("resize", onViewPortChange);
+    window.addEventListener("DOMContentLoaded", () => {
+        onViewPortChange(); // Initial call for responsive scaling
+        initDoraemonInteractions(); // Initialize new features
+    });
+
+    // --- Analytics (from original) ---
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "UA-118443281-2");
+
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118443281-2"></script>
+</html>

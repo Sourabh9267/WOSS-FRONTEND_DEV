@@ -1,0 +1,44 @@
+/* transitions.css */
+
+/* --- For the page being navigated AWAY FROM --- */
+body.fade-out-start {
+    opacity: 1;
+    filter: blur(0px);
+    transition: opacity 0.5s ease-out, filter 0.5s ease-out; /* Adjust timing as needed */
+}
+
+body.fade-out-active {
+    opacity: 0;
+    filter: blur(5px); /* Adjust blur amount as needed */
+}
+
+/* --- For the page being navigated TO --- */
+body.fade-in-start {
+    opacity: 0;
+    filter: blur(5px); /* Optional: start new page blurred */
+    transition: opacity 0.5s ease-in, filter 0.5s ease-in; /* Adjust timing as needed */
+}
+
+body.fade-in-active {
+    opacity: 1;
+    filter: blur(0px);
+}
+
+/* Optional: A wrapper for content if you don't want to apply directly to body */
+/*
+#page-wrapper {
+    transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+}
+#page-wrapper.fade-out-active {
+    opacity: 0;
+    filter: blur(5px);
+}
+#page-wrapper.fade-in-start {
+    opacity: 0;
+    filter: blur(5px);
+}
+#page-wrapper.fade-in-active {
+    opacity: 1;
+    filter: blur(0px);
+}
+*/

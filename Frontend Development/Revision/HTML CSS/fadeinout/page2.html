@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2 - Fade Transition Demo</title>
+    <style>
+        /* Basic Page Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background-color: #e9ecef; /* Page 2 background - different for clarity */
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #28a745; /* Different color for Page 2 H1 */
+        }
+
+        a.page-transition-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28a745; /* Different color for Page 2 link */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        a.page-transition-link:hover {
+            background-color: #1e7e34;
+        }
+
+        a.other-link { /* For links without transition */
+             display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            margin-left: 10px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+
+        /* --- Transition CSS --- */
+        /* (This CSS is IDENTICAL to page1.html) */
+        body.fade-out-start {
+            opacity: 1;
+            filter: blur(0px);
+            transition: opacity 0.4s ease-out, filter 0.4s ease-out;
+        }
+
+        body.fade-out-active {
+            opacity: 0;
+            filter: blur(4px);
+        }
+
+        body.fade-in-start {
+            opacity: 0;
+            filter: blur(4px);
+            transition: opacity 0.4s ease-in, filter 0.4s ease-in;
+        }
+
+        body.fade-in-active {
+            opacity: 1;
+            filter: blur(0px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Page 2</h1>
+        <p>This is the second page. It should have faded in smoothly after Page 1 faded out.</p>
+        <p>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.</p>
+
+        <a href="page1.html" class="page-transition-link">Go back to Page 1 with Fade</a>
+        <a href="https://google.com" target="_blank" class="other-link">External Link (No Fade)</a>
+
+    </div>
+
+    <script>
+        // (This JavaScript is IDENTICAL to page1.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const transitionDuration = 400; // Milliseconds, should match CSS transition duration
+
+            // --- Part 1: Handle Fading OUT the current page ---
+            const transitionLinks = document.querySelectorAll('a.page-transition-link');
+
+            transitionLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    const href = this.getAttribute('href');
+                    const target = this.getAttribute('target');
+
+                    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || (href.startsWith('http') && !href.startsWith(window.location.origin)) || (target && target !== '_self')) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    body.classList.remove('fade-in-start', 'fade-in-active');
+                    body.classList.add('fade-out-start');
+                    void body.offsetWidth;
+                    body.classList.add('fade-out-active');
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, transitionDuration);
+                });
+            });
+
+            // --- Part 2: Handle Fading IN the new page ---
+            body.classList.remove('fade-out-start', 'fade-out-active');
+            body.classList.add('fade-in-start');
+
+            window.addEventListener('load', () => {
+                void body.offsetWidth;
+                body.classList.add('fade-in-active');
+            });
+        });
+    </script>
+</body>
+</html>
