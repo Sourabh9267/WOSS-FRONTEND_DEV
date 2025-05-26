@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .show {
+        display: block;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+
+<body>
+
+    <button id="showBtn">
+        Show Popuop
+    </button>
+
+    <div id="popup" style="display: none; width: 400px; height: 300px; background-color: red;">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, fugit temporibus. Voluptatem eligendi
+            voluptatibus placeat recusandae vitae perspiciatis quisquam quaerat, repellendus tempore obcaecati
+            doloribus, soluta numquam at asperiores exercitationem voluptates!
+        </p>
+
+        <button id="hideBtn">Close</button>
+    </div>
+
+    <script>
+
+        let showBtn = document.getElementById('showBtn')
+        let hideBtn = document.getElementById('hideBtn')
+        let popup = document.getElementById('popup')
+
+        showBtn.addEventListener('click',showPopup)
+        hideBtn.addEventListener('click',closePopup)
+
+
+        function showPopup(){
+            popup.style.display = 'block'
+        }
+        function closePopup(){
+            popup.style.display = 'none'
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
