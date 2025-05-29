@@ -1,0 +1,33 @@
+<button (click)="fetchData()">Get Data</button>
+
+<div class="row">
+
+
+  
+  <!-- @for (dataelement of renderData; track dataelement.id) { -->
+    <div class="card" *ngFor="let i of renderData">
+      <div class="card-header">
+        <div class="card-img">
+          <img [src]="i.image" alt="{{ i.title }}">
+        </div>
+        <div class="card-title">
+          <h2>{{ i.title }}</h2>
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <div class="card-description">
+          <p>{{ i.description }}</p>
+        </div>
+        <div class="card-price">
+          <h4>Price: ${{ i.price }}</h4>
+        </div>
+      </div>
+      
+      <div class="card-footer">
+        <button class="card-btn-1">Know More</button>
+      </div>
+    </div>
+  <!-- } -->
+  
+</div>
