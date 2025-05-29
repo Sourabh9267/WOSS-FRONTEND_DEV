@@ -1,0 +1,25 @@
+<div class="main">
+
+  <h1>::: ToDo List :::</h1>
+
+  <div class="input-div">
+    <input [(ngModel)]="task" (keyup.enter)="addTask()" type="text" placeholder="Enter Task! ">
+    <button (click)="addTask()">Add Task</button>
+  </div>
+
+  <ul class="task-list">
+    @for (taskItem of taskList; track taskItem.id) {
+      <li>
+        <span class="task-text">{{ taskItem.task }}</span>
+        <div class="task-actions">
+          <button (click)="deleteTask(taskItem.id)">
+            <fa-icon [icon]="faTrash"></fa-icon> Delete
+          </button>
+        </div>
+      </li>
+    } @empty {
+      <li class="empty-list-message">No tasks yet. Add one above!</li>
+    }
+  </ul>
+
+</div>

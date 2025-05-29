@@ -1,0 +1,87 @@
+.main {
+  font-family: "Poppins";
+  padding: 20px;
+
+  button:hover {
+    transition: all ease 0.3s;
+    filter: saturate(200%);
+  }
+
+  h1 {
+    font-weight: normal;
+  }
+
+  .input-div {
+    display: flex;
+    input {
+      padding: 10px;
+      outline: none !important;
+      border: none !important;
+      border-bottom: 1px solid #8001c6 !important;
+      background-color: #f8f2fc;
+      flex-grow: 1;
+    }
+    button {
+      background-color: #f8f2fc;
+      color: #8001c6;
+      padding-inline: 20px;
+      padding-block: 10px;
+      margin-left: 10px;
+      border: none;
+      outline: none;
+    }
+  }
+
+  .task-list {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #8001c6;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+
+      .task-text {
+        flex-grow: 1;
+        margin-right: 10px;
+        word-break: break-word;
+      }
+
+      .task-actions {
+        flex-shrink: 0;
+      }
+
+      button {
+        padding-block: 5px;
+        padding-inline: 10px;
+        background-color: #fcf2f2;
+        color: #c60101;
+        margin-left: 0;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+
+        fa-icon {
+        }
+      }
+
+      &.empty-list-message {
+        color: #777;
+        text-align: center;
+        padding: 15px;
+        font-style: italic;
+        border: 1px dashed #ccc;
+        justify-content: center;
+      }
+    }
+  }
+}

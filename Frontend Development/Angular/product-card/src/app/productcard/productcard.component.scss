@@ -88,19 +88,23 @@
     padding-inline: 10px;
 
     .card-btn-1 {
-      border-radius: 25px 25px 0px 0px;
-      width: 100%;
-      padding-block: 12px;
-      background-color: #f8f2fc;
-      color: #8001c6;
-      outline: none;
-      border: none;
-      font-size: 14px;
-      transition: all ease 0.3s;
+    border-radius: 25px;
+    width: 100%;
+    padding-block: 12px;
+    background-color: #f8f2fc;
+    color: #8001c6;
+    outline: none;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 14px;
+    transition: all ease 0.3s;
 
       &:hover {
         background-color: #ecd9f7;
       }
     }
+
+    
+
   }
 }
