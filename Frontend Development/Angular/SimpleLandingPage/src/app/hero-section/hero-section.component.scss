@@ -1,6 +1,10 @@
 @import "../app.component.scss";
 
-.hero{
+.hero-wrapper{
+background-color: $col-3;
+    .hero{
+
+   
     background-color: $col-1;
     border-radius: 0px 0px 250px 250px;
     display: flex;
@@ -36,7 +40,8 @@
 
     .hero-heading{
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         margin-top: 16px;
         margin-bottom: 120px;
         font-size: $fs-heading-lg;
@@ -50,7 +55,7 @@
 
 
     }
-
+ }
 
     
 
@@ -61,44 +66,46 @@
 
 
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:567px) {
 
-
-    .hero{
-   
-    .profile-img-wrapper{
-       
-       
-
-        img{
-           
+    .hero-wrapper{
+        
+        .hero{
+            
+            border-radius: 0px 0px 80px 80px;
+            .profile-img-wrapper{
+                
+                
+                
+                img{
+                    
+                }
+                
+                .floating-btn{
+                    left: 60% !important;
+                    width: fit-content !important;
+                }
+                
+            }
+            
+            
+            .hero-heading{
+                
+                padding: 20px;
+                 margin-bottom: 90px;
+                h1{
+                    @include heading-mixin;
+                    font-size: $fs-text-xl;
+                    width: 100%;
+                    line-height: 40px !important;
+                }
+                
+                
+            }
+            
+            
+            
         }
-
-       .floating-btn{
-        left: 60%;
-        width: fit-content;
-
-        }
-    
-    }
-
-
-    .hero-heading{
-      
-        padding: 10px;
-
-        h1{
-        @include heading-mixin;
-        font-size: $fs-text-xl;
-        width: 100%;
-        line-height: 40px !important;
-        }
-
-
-    }
-
-
-    
 
 
 }

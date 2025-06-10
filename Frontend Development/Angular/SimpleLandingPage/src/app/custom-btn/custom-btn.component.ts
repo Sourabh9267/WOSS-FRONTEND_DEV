@@ -10,6 +10,6 @@ export class CustomBtnComponent {
 
 
 btnText = input("Hii") ;
-
+btnClass=input("btn-variant-1");
 
 }

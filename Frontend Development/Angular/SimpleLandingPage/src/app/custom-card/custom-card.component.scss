@@ -1,0 +1,42 @@
+@import "../app.component.scss";
+
+.card-wrapper{
+
+    padding-block: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    .card-img-wrapper{
+
+        height: 100px;
+        width: 100px;
+
+        img{
+            object-fit: contain;
+            height: 100%;
+            width: 100%;
+
+        }
+
+    }
+
+    .card-heading{
+
+        font-size: $fs-text-xl;
+
+    }
+
+    .card-description{
+        
+        @include primary-text-gradient;
+
+
+        width: 290px;
+        font-size: $fs-text-content-md;
+        font-weight: 500;
+        line-height: 31px;
+
+    }
+
+
+}

@@ -6,9 +6,21 @@ button{
 
     border-radius: 25px;
     padding: 13px 28px;
-    background-color: $col-3;
+
     border: none;
     outline: none;
     font-size: $fs-text-md;
  
+}
+
+.btn-variant-1{
+    background-color: $col-3;
+    color:$col-2;
+
+}
+
+.btn-variant-2{
+    background-color: $col-2;
+    color:$col-3;
+    
 }
