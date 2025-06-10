@@ -1,0 +1,21 @@
+@import "../app.component.scss";
+
+.features{
+    display: flex;
+    justify-content: center;
+    padding-block: 100px;
+    .features-heading{
+        display: flex;
+        width: 80%;
+        border-bottom: 2px solid #dadada;
+        justify-content: center;
+        padding-bottom:200px ;
+
+        h2{
+            text-align: center;
+            width: 55%;
+            font-size: $fs-heading-md;
+            @include heading-mixin;
+        }
+    }
+}

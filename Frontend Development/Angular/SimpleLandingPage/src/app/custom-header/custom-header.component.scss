@@ -1,0 +1,28 @@
+@import "../app.component.scss";
+
+
+header{
+       background-color: $col-1;
+       nav{
+           display: flex;
+           flex-wrap: wrap;
+        justify-content: space-between;
+
+        ul{
+            padding: 20px 20px;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 28px;
+            row-gap: 18px;
+            align-items: center;
+            li{
+                font-size: $fs-text-md;
+                color:$col-2;
+            }
+        }
+
+    }
+
+
+}

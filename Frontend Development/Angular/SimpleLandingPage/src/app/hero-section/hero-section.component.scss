@@ -1,0 +1,109 @@
+@import "../app.component.scss";
+
+.hero{
+    background-color: $col-1;
+    border-radius: 0px 0px 250px 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .profile-img-wrapper{
+        margin-top: 100px;
+        align-self: center;
+        position: relative;
+        height: 286px;
+        width: 286px;
+        border-radius: 100%;
+       
+
+        img{
+            height: 100%;
+            width: 100%;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+
+        .floating-btn{
+            transform: rotate(-12deg);
+            position: absolute;
+            left: 90%;
+            top: 30%;
+            white-space: no-wrap;
+            width: 100%;
+        }
+
+    }
+
+
+    .hero-heading{
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        margin-bottom: 120px;
+        font-size: $fs-heading-lg;
+
+        h1{
+
+            @include heading-mixin;
+            width: 40%;
+            text-align: center;
+        }
+
+
+    }
+
+
+    
+
+
+}
+
+
+
+
+
+@media screen and (max-width:767px) {
+
+
+    .hero{
+   
+    .profile-img-wrapper{
+       
+       
+
+        img{
+           
+        }
+
+       .floating-btn{
+        left: 60%;
+        width: fit-content;
+
+        }
+    
+    }
+
+
+    .hero-heading{
+      
+        padding: 10px;
+
+        h1{
+        @include heading-mixin;
+        font-size: $fs-text-xl;
+        width: 100%;
+        line-height: 40px !important;
+        }
+
+
+    }
+
+
+    
+
+
+}
+
+
+
+    
+}

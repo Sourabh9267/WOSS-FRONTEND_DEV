@@ -1,0 +1,45 @@
+
+$col-1:#EFEEED;
+$col-2:#252525;
+$col-3:#FFFFFF;
+$col-4:#636363;
+
+$fs-text-sm:12px;
+$fs-text-md:16px;
+$fs-text-lg:20px;
+$fs-text-xl:36px;
+$fs-heading-lg:64px;
+$fs-heading-md:50px;
+
+
+
+
+
+@mixin primary-text-gradient{
+
+background: linear-gradient(89.78deg, #333333 94.21%, rgba(255, 255, 255, 0.52) 102.9%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+    
+}
+
+@mixin heading-mixin{
+    /* Building digital products, brands, and experiences. */
+
+
+
+font-weight: 500;
+
+line-height: 77px;
+
+
+background: linear-gradient(89.78deg, #333333 82.77%, rgba(255, 255, 255, 0.52) 102.9%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+
+
+}

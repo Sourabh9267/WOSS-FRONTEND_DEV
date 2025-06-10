@@ -29,7 +29,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTasksFromLocalStorage();
+
+    this.fetchTask();
+
   }
+
+  fetchTask() {
+    fetch('http://localhost:3000/tasks')
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }
+
 
   private loadTasksFromLocalStorage(): void {
     const storedTasks = localStorage.getItem(this.localStorageKey);

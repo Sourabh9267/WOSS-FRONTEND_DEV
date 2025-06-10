@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "../assets/sass/utils/mixin_variables";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // border: 2px solid red;
+}
+
+body,html{
+ 
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: red;
+    
+}
+
+
+#main{
+    margin: 0;
+    padding: 0;
+  
+    background: transparent;
+    font-family: "Inter";
+
+
+
+}

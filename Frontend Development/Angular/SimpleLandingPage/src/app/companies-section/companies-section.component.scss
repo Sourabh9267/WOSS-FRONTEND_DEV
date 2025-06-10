@@ -1,0 +1,30 @@
+@import "../app.component.scss";
+
+.companies{
+    // background-color: $col-3;
+    border-radius:0px 0px 250px 250px;
+    padding-block: 100px;
+
+    .slider{
+        padding-block: 10px;
+        padding-inline: 20px;
+        flex-wrap: wrap;
+        column-gap: 5%;
+        row-gap: 100px;
+        display: flex;
+        width: 100%;
+        vertical-align: middle;
+        justify-content: center;
+        align-items: center;
+           
+        img{
+            object-fit: contain;
+            height: auto;
+            width:auto;
+
+            
+        }
+
+    }
+
+}
