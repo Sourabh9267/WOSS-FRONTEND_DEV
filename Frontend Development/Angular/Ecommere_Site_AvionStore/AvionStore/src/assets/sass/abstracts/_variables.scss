@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "DM Sans italic";
+    src: url("../fonts/DMSans-Italic.ttf");
+}
+
+@font-face {
+    font-family: "DM Sans";
+    src: url("../fonts/DMSans.ttf");
+}
+
+
+$font-primary:'DM Sans';
+
+$font-size-sm:14px;
+$font-size-md:15px;
+$font-size-lg:18px;
+
+$font-size-heading:40px;
+
+$font-size-logo:30px;
+
+$font-size-subtitle:52px;
+$font-size-title:128px;
+
+$color-light:#ffffff;
+$color-dark:#333333;
+$color-border:#E9E9E9;
+
+$color-hover-lighter:#f7f7f7;
+
+$color-primary-accent:#050B20;
+$color-secondary-accent:#405FF2;
+$color-tertiary-background:#F9FBFC;
+
+$color-primary-text:#050B20;
+$color-secondary:#405FF2;
+
+
+$color-tertiary:#3D923A;
+
+
+
+
+$color-btn-primary:#405FF2;

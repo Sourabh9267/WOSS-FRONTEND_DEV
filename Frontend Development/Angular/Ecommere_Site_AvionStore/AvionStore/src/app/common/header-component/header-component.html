@@ -1,0 +1,50 @@
+<header class="header-wrapper py-3 position-sticky top-0 start-0 z-3">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">AVION STORE</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Listings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Pages
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+              <li><a class="dropdown-item" href="#">About Us</a></li>
+              <li><a class="dropdown-item" href="#">FAQ</a></li>
+              <li><a class="dropdown-item" href="#">Terms & Conditions</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+
+        <div class="header-actions d-flex flex-nowrap">
+
+          <app-button-component customBtnText="Sign Up" customBtnVariant="SecondaryBtn-NoOutline" [btnHasIcon]="true"
+            btnIconPosition="left" iconPath="icons/UserIcon.svg">
+          </app-button-component>
+
+          <app-button-component customBtnText="Submit Listing" customBtnVariant="SecondaryBtn" >
+          </app-button-component>
+
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</header>

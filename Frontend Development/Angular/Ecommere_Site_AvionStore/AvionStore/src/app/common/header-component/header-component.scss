@@ -1,0 +1,32 @@
+@use 'shared' as *;
+
+.header-wrapper {
+  .navbar {
+    .navbar-brand {
+      color: $color-light;
+      font-size: $font-size-logo;
+      text-decoration: none;
+        transition: all ease 0.2s;
+      &:hover {
+        color: darken($color-light, 10%); // optional hover effect
+      }
+    }
+
+    .nav-link {
+      color: $color-light;
+
+      &:hover{
+         color: darken($color-light, 10%);
+      }
+
+      &:active {
+        color: darken($color-light, 10%);
+        text-decoration: underline 2px solid $color-light; 
+        text-underline-offset: 8px;
+      }
+    }
+  
+
+
+  }
+}

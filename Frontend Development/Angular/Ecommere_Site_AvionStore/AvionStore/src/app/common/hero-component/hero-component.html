@@ -1,0 +1,26 @@
+<section class="hero-section-wrapper">
+  <app-header-component></app-header-component>
+
+  <div class="container">
+    <h2>Let's Find Your</h2>
+
+    <h1 class="d-flex">
+    <span style="font-size: 1px; line-height: 160px;">&nbsp;</span>
+      <ngx-typed-js 
+        [strings]="typedStrings" 
+        [typeSpeed]="80" 
+        [showCursor]="false"
+        [loop]="true"
+        [backSpeed]="50">
+        <span class="typing"></span></ngx-typed-js>
+    </h1>
+
+    <app-button-component 
+      customBtnText="Get Started" 
+      customBtnVariant="PrimaryBtn" 
+      [btnHasIcon]="true"
+      btnIconPosition="right" 
+      iconPath="icons/rightuparrow.svg">
+    </app-button-component>
+  </div>
+</section>

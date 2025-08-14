@@ -1,0 +1,39 @@
+@import 'shared';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: $color-light;
+  padding: 19px 26px;
+  border-radius: 16px;
+  font: 500 15px "DM Sans", sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+    transition: all ease-in-out 0.3s;
+  &-custom-primary {
+    background-color: #007bff;
+  }
+
+  &-custom-secondary {
+    border: 1px solid $color-light;
+
+    &:hover{
+        background-color: $color-btn-primary;
+        border: 1px solid transparent   ;
+    }
+  }
+
+  &-custom-secondary-no-outline{
+    border: none;
+  }
+
+  &-custom-secondary-no-outline-dark{
+    border: none;
+    color: $color-primary-accent;
+  }
+  .btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

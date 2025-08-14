@@ -1,0 +1,55 @@
+@mixin flexbox($align: center, $justify: center, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin flex-center {
+  @include flexbox(center, center);
+}
+
+// Base button styling
+@mixin base-button {
+  @include flexbox(center, center);
+  font-family: $font-primary;
+  font-size: $font-size-md;
+  padding: 10px 20px;
+  border-radius: 6px;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  line-height: 1;
+}
+
+%custom-btn-primary {
+  @include base-button;
+  background-color: $color-secondary-accent;
+  color: $color-light;
+
+  &:hover {
+    background-color: darken($color-secondary-accent, 10%);
+  }
+}
+
+%custom-btn-secondary {
+  @include base-button;
+  background-color: transparent;
+  border: 1px solid $color-secondary-accent;
+  color: $color-secondary-accent;
+
+  &:hover {
+    background-color: rgba($color-secondary-accent, 0.1);
+  }
+}
+
+%custom-btn-icon {
+  @include base-button;
+  background-color: transparent;
+  color: $color-secondary-accent;
+
+  &:hover {
+    background-color: rgba($color-secondary-accent, 0.1);
+  }
+}

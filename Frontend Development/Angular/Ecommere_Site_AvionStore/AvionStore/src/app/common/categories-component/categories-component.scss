@@ -1,0 +1,21 @@
+@import 'shared';
+
+.categories-section-wrapper{
+
+
+    .mini-cards-row-car-types{
+        gap: 10px;
+        margin-bottom: 100px;
+        justify-content: space-evenly !important;
+    }
+
+
+    .mini-cards-row-car-brands{
+        column-gap: 30px;
+        row-gap: 10px;
+        // margin-bottom: 100px;
+    }
+
+    
+
+}

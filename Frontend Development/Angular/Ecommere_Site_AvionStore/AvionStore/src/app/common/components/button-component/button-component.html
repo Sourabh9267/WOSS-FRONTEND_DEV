@@ -1,0 +1,18 @@
+<button type="button" [ngClass]="customClasses">
+
+  <!-- Icon left -->
+  <img *ngIf="btnHasIcon && btnIconPosition === 'left'" 
+       [src]="iconPath" 
+       alt="icon"
+       class="btn-icon" />
+
+  <!-- Button text -->
+  {{ customBtnText }}
+
+  <!-- Icon right -->
+  <img *ngIf="btnHasIcon && btnIconPosition === 'right'" 
+       [src]="iconPath" 
+       alt="icon"
+       class="btn-icon" />
+
+</button>

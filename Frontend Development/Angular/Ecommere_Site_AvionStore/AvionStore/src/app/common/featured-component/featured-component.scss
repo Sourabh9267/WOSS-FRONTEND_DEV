@@ -1,0 +1,25 @@
+@import 'shared';
+
+.featured-listings-wrapper{
+
+    padding: 200px 0px;
+    background-color:$color-tertiary-background;
+
+
+   .tabs-wrapper{
+
+   ::ng-deep .mat-mdc-tab-labels{
+        width: 200px;
+    }
+
+
+.tab-content {
+  width: 100%;
+  padding: 16px;
+  background: #f5f9ff; /* just for visualization */
+  box-sizing: border-box;
+}
+
+
+   } 
+}
