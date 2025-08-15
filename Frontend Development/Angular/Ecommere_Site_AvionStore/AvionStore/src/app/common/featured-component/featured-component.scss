@@ -2,24 +2,46 @@
 
 .featured-listings-wrapper{
 
-    padding: 200px 0px;
+    padding: 115px 0px;
     background-color:$color-tertiary-background;
+    // margin-inline: 80px;
+    border-radius: 16px;
+
+
+
+  .featured-inner {
+  background-color: $color-tertiary-background;
+  border-radius: 16px;
+  padding: 115px 0px; // 80px inline as per figma
+
+
+
 
 
    .tabs-wrapper{
 
    ::ng-deep .mat-mdc-tab-labels{
         width: 200px;
+     
+      img{
+        margin-right: 7px;
+      }
+
+      .tab-text{
+        font-size: 16px;
+      }
+
     }
 
 
 .tab-content {
-  width: 100%;
-  padding: 16px;
-  background: #f5f9ff; /* just for visualization */
-  box-sizing: border-box;
+
+  padding: 50px 0px;
+// overflow-x: hidden;
 }
 
 
    } 
+}
+
 }

@@ -1,0 +1,73 @@
+<div class="product-card-wrapper">
+
+
+
+
+    <div class="product-card-image-wrapper">
+
+        <div class="featured-label-tag">{{product_label}}</div>
+        <button class="save-in-collection-btn">
+
+           <img src="icons/misc/save_icon.svg" alt="">
+
+        </button>
+        <img [src]="product_img_path" alt="">
+
+
+    </div>
+
+    <div class="product-card-data-body">
+
+        
+
+        <h2 class="product-card-title">{{product_name}}</h2>
+
+    
+
+
+        <div class="product-card-info-inline-list">
+
+    
+                <h3 class="driven-data">{{product_detail_1}}</h3>
+        
+
+         
+
+                <h3 class="fuel-type">{{product_detail_2}}</h3>
+
+         
+
+          
+
+                <h3 class="transmission-type">{{product_detail_3}}</h3>
+
+       
+
+        </div>
+
+
+        <div class="product-price-and-cta-btn-wrapper">
+
+        
+
+        <div class="price-tag">
+
+            <h2 class="price-value">{{product_price}}</h2>
+
+        </div>
+
+
+        <div class="product-card-cta-btn">
+
+           <app-button-component customBtnText="View All" customBtnVariant="SecondaryBtn-NoOutline-Dark"
+          [btnHasIcon]="true" btnIconPosition="right" iconPath="icons/rightuparrow_dark.svg">
+        </app-button-component>
+
+        </div>
+
+        </div>
+
+    </div>
+
+
+</div>

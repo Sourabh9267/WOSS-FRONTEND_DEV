@@ -1,0 +1,115 @@
+@import 'shared';
+
+.product-card-wrapper {
+    border-radius: 16px;
+    width: 100%;
+
+    .product-card-image-wrapper {
+        position: relative;
+        height: 218px;
+        width: auto;
+        overflow: hidden;
+        border-radius: 16px 16px 0px 0px;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .featured-label-tag {
+            @include floating-label-tag;
+            background-color: $color-tertiary;
+            color: $color-light;
+            top: 20px;
+            left: 20px;
+        }
+
+        .save-in-collection-btn {
+            @include floating-btn;
+
+            img {
+                height: 12px;
+                width: auto;
+            }
+
+            top: 20px;
+            right:30px;
+        }
+
+    }
+
+    .product-card-data-body {
+
+        padding: 16px 30px;
+        background-color: $color-light;
+        border-radius: 0px 0px 16px 16px;
+        border-inline: 1px solid $color-border;
+        border-bottom: 1px solid $color-border;
+        .product-card-title {
+            font-size: $font-size-lg;
+            line-height: 22px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .product-card-info-inline-list {
+            display: flex;
+
+            .driven-data,
+            .fuel-type,
+            .transmission-type {
+                font-size: $font-size-sm;
+                font-weight: 400;
+                padding: 0px 10px;
+                margin-bottom: 25px;
+
+            }
+
+            .driven-data {
+                padding-left: 0px;
+            }
+
+            .fuel-type {
+                border-inline: 1px solid $color-border;
+            }
+        }
+
+
+        .product-price-and-cta-btn-wrapper {
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .price-tag {
+                .price-value {
+                    font-weight: 700;
+                    font-size: $font-size-xl;
+                    line-height: 30px;
+                }
+            }
+
+            .product-card-cta-btn {
+                ::ng-deep app-button-component {
+
+                    .btn {
+                        padding: 0px;
+                        color: $color-btn-primary;
+                    }
+
+
+                }
+
+
+            }
+
+        }
+
+
+    }
+
+
+
+
+}

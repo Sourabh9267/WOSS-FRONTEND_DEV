@@ -1,0 +1,61 @@
+@import "shared";
+
+.promo-section-wrapper{
+padding: 115px 0px;
+.row{
+
+    .left-part{
+
+        .row{
+
+
+            h2{
+                font-size: $font-size-heading;
+                line-height: 48px;
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            p{
+                font-size: $font-size-md;
+                margin-bottom: 40px;
+                line-height: 27.8px;
+            }
+        }
+
+    }
+
+    .right-part{
+
+        .row{
+
+            .promo-details-card{
+
+                .img-wrapper{
+                    margin-bottom: 20px;
+                }
+                h3{
+                    font-size: $font-size-xl;
+                    font-weight: 500;
+                    margin-bottom: 15px;
+                }
+                p{
+                    font-size: $font-size-md;
+                    font-weight: 300;
+                    line-height: 27.8px;
+                }
+
+            }
+
+
+        }
+
+
+    }
+
+}
+
+
+
+
+}

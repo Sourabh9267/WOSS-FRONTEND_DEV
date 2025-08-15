@@ -53,3 +53,28 @@
     background-color: rgba($color-secondary-accent, 0.1);
   }
 }
+
+
+
+
+@mixin floating-label-tag{
+            position: absolute;
+            line-height: 26px;
+            font-size: $font-size-sm;
+            padding: 2px 15px;
+            display: inline;
+            border-radius: 25px;
+            font-weight: 300;
+           
+}
+
+
+@mixin floating-btn{
+            position: absolute;
+            height: 36px;
+            width: 36px;
+            display: inline;
+            border-radius: 50%;
+            border: none;
+            
+}

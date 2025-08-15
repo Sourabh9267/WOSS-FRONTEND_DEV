@@ -1,63 +1,83 @@
 <section class="featured-listings-wrapper">
 
-    <div class="row justify-content-between section-heading-title-and-action-btn">
+<div class="container">
 
-        <div class="col-auto">
+<div class="featured-inner">
+     
 
-            <div class="title text-nowrap">
+  <div class="row justify-content-between section-heading-title-and-action-btn">
 
-                Featured Listings
+    <div class="col-auto">
 
-            </div>
+      <div class="title text-nowrap">
 
-        </div>
+        Featured Listings
 
-        <div class="col-2">
-            <div class="btn-wrapper">
+      </div>
 
-                <app-button-component customBtnText="View All" customBtnVariant="SecondaryBtn-NoOutline-Dark"
-                    [btnHasIcon]="true" btnIconPosition="right" iconPath="icons/rightuparrow_dark.svg">
-                </app-button-component>
-
-            </div>
-        </div>
     </div>
 
-<div class="tabs-wrapper">
-  <mat-tab-group>
-    
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <img src="assets/icons/in-stock.svg" alt="In Stock Icon" class="tab-icon" />
-        <span>In Stock</span>
-      </ng-template>
-      <div class="tab-content">
-        <p>Content 1 - full width content area</p>
-      </div>
-    </mat-tab>
+    <div class="col-2">
+      <div class="btn-wrapper">
 
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <img src="assets/icons/used-cars.svg" alt="Used Cars Icon" class="tab-icon" />
-        <span>Used Cars</span>
-      </ng-template>
-      <div class="tab-content">
-        <p>Content 2 - full width content area</p>
-      </div>
-    </mat-tab>
+        <app-button-component customBtnText="View All" customBtnVariant="SecondaryBtn-NoOutline-Dark"
+          [btnHasIcon]="true" btnIconPosition="right" iconPath="icons/rightuparrow_dark.svg">
+        </app-button-component>
 
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <img src="assets/icons/new-cars.svg" alt="New Cars Icon" class="tab-icon" />
-        <span>New Cars</span>
-      </ng-template>
-      <div class="tab-content">
-        <p>Content 3 - full width content area</p>
       </div>
-    </mat-tab>
+    </div>
+  </div>
+  <div class="tabs-wrapper">
+    <mat-tab-group>
 
-  </mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <img src="icons/misc/Vector-2.svg" alt="In Stock Icon" class="tab-icon" />
+          <span class="tab-text">In Stock</span>
+        </ng-template>
+        <div class="tab-content">
+          <div class="row row-cols-4 g-4" >
+            <div class="" *ngFor="let car of product_data_array">
+              <app-product-card-component  [product_name]="car.product_name" [product_detail_1]="car.product_detail_1" [product_detail_2]="car.product_detail_2" [product_detail_3]="car.product_detail_3" [product_price]="car.product_price" [product_label]="car.product_label" [product_img_path]="car.product_img_path" ></app-product-card-component>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+     
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <img src="icons/misc/Vector.svg" alt="New Cars Icon" class="tab-icon" />
+          <span class="tab-text">New Cars</span>
+        </ng-template>
+        <div class="tab-content">
+          <p>Content 3 - full width content area</p>
+        </div>
+      </mat-tab>
+
+       <mat-tab>
+        <ng-template mat-tab-label>
+          <img src="icons/misc/Vector-1.svg" alt="Used Cars Icon" class="tab-icon" />
+          <span class="tab-text">Used Cars</span>
+        </ng-template>
+        <div class="tab-content">
+          <p>Content 2 - full width content area</p>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+
+  <div class="pagination-wrapper">
+
+    <app-pagination-buttons-component></app-pagination-buttons-component>
+
+
+  </div>
+
+ <!-- heading, tabs, row -->
+    </div>
 </div>
-
 
 </section>

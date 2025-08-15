@@ -1,0 +1,22 @@
+@import 'shared';
+
+.pagination-controls-wrapper{
+display: flex;
+gap: 25px;
+    .pagination-previous,.pagination-next{
+        width: 60px;
+        height: 40px;
+        background-color: $color-light;
+        border-radius: 30px;
+        border: none;
+        transition: all ease-in-out 0.2s;
+        border: 1px solid transparent;
+
+       &:hover{
+        border-block: 2px solid $color-btn-primary;
+        background-color: $color-hover-lighter;
+       } 
+    }
+
+
+}

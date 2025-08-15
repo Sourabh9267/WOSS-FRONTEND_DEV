@@ -1,76 +1,78 @@
 
+<div class="container">
 
-<section class="categories-section-wrapper">
+    <section class="categories-section-wrapper">
+        
+        <div class="row justify-content-between section-heading-title-and-action-btn">
 
-    <div class="row justify-content-between section-heading-title-and-action-btn">
+            <div class="col-auto">
 
-        <div class="col-auto">
-
-            <div class="title text-nowrap">
-
-                Browse by Type
-
+                <div class="title text-nowrap">
+                    
+                    Browse by Type
+                    
+                </div>
+                
             </div>
-
-        </div>
-
+            
         <div class="col-2">
             <div class="btn-wrapper">
-
+                
                 <app-button-component customBtnText="View All" customBtnVariant="SecondaryBtn-NoOutline-Dark" [btnHasIcon]="true"
-            btnIconPosition="right" iconPath="icons/rightuparrow_dark.svg">
-          </app-button-component>
-
-            </div>
+                btnIconPosition="right" iconPath="icons/rightuparrow_dark.svg">
+            </app-button-component>
+            
         </div>
     </div>
+</div>
 
-    <div class="row mini-cards-row-car-types gx-0 ">
-
-
+<div class="row mini-cards-row-car-types gx-0 ">
+    
+    
         <div class="col-auto" *ngFor="let car of car_type_category_data">
 
             <app-mini-card-component [iconPath]="car.iconPath" [title]="car.title" ></app-mini-card-component>
-
+            
         </div>
 
     </div>
-
-
+    
+    
     
     <div class="row justify-content-between section-heading-title-and-action-btn">
-
+        
         <div class="col-auto">
-
+            
             <div class="title text-nowrap">
-
+                
                 Explore Our Premium Brands
-
+                
             </div>
-
+            
         </div>
-
+        
         <div class="col-2">
             <div class="btn-wrapper">
-
+                
                 <app-button-component customBtnText="Show All Brands" customBtnVariant="SecondaryBtn-NoOutline-Dark" [btnHasIcon]="true"
-            btnIconPosition="right" iconPath="icons/rightuparrow_dark.svg">
-          </app-button-component>
-
-            </div>
+                btnIconPosition="right" iconPath="icons/rightuparrow_dark.svg">
+            </app-button-component>
+            
         </div>
     </div>
-
-
-       <div class="row mini-cards-row-car-brands gx-0 justify-content-evenly">
-
-
+    </div>
+    
+    
+    <div class="row mini-cards-row-car-brands gx-0 justify-content-evenly">
+        
+        
         <div class="col-auto" *ngFor="let car of car_brands_data">
-
+            
             <app-mini-card-component [iconPath]="car.iconPath" [title]="car.title" variant="noOutline"></app-mini-card-component>
-
+            
         </div>
-
+        
     </div>
-
+    
 </section>
+</div>
