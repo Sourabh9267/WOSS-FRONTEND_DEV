@@ -32,6 +32,17 @@
     border: none;
     color: $color-primary-accent;
   }
+
+  &-custom-primary-light{
+    background-color: $color-light;
+    color: $color-btn-primary;
+
+    &:hover{
+      background-color: lighten($color-tertiary, 50%);
+      color: $color-tertiary;
+    }
+  }
+
   .btn-icon {
     width: 16px;
     height: 16px;

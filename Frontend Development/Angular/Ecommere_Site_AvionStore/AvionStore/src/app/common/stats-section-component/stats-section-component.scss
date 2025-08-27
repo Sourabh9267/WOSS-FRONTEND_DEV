@@ -1,0 +1,36 @@
+@import 'shared';
+
+.stats-section-wrapper{
+
+
+
+    margin-inline: 50px;
+    background-color: $color-misc-accent;
+
+    .container{
+
+        .stats-wrapper{
+            padding: 104px 0px;
+            .row{
+
+                .col{
+
+                    h2{
+                        color: $color-btn-primary;
+                        font-size: $font-size-heading;
+                        font-weight: 700;
+                    }
+                    h6{
+                        color: $color-btn-primary;
+                        font-size: $font-size-md;
+                        font-weight: 300;
+                    }
+                }
+            }
+        }   
+    
+}
+
+
+
+}

@@ -12,10 +12,10 @@ export class ButtonComponent {
 
   @Input() customBtnText: string = "Demo";
   @Input() customBtnVariant: string = "PrimaryBtn";
-  @Input() iconPath: string = ""; // <-- Path to icon in assets
+  @Input() iconPath: string = ""; 
   @Input() btnHasIcon: boolean = false;
   @Input() btnIconPosition: 'left' | 'right' = 'left';
-
+  @Input() routerLink?: string; 
   customClasses: string = '';
 
   ngOnInit() {
@@ -29,6 +29,9 @@ export class ButtonComponent {
     }
     else if(this.customBtnVariant === 'SecondaryBtn-NoOutline-Dark'){
       this.customClasses = 'btn btn-custom-secondary-no-outline-dark';
+    }
+    else if(this.customBtnVariant==="PrimaryBtn-white"){
+      this.customClasses="btn btn-custom-primary-light";
     }
   }
 
