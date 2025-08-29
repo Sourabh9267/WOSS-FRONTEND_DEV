@@ -1,4 +1,4 @@
-<button type="button" [ngClass]="customClasses">
+<button [type]="buttonType" [ngClass]="customClasses" [disabled]="isDisabled">
 
   <!-- Icon left -->
   <img *ngIf="btnHasIcon && btnIconPosition === 'left'" 

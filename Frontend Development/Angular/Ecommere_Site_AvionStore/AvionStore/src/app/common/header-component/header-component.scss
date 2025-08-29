@@ -1,6 +1,9 @@
 @use 'shared' as *;
 
 .header-wrapper {
+  position: fixed;
+  width: 100%;
+      background: linear-gradient(45deg, #0f1943, #050c20, #091233);
   .navbar {
     .navbar-brand {
       color: $color-light;

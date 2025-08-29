@@ -1,0 +1,39 @@
+@import 'shared';
+
+.signup-page-wrapper{
+    margin-top: -98px;
+    display: flex;
+    min-height: calc(100vh - 20px);
+    .signup-form-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+
+        form.signup-form{
+            width: 60%;
+            *{
+
+
+                font-family: $font-primary !important;
+
+            }
+
+           ::ng-deep button{
+                width: 100%;
+                display: inline;
+            }
+
+            .linker{
+                font-weight: 400;
+                a{
+                    text-decoration: none;
+                }
+            }
+        }
+
+
+    }
+
+}

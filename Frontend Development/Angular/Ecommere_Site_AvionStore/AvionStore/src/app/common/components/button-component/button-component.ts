@@ -16,6 +16,8 @@ export class ButtonComponent {
   @Input() btnHasIcon: boolean = false;
   @Input() btnIconPosition: 'left' | 'right' = 'left';
   @Input() routerLink?: string; 
+  @Input() buttonType?: string='button'; 
+  @Input() isDisabled?: boolean=false; 
   customClasses: string = '';
 
   ngOnInit() {

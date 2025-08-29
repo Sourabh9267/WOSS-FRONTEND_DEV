@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { SubmitListingComponent } from './common/submit-listing-component/submit-listing-component';
 import { HomePage } from './home-page/home-page';
+import { FeaturedComponent } from './common/featured-component/featured-component';
+import { SignupPage } from './signup-page/signup-page';
 
 export const routes: Routes = [
   
@@ -17,6 +19,15 @@ export const routes: Routes = [
     {
         path:"submit_listing",
         component:SubmitListingComponent
+    },
+    {
+        path:"listings",
+        component:FeaturedComponent
+    },
+    {
+        path:"signup",
+        component:SignupPage
     }
+
 
 ];
