@@ -1,0 +1,27 @@
+<div class="page-wrapper">
+  <div class="scanline-overlay"></div>
+
+  <div class="content-container">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+
+    <!--
+      Container with a fixed height to prevent layout shift.
+      It now holds both the static text and the dynamic typed text.
+    -->
+    <div class="typed-text-container">
+      <span class="static-text">It seems this page&nbsp;</span>
+      <ngx-typed-js
+        [strings]="typedStrings"
+        [typeSpeed]="50"
+        [backSpeed]="30"
+        [backDelay]="2500"
+        [loop]="true"
+        [showCursor]="false">
+        <span class="typing"></span>
+      </ngx-typed-js>
+    </div>
+
+    <button class="home-button" routerLink="/">Return to Homepage</button>
+  </div>
+</div>
